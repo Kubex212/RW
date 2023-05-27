@@ -13,9 +13,7 @@ namespace RWLogic
 
         public Fasada(
             List<string> fluents,
-            List<string> agents,
             List<string> actions,
-
             List<Noninertial> noninertial,
             List<Always> always,
             List<Causes> causes,
@@ -27,7 +25,7 @@ namespace RWLogic
             List<TypicallyAfter> typicallyAfter,
             List<ObservableAfter> observableAfter)
         {
-            model = new Model(fluents, agents, actions);
+            model = new Model(fluents, actions);
             model.SetNoninertial(noninertial);
             model.SetAlways(always);
             model.SetPossibleEffects(causes, releases);
@@ -69,27 +67,19 @@ namespace RWLogic
                 log += "- typowe efekty: \n";
                 for (int action = 0; action < model.action.Length; action++)
                 {
-                    for (int agent = 0; agent < model.agent.Length; agent++)
+                    if (model.state[i].typicalEffects[action].Count != 0)
                     {
-                        if (model.state[i].typicalEffects[agent, action].Count != 0)
-                        {
-                            log += model.action[action] + " by " + model.agent[agent] + ":\n";
-                            foreach (State s in model.state[i].typicalEffects[agent, action]) log += s.Print();
-                        }
-
+                        log += model.action[action] + ":\n";
+                        foreach (State s in model.state[i].typicalEffects[action]) log += s.Print();
                     }
                 }
                 log += "- nietypowe efekty: \n";
                 for (int action = 0; action < model.action.Length; action++)
                 {
-                    for (int agent = 0; agent < model.agent.Length; agent++)
+                    if (model.state[i].abnormalEffects[action].Count != 0)
                     {
-                        if (model.state[i].abnormalEffects[agent, action].Count != 0)
-                        {
-                            log += model.action[action] + " by " + model.agent[agent] + ":\n";
-                            foreach (State s in model.state[i].abnormalEffects[agent, action]) log += s.Print();
-                        }
-
+                        log += model.action[action] + ":\n";
+                        foreach (State s in model.state[i].abnormalEffects[action]) log += s.Print();
                     }
                 }
             }
@@ -120,16 +110,6 @@ namespace RWLogic
         public bool Query(Query_AccessibleEver query)
         {
             return model.IsEverAccessible(query);
-        }
-
-        public bool Query(Query_InvolvedAlways query)
-        {
-            return model.IsAlwaysInvolved(query);
-        }
-
-        public bool Query(Query_InvolvedEver query)
-        {
-            return model.IsEverInvolved(query);
         }
     }
 }

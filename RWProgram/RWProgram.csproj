@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Action.cs" />
-    <Compile Include="Classes\Actor.cs" />
     <Compile Include="Classes\Fluent.cs" />
     <Compile Include="Classes\Helpers.cs" />
     <Compile Include="Classes\LogicOperator.cs" />

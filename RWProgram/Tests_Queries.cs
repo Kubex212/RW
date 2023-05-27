@@ -18,28 +18,6 @@ namespace RWProgram
             }
         }
 
-        public static AlwaysWInvolved Test1b
-        {
-            get
-            {
-                return new AlwaysWInvolved
-                {
-                    W = new Actor { Name = "Jim", Index = 1 }
-                };
-            }
-        }
-
-        public static EverWInvolved Test1c
-        {
-            get
-            {
-                return new EverWInvolved
-                {
-                    W = new Actor { Name = "Bill", Index = 0 }
-                };
-            }
-        }
-
         public static EverAccesibleYFromPi Test2a
         {
             get
@@ -97,17 +75,6 @@ namespace RWProgram
             }
         }
 
-        public static AlwaysWInvolved Test4a
-        {
-            get
-            {
-                return new AlwaysWInvolved
-                {
-                    W = new Actor { Name = "ɛ", Index = 1 }
-                };
-            }
-        }
-
         public static EverExecutable Test4b
         {
             get
@@ -128,34 +95,12 @@ namespace RWProgram
             }
         }
 
-        public static EverWInvolved Test5a
-        {
-            get
-            {
-                return new EverWInvolved
-                {
-                    W = new Actor { Name = "ɛ", Index = 1 }
-                };
-            }
-        }
-
         public static AlwaysExecutable Test5b
         {
             get
             {
                 return new AlwaysExecutable
                 {
-                };
-            }
-        }
-
-        public static AlwaysWInvolved Test5c
-        {
-            get
-            {
-                return new AlwaysWInvolved
-                {
-                    W = new Actor { Name = "ɛ", Index = 1 }
                 };
             }
         }

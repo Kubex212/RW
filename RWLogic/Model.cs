@@ -13,11 +13,10 @@ namespace RWLogic
         public bool[] noninertial { get; private set; } // ktore fluenty sa nieinercjalne
         public State[] state { get; private set; } // tablica wszystkich mozliwych stanow
         public List<State> initial { get; private set; } // lista stanow poczatkowych
-        public string[] agent { get; } // agenci z nazwami
         public string[] action { get; } // akcje z nazwami
 
         // generujemy zbior wszystkich mozliwych stanow i takie tam
-        public Model(List<string> fluent, List<string> agent, List<string> action)
+        public Model(List<string> fluent, List<string> action)
         {
             initial = new List<State>();
             int stateCount = (int)Math.Pow(2, fluent.Count);
@@ -34,12 +33,10 @@ namespace RWLogic
                     t /= ((int)Math.Pow(2, j));
                     fluentValues[j] = t==1 ? true : false;
                 }
-                state[i] = new State(fluentValues, agent.Count, action.Count);
+                state[i] = new State(fluentValues, action.Count);
             }
             this.fluent = new string[fluent.Count];
-            this.agent = new string[agent.Count];
             this.action = new string[action.Count];
-            for (int i = 0; i < agent.Count; i++) this.agent[i] = agent[i];
             for (int i = 0; i < action.Count; i++) this.action[i] = action[i];
             for (int i = 0; i < fluent.Count; i++) this.fluent[i] = fluent[i];
         }
@@ -70,13 +67,11 @@ namespace RWLogic
         {
             foreach(State s in state)
             {
-                if (!s.forbidden) for (int i=0; i<agent.Length; i++)
-                {
+                if (!s.forbidden)
                     for(int j=0;j<action.Length; j++)
                     {
-                        s.possibleEffects[i,j] = Res(s, i, j, causes, releases);
+                        s.possibleEffects[j] = Res(s, j, causes, releases);
                     }
-                }
             }
             return;
         }
@@ -85,12 +80,10 @@ namespace RWLogic
         {
             foreach (State s in state)
             {
-                if (!s.forbidden) for (int i = 0; i < agent.Length; i++)
+                if (!s.forbidden)
+                    for (int j = 0; j < action.Length; j++)
                     {
-                        for (int j = 0; j < action.Length; j++)
-                        {
-                            s.typicalEffects[i, j] = TypicalRes(s, i, j, causes, typicallyCauses, releases, typicallyReleases);
-                        }
+                        s.typicalEffects[j] = TypicalRes(s, j, causes, typicallyCauses, releases, typicallyReleases);
                     }
             }
             return;
@@ -101,22 +94,20 @@ namespace RWLogic
             List<State> result = new List<State>();
             foreach (State s in state)
             {
-                if (!s.forbidden) for (int i = 0; i < agent.Length; i++)
+                if (!s.forbidden)
+                    for (int j = 0; j < action.Length; j++)
                     {
-                        for (int j = 0; j < action.Length; j++)
+                        result.Clear();
+                        foreach(State res in s.possibleEffects[j])
                         {
-                            result.Clear();
-                            foreach(State res in s.possibleEffects[i, j])
-                            {
-                                if (!s.typicalEffects[i, j].Contains(res)) result.Add(res);
-                            }
-                            //result.AddRange(s.possibleEffects[i, j]);
-                            //foreach(State state in result)
-                            //{
-                            //    if (s.typicalEffects[i, j].Contains(state)) result.Remove(state);
-                            //}
-                            s.abnormalEffects[i, j].AddRange(result);
+                            if (!s.typicalEffects[j].Contains(res)) result.Add(res);
                         }
+                        //result.AddRange(s.possibleEffects[i, j]);
+                        //foreach(State state in result)
+                        //{
+                        //    if (s.typicalEffects[i, j].Contains(state)) result.Remove(state);
+                        //}
+                        s.abnormalEffects[j].AddRange(result);
                     }
             }
             return;
@@ -166,12 +157,10 @@ namespace RWLogic
                                     break;
                                 }
                             }
-                            else foreach (State res in current.state.possibleEffects[
-                                                    statement.activity[current.index].agent,
-                                                    statement.activity[current.index].action])
-                                {
-                                    DFS.Push((res, current.index + 1));
-                                }
+                            else foreach (State res in current.state.possibleEffects[statement.activity[current.index]])
+                            {
+                                DFS.Push((res, current.index + 1));
+                            }
                         }
 
                     }
@@ -207,12 +196,10 @@ namespace RWLogic
                                     break;
                                 }
                             }
-                            else foreach (State res in current.state.possibleEffects[
-                                                    statement.activity[current.index].agent,
-                                                    statement.activity[current.index].action])
-                                {
-                                    DFS.Push((res, current.index + 1));
-                                }
+                            else foreach (State res in current.state.possibleEffects[statement.activity[current.index]])
+                            {
+                                DFS.Push((res, current.index + 1));
+                            }
                         }
 
                     }
@@ -247,12 +234,10 @@ namespace RWLogic
                                     break;
                                 }
                             }
-                            else foreach (State res in current.state.possibleEffects[
-                                                    statement.activity[current.index].agent,
-                                                    statement.activity[current.index].action])
-                                {
-                                    DFS.Push((res, current.index + 1));
-                                }
+                            else foreach (State res in current.state.possibleEffects[statement.activity[current.index]])
+                            {
+                                DFS.Push((res, current.index + 1));
+                            }
                         }
                         if (!end) result.Remove(s);
                     }
@@ -292,7 +277,7 @@ namespace RWLogic
                 {
                     if (state.forbidden) return false;
 
-                    List<State> possibleNextStates = state.possibleEffects[query.program[step].agent, query.program[step].action];
+                    List<State> possibleNextStates = state.possibleEffects[query.program[step]];
 
                     if (possibleNextStates.Count == 0 || possibleNextStates is null) return false;
 
@@ -326,7 +311,7 @@ namespace RWLogic
                 {
                     if (state.forbidden) continue;
 
-                    List<State> possibleNextStates = state.possibleEffects[query.program[step].agent, query.program[step].action];
+                    List<State> possibleNextStates = state.possibleEffects[query.program[step]];
 
                     if (possibleNextStates.Count == 0 || possibleNextStates is null) continue;
 
@@ -369,7 +354,7 @@ namespace RWLogic
             {
                 foreach (State state in currentStates)
                 {
-                    List<State> possibleNextStates = state.possibleEffects[query.program[step].agent, query.program[step].action];
+                    List<State> possibleNextStates = state.possibleEffects[query.program[step]];
                     nextStates.AddRange(possibleNextStates);
                 }
 
@@ -415,11 +400,11 @@ namespace RWLogic
             {
                 foreach ((State,int) state in currentStates)
                 {
-                    foreach(State nextState in state.Item1.typicalEffects[query.program[step].agent, query.program[step].action])
+                    foreach(State nextState in state.Item1.typicalEffects[query.program[step]])
                     {
                         nextStates.Add((nextState, state.Item2));
                     }
-                    foreach (State nextState in state.Item1.abnormalEffects[query.program[step].agent, query.program[step].action])
+                    foreach (State nextState in state.Item1.abnormalEffects[query.program[step]])
                     {
                         nextStates.Add((nextState, state.Item2 + 1));
                     }
@@ -474,9 +459,9 @@ namespace RWLogic
             {
                 foreach (State state in currentStates)
                 {
-                    List<State> possibleNextStates = state.abnormalEffects[query.program[step].agent, query.program[step].action];
+                    List<State> possibleNextStates = state.abnormalEffects[query.program[step]];
                     nextStates.AddRange(possibleNextStates);
-                    possibleNextStates = state.typicalEffects[query.program[step].agent, query.program[step].action];
+                    possibleNextStates = state.typicalEffects[query.program[step]];
                     nextStates.AddRange(possibleNextStates);
                 }
 
@@ -495,135 +480,15 @@ namespace RWLogic
             else return false;
         }
 
-        private bool AlwaysInvolvedDFS(State currentState, Query_InvolvedAlways query, int step, bool involved)
-        {
-            if (query.program.Count == step)
-                return involved;
-
-            foreach(State nextState in currentState.typicalEffects[query.program[step].agent, query.program[step].action])
-            {
-                if(query.program[step].agent == query.agent)
-                {
-                    if(nextState == currentState)
-                    {
-                        if (!AlwaysInvolvedDFS(nextState, query, step + 1, involved)) return false;
-                    }
-                }
-                else
-                {
-                    if (!AlwaysInvolvedDFS(nextState, query, step + 1, involved)) return false;
-                }
-            }
-
-            foreach (State nextState in currentState.abnormalEffects[query.program[step].agent, query.program[step].action])
-            {
-                if (query.program[step].agent == query.agent)
-                {
-                    if (nextState == currentState)
-                    {
-                        if (!AlwaysInvolvedDFS(nextState, query, step + 1, involved)) return false;
-                    }
-                }
-                else
-                {
-                    if (!AlwaysInvolvedDFS(nextState, query, step + 1, involved)) return false;
-                }
-            }
-
-            return true;
-        }
-
-        public bool IsAlwaysInvolved(Query_InvolvedAlways query)
-        {
-            List<State> currentStates = initial;
-
-            if (currentStates.Count == 0) return true;
-
-            if (!query.program.Select(p => p.agent).Contains(query.agent))
-                return false;
-
-
-            foreach(State nextState in currentStates)
-            {
-                if (!AlwaysInvolvedDFS(nextState, query, 0, false)) return false;
-            }
-
-            return true;
-        }
-
-        private bool EverInvolvedDFS(State currentState, Query_InvolvedEver query, int step, bool involved)
-        {
-            if (step == query.program.Count)
-                return false;
-
-            foreach (State nextState in currentState.typicalEffects[query.program[step].agent, query.program[step].action])
-            {
-                if (query.program[step].agent == query.agent)
-                {
-                    if (nextState == currentState)
-                    {
-                        if (EverInvolvedDFS(nextState, query, step + 1, involved)) return true;
-                    }
-                    else
-                    {
-                        return true;
-                    }
-                }
-                else
-                {
-                    if (EverInvolvedDFS(nextState, query, step + 1, involved)) return true;
-                }
-            }
-
-            foreach (State nextState in currentState.abnormalEffects[query.program[step].agent, query.program[step].action])
-            {
-                if (query.program[step].agent == query.agent)
-                {
-                    if (nextState == currentState)
-                    {
-                        if (EverInvolvedDFS(nextState, query, step + 1, involved)) return true;
-                    }
-                    else
-                    {
-                        return true;
-                    }
-                }
-                else
-                {
-                    if (EverInvolvedDFS(nextState, query, step + 1, involved)) return true;
-                }
-            }
-
-            return false;
-        }
-
-        public bool IsEverInvolved(Query_InvolvedEver query)
-        {
-            List<State> currentStates = initial;
-
-            if (currentStates.Count == 0) return true;
-
-            if (!query.program.Select(p => p.agent).Contains(query.agent))
-                return false;
-
-            foreach (State nextState in currentStates)
-            {
-                if (EverInvolvedDFS(nextState, query, 0, false)) return true;
-            }
-
-            return false;
-        }
-
         // dalej jest magia, ktora dzieje przy generowaniu grafu
 
-        private List<State> Res0(State s, int agent, int action, List<Causes> causes)
+        private List<State> Res0(State s, int action, List<Causes> causes)
         {
-            bool Res0_Condition(State cond_state, int cond_agent, int cond_action, State res, List<Causes> cond_causes)
+            bool Res0_Condition(State cond_state, int cond_action, State res, List<Causes> cond_causes)
             {
                 foreach (Causes c in cond_causes)
                 {
-                    if ((c.agent == cond_agent &&
-                        c.action == cond_action &&
+                    if ((c.action == cond_action &&
                         cond_state.SatisfiesCondition(c.condition)) &&
                         !res.SatisfiesCondition(c.effect))
                     {
@@ -637,7 +502,7 @@ namespace RWLogic
             //bool[] contains = new bool[state.Length];
             for (int i = 0; i < state.Length; i++)
             {
-                if (!state[i].forbidden && Res0_Condition(s, agent, action, state[i], causes))
+                if (!state[i].forbidden && Res0_Condition(s, action, state[i], causes))
                 {
                     //if (!contains[i])
                     {
@@ -649,7 +514,7 @@ namespace RWLogic
             return result;
         }
 
-        private bool[] New(State s, int agent, int action, State res, List<Releases> releases)
+        private bool[] New(State s, int action, State res, List<Releases> releases)
         {
             bool[] result = new bool[fluent.Length];
             for(int i=0;i<fluent.Length;i++)
@@ -660,8 +525,7 @@ namespace RWLogic
                 {
                     foreach(Releases statement in releases)
                     {
-                        if(statement.agent == agent &&
-                            statement.action == action &&
+                        if(statement.action == action &&
                             s.SatisfiesCondition(statement.condition) &&
                             statement.fluent == i)//!res.SatisfiesCondition(statement.effect))
                         {
@@ -688,13 +552,13 @@ namespace RWLogic
             return true;
         }
 
-        private List<State> Res(State s, int agent, int action, List<Causes> causes, List<Releases> releases)
+        private List<State> Res(State s, int action, List<Causes> causes, List<Releases> releases)
         {
-            List<State> res0 = Res0(s, agent, action, causes);
+            List<State> res0 = Res0(s, action, causes);
             List<bool[]> newSet = new List<bool[]>();
             foreach(State res in res0)
             {
-                newSet.Add(New(s, agent, action, res, releases));
+                newSet.Add(New(s, action, res, releases));
             }
 
             bool[] isMinimal = new bool[newSet.Count];
@@ -719,17 +583,16 @@ namespace RWLogic
 
         // Resy dla typowych
 
-        private List<State> TypicalRes0(State s, int agent, int action, List<Causes> causes, List<TypicallyCauses> typically)
+        private List<State> TypicalRes0(State s, int action, List<Causes> causes, List<TypicallyCauses> typically)
         {
-            bool Res0_Condition(State s0, int agent0, int action0, State res, List<Causes> causes0, List<TypicallyCauses> typically0)
+            bool Res0_Condition(State s0, int action0, State res, List<Causes> causes0, List<TypicallyCauses> typically0)
             {
                 List<CausesOrTypicallyCauses> statements = new List<CausesOrTypicallyCauses>();
                 statements.AddRange(causes0);
                 statements.AddRange(typically0);
                 foreach (CausesOrTypicallyCauses c in statements)
                 {
-                    if ((c.agent == agent0 &&
-                        c.action == action0 &&
+                    if ((c.action == action0 &&
                         s0.SatisfiesCondition(c.condition)) &&
                         !res.SatisfiesCondition(c.effect))
                     {
@@ -743,7 +606,7 @@ namespace RWLogic
             bool[] contains = new bool[state.Length];
             for (int i = 0; i < state.Length; i++)
             {
-                if (!state[i].forbidden && Res0_Condition(s, agent, action, state[i], causes, typically))
+                if (!state[i].forbidden && Res0_Condition(s, action, state[i], causes, typically))
                 {
                     if (!contains[i])
                     {
@@ -755,7 +618,7 @@ namespace RWLogic
             return result;
         }
 
-        private bool[] TypicalNew(State s, int agent, int action, State res, List<Releases> releases, List<TypicallyReleases> typically)
+        private bool[] TypicalNew(State s, int action, State res, List<Releases> releases, List<TypicallyReleases> typically)
         {
             List<ReleasesOrTypicallyReleases> statements = new List<ReleasesOrTypicallyReleases>();
             statements.AddRange(releases);
@@ -770,8 +633,7 @@ namespace RWLogic
                 {
                     foreach(ReleasesOrTypicallyReleases statement in statements)
                     {
-                        if (statement.agent == agent &&
-                            statement.action == action &&
+                        if (statement.action == action &&
                             s.SatisfiesCondition(statement.condition) &&
                             statement.fluent == i)//!res.SatisfiesCondition(statement.effect))
                         {
@@ -784,13 +646,13 @@ namespace RWLogic
             return result;
         }
 
-        private List<State> TypicalRes(State s, int agent, int action, List<Causes> causes, List<TypicallyCauses> typicallyCauses, List<Releases> releases, List<TypicallyReleases> typicallyReleases)
+        private List<State> TypicalRes(State s, int action, List<Causes> causes, List<TypicallyCauses> typicallyCauses, List<Releases> releases, List<TypicallyReleases> typicallyReleases)
         {
-            List<State> res0 = TypicalRes0(s, agent, action, causes, typicallyCauses);
+            List<State> res0 = TypicalRes0(s, action, causes, typicallyCauses);
             List<bool[]> newSet = new List<bool[]>();
             foreach (State res in res0)
             {
-                newSet.Add(TypicalNew(s, agent, action, res, releases, typicallyReleases));
+                newSet.Add(TypicalNew(s, action, res, releases, typicallyReleases));
             }
 
             bool[] isMinimal = new bool[newSet.Count];

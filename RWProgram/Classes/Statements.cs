@@ -27,27 +27,25 @@ namespace RWProgram.Classes
         }
     }
 
-    public abstract class ConditionActionByActorStatement : ConditionStatement
+    public abstract class ConditionActionStatement : ConditionStatement
     {
         public Action Action { get; set; }
 
-        public Actor Actor { get; set; }
 
-        public ConditionActionByActorStatement(Action Action, Actor Actor, State Pi) : base(Pi)
+        public ConditionActionStatement(Action Action, State Pi) : base(Pi)
         {
             this.Action = Action;
-            this.Actor = Actor;
         }
     }
 
     public abstract class StatementAfterActionByUser : Statement
     {
-        public List<(Action action, Actor actor)> ActionsByActors { get; set; }
+        public List<Action> Actions { get; set; }
 
-        public StatementAfterActionByUser(List<(Action action, Actor actor)> actionsByActors)
+        public StatementAfterActionByUser(List<Action> actions)
         {
-            this.ActionsByActors = actionsByActors == null ? new List<(Action action, Actor actor)>() :
-                    actionsByActors.Where(a => a.action != null && a.actor != null).ToList();
+            this.Actions = actions == null ? new List<Action>() :
+                    actions.Where(a => a != null).ToList();
         }
 
     }
@@ -55,7 +53,7 @@ namespace RWProgram.Classes
     //Same as FluentAfterActionbyActor but actors and action empty
     public class InitiallyFluent : FluentAfterActionbyActor
     {
-        public InitiallyFluent(State Alpha) : base(Alpha, new List<(Action action, Actor actor)>())
+        public InitiallyFluent(State Alpha) : base(Alpha, new List<Action>())
         { }
 
         public override string ToString()
@@ -73,7 +71,7 @@ namespace RWProgram.Classes
     {
         public State Alpha { get; set; }
 
-        public FluentAfterActionbyActor(State Alpha, List<(Action action, Actor actor)> actionsByActors) : base(actionsByActors) 
+        public FluentAfterActionbyActor(State Alpha, List<Action> actions) : base(actions) 
         {
             this.Alpha = Alpha;
         }
@@ -81,25 +79,25 @@ namespace RWProgram.Classes
         public override string ToString()
         {
             var str = $"{Alpha.ToString()} after";
-            for (var i = 0; i < ActionsByActors.Count; i++)
+            for (var i = 0; i < Actions.Count; i++)
             {
                 var comma = i != 0 ? "," : "";
-                str = str + $"{comma} {ActionsByActors[i].action} by {ActionsByActors[i].actor}";
+                str = str + $"{comma} {Actions[i]}";
             }
             return str;
         }
 
         public override object ToLogic()
         {
-            return new RWLogic.After(ActionsByActors.Select(actionByActor => (actionByActor.actor.Index, actionByActor.action.Index)).ToList(), Alpha.ToLogic());
+            return new RWLogic.After(Actions.Select(action => action.Index).ToList(), Alpha.ToLogic());
         }
     }
 
-    public class FluentTypicallyAfterActionbyActor : StatementAfterActionByUser
+    public class FluentTypicallyAfterAction : StatementAfterActionByUser
     {
         public State Alpha { get; set; }
 
-        public FluentTypicallyAfterActionbyActor(State Alpha, List<(Action action, Actor actor)> actionsByActors) : base(actionsByActors)
+        public FluentTypicallyAfterAction(State Alpha, List<Action> actions) : base(actions)
         {
             this.Alpha = Alpha;
         }
@@ -107,25 +105,25 @@ namespace RWProgram.Classes
         public override string ToString()
         {
             var str = $"{Alpha} typically after";
-            for (var i = 0; i < ActionsByActors.Count; i++)
+            for (var i = 0; i < Actions.Count; i++)
             {
                 var comma = i != 0 ? "," : "";
-                str = str + $"{comma} {ActionsByActors[i].action} by {ActionsByActors[i].actor}";
+                str = str + $"{comma} {Actions[i]}";
             }
             return str;
         }
 
         public override object ToLogic()
         {
-            return new RWLogic.TypicallyAfter(ActionsByActors.Select(actionByActor => (actionByActor.actor.Index, actionByActor.action.Index)).ToList(), Alpha.ToLogic());
+            return new RWLogic.TypicallyAfter(Actions.Select(action => action.Index).ToList(), Alpha.ToLogic());
         }
     }
 
-    public class ObservableFluentAfterActionByActor : StatementAfterActionByUser
+    public class ObservableFluentAfterAction : StatementAfterActionByUser
     {
         public State Alpha { get; set; }
 
-        public ObservableFluentAfterActionByActor(State Alpha, List<(Action action, Actor actor)> actionsByActors) : base(actionsByActors)
+        public ObservableFluentAfterAction(State Alpha, List<Action> actions) : base(actions)
         {
             this.Alpha = Alpha;
         }
@@ -133,26 +131,26 @@ namespace RWProgram.Classes
         public override string ToString()
         {
             var str = $"observable {Alpha.ToString()} after";
-            for (var i = 0; i < ActionsByActors.Count; i++)
+            for (var i = 0; i < Actions.Count; i++)
             {
                 var comma = i != 0 ? "," : "";
-                str = str + $"{comma} {ActionsByActors[i].action} by {ActionsByActors[i].actor}";
+                str = str + $"{comma} {Actions[i]}";
             }
             return str;
         }
 
         public override object ToLogic()
         {
-            return new RWLogic.ObservableAfter(ActionsByActors.Select(actionByActor => (actionByActor.actor.Index, actionByActor.action.Index)).ToList(), Alpha.ToLogic());
+            return new RWLogic.ObservableAfter(Actions.Select(action => action.Index).ToList(), Alpha.ToLogic());
         }
     }
 
-    public class ActionByActorCausesAlphaIfFluents : ConditionActionByActorStatement
+    public class ActionCausesAlphaIfFluents : ConditionActionStatement
     {
         public State Alpha { get; set; }
 
 
-        public ActionByActorCausesAlphaIfFluents(State Alpha, Action Action, Actor Actor, State Pi) : base(Action ,Actor, Pi)
+        public ActionCausesAlphaIfFluents(State Alpha, Action Action, State Pi) : base(Action, Pi)
         {
             this.Alpha = Alpha;
         }
@@ -160,20 +158,20 @@ namespace RWProgram.Classes
         public override string ToString()
         {
             var conditionStr = string.IsNullOrEmpty(Pi.ToString()?.Trim()) ? string.Empty : $"if { Pi.ToString()}";
-            return $"{Action} by {Actor} casues {Alpha.ToString()} {conditionStr}";
+            return $"{Action} casues {Alpha.ToString()} {conditionStr}";
         }
 
         public override object ToLogic()
         {
-            return new RWLogic.Causes(Actor.Index, Action.Index, Alpha.ToLogic(), Pi.ToLogic());
+            return new RWLogic.Causes(Action.Index, Alpha.ToLogic(), Pi.ToLogic());
         }
     }
 
-    public class ActionByActorReleasesFluent1IfFluents : ConditionActionByActorStatement
+    public class ActionReleasesFluent1IfFluents : ConditionActionStatement
     {
         public Fluent F { get; set; }
 
-        public ActionByActorReleasesFluent1IfFluents(Fluent F, Action Action, Actor Actor, State Pi) : base(Action ,Actor, Pi)
+        public ActionReleasesFluent1IfFluents(Fluent F, Action Action, State Pi) : base(Action, Pi)
         {
             this.F = F;
         }
@@ -181,20 +179,20 @@ namespace RWProgram.Classes
         public override string ToString()
         {
             var conditionStr = string.IsNullOrEmpty(Pi?.ToString().Trim()) ? string.Empty : $"if {Pi}";
-            return $"{Action} by {Actor} releases {F} {conditionStr}";
+            return $"{Action} releases {F} {conditionStr}";
         }
 
         public override object ToLogic()
         {
-            return new RWLogic.Releases(Actor.Index, Action.Index, F.Index, Pi.ToLogic());
+            return new RWLogic.Releases(Action.Index, F.Index, Pi.ToLogic());
         }
     }
 
-    public class ActionByActorTypicallyCausesAlphaIfFluents : ConditionActionByActorStatement
+    public class ActionTypicallyCausesAlphaIfFluents : ConditionActionStatement
     {
         public State Alpha { get; set; }
 
-        public ActionByActorTypicallyCausesAlphaIfFluents(State Alpha, Action Action, Actor Actor, State Pi) : base(Action, Actor, Pi)
+        public ActionTypicallyCausesAlphaIfFluents(State Alpha, Action Action, State Pi) : base(Action, Pi)
         {
             this.Alpha = Alpha;
         }
@@ -202,20 +200,20 @@ namespace RWProgram.Classes
         public override string ToString()
         {
             var conditionStr = string.IsNullOrEmpty(Pi?.ToString().Trim()) ? string.Empty : $"if { Pi}";
-            return $"{Action} by {Actor} typically casues {Alpha} {conditionStr}";
+            return $"{Action} typically casues {Alpha} {conditionStr}";
         }
 
         public override object ToLogic()
         {
-            return new RWLogic.TypicallyCauses(Actor.Index, Action.Index, Alpha.ToLogic(), Pi.ToLogic());
+            return new RWLogic.TypicallyCauses(Action.Index, Alpha.ToLogic(), Pi.ToLogic());
         }
     }
 
-    public class ActionByActorTypicallyReleasesFluent1IfFluents : ConditionActionByActorStatement
+    public class ActionTypicallyReleasesFluent1IfFluents : ConditionActionStatement
     {
         public Fluent F { get; set; }
 
-        public ActionByActorTypicallyReleasesFluent1IfFluents(Fluent F, Action Action, Actor Actor, State Pi) : base(Action, Actor, Pi)
+        public ActionTypicallyReleasesFluent1IfFluents(Fluent F, Action Action, State Pi) : base(Action, Pi)
         {
             this.F = F;
         }
@@ -223,28 +221,28 @@ namespace RWProgram.Classes
         public override string ToString()
         {
             var conditionStr = string.IsNullOrEmpty(Pi?.ToString().Trim()) ? string.Empty : $"if { Pi}";
-            return $"{Action} by {Actor} typically releases {F} {conditionStr}";
+            return $"{Action} typically releases {F} {conditionStr}";
         }
 
         public override object ToLogic()
         {
-            return new RWLogic.TypicallyReleases(Actor.Index, Action.Index, F.Index, Pi.ToLogic());
+            return new RWLogic.TypicallyReleases(Action.Index, F.Index, Pi.ToLogic());
         }
     }
 
-    public class ImpossibleActionByActorIfFluents : ActionByActorCausesAlphaIfFluents
+    public class ImpossibleActionIfFluents : ActionCausesAlphaIfFluents
     {
-        public ImpossibleActionByActorIfFluents(Action Action, Actor Actor, State Pi) : base(new State(), Action, Actor, Pi) { }
+        public ImpossibleActionIfFluents(Action Action, State Pi) : base(new State(), Action, Pi) { }
 
         public override string ToString()
         {
             var conditionStr = string.IsNullOrEmpty(Pi?.ToString().Trim()) ? string.Empty : $"if { Pi.ToString()}";
-            return $"impossible {Action} by {Actor} {conditionStr}";
+            return $"impossible {Action} {conditionStr}";
         }
 
         public override object ToLogic()
         {
-            return new RWLogic.Causes(Actor.Index, Action.Index, new Formula(), Pi.ToLogic());
+            return new RWLogic.Causes(Action.Index, new Formula(), Pi.ToLogic());
         }
     }
 

@@ -13,8 +13,6 @@ namespace RWProgram.Enums
         AlwaysAccesibleYFromPi,
         EverAccesibleYFromPi,
         TypicallyAccesibleYFromPi,
-        AlwaysWInvolved,
-        EverWInvolved,
         None
     }
 }
