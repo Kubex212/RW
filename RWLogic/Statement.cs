@@ -1,8 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LogicExpressionsParser;
 
 namespace RWLogic
@@ -29,7 +25,6 @@ namespace RWLogic
 
     public interface CausesOrTypicallyCauses
     {
-        int agent { get; } //id agenta
         int action { get; } //id akcji
         Formula condition { get; } 
         Formula effect { get; } 
@@ -37,22 +32,19 @@ namespace RWLogic
 
     public class Causes : CausesOrTypicallyCauses
     {
-        public int agent { get; } //id agenta
         public int action { get; } //id akcji
         public Formula condition { get; } 
         public Formula effect { get; } 
 
-        public Causes(int agent, int action, Formula effect, Formula condition)
+        public Causes(int action, Formula effect, Formula condition)
         {
-            this.agent = agent;
             this.action = action;
             this.condition = condition;
             this.effect = effect;
         }
 
-        public Causes(int agent, int action, Formula effect)
+        public Causes(int action, Formula effect)
         {
-            this.agent = agent;
             this.action = action;
             this.condition = new Formula();
             this.effect = effect;
@@ -61,22 +53,19 @@ namespace RWLogic
 
     public class TypicallyCauses : CausesOrTypicallyCauses
     {
-        public int agent { get; } //id agenta
         public int action { get; } //id akcji
         public Formula condition { get; } 
         public Formula effect { get; } 
 
-        public TypicallyCauses(int agent, int action, Formula effect, Formula condition)
+        public TypicallyCauses(int action, Formula effect, Formula condition)
         {
-            this.agent = agent;
             this.action = action;
             this.condition = condition;
             this.effect = effect;
         }
 
-        public TypicallyCauses(int agent, int action, Formula effect)
+        public TypicallyCauses(int action, Formula effect)
         {
-            this.agent = agent;
             this.action = action;
             this.condition = new Formula();
             this.effect = effect;
@@ -85,7 +74,6 @@ namespace RWLogic
 
     public interface ReleasesOrTypicallyReleases
     {
-        int agent { get; } //id agenta
         int action { get; } //id akcji
         Formula condition { get; }
         int fluent { get; }
@@ -93,22 +81,19 @@ namespace RWLogic
 
     public class Releases : ReleasesOrTypicallyReleases
     {
-        public int agent { get; } //id agenta
         public int action { get; } //id akcji
         public Formula condition { get; }
         public int fluent { get; }
 
-        public Releases(int agent, int action, int fluent, Formula condition)
+        public Releases(int action, int fluent, Formula condition)
         {
-            this.agent = agent;
             this.action = action;
             this.condition = condition;
             this.fluent = fluent;
         }
 
-        public Releases(int agent, int action, int fluent)
+        public Releases(int action, int fluent)
         {
-            this.agent = agent;
             this.action = action;
             this.condition = new Formula();
             this.fluent = fluent;
@@ -118,22 +103,19 @@ namespace RWLogic
 
     public class TypicallyReleases : ReleasesOrTypicallyReleases
     {
-        public int agent { get; } //id agenta
         public int action { get; } //id akcji
         public Formula condition { get; } 
         public int fluent { get; }
 
-        public TypicallyReleases(int agent, int action, int fluent, Formula condition)
+        public TypicallyReleases(int action, int fluent, Formula condition)
         {
-            this.agent = agent;
             this.action = action;
             this.condition = condition;
             this.fluent = fluent;
         }
 
-        public TypicallyReleases(int agent, int action, int fluent)
+        public TypicallyReleases(int action, int fluent)
         {
-            this.agent = agent;
             this.action = action;
             this.condition = new Formula();
             this.fluent = fluent;
@@ -153,10 +135,10 @@ namespace RWLogic
 
     public class After
     {
-        public List<(int agent, int action)> activity { get; }
+        public List<int> activity { get; }
         public Formula effect { get; }
 
-        public After(List<(int agent, int action)> activity, Formula effect)
+        public After(List<int> activity, Formula effect)
         {
             this.activity = activity;
             this.effect = effect;
@@ -166,10 +148,10 @@ namespace RWLogic
 
     public class TypicallyAfter
     {
-        public List<(int agent, int action)> activity { get; }
+        public List<int> activity { get; }
         public Formula effect { get; }
 
-        public TypicallyAfter(List<(int agent, int action)> activity, Formula effect)
+        public TypicallyAfter(List<int> activity, Formula effect)
         {
             this.activity = activity;
             this.effect = effect;
@@ -179,10 +161,10 @@ namespace RWLogic
 
     public class ObservableAfter
     {
-        public List<(int agent, int action)> activity { get; }
+        public List<int> activity { get; }
         public Formula effect { get; }
 
-        public ObservableAfter(List<(int agent, int action)> activity, Formula effect)
+        public ObservableAfter(List<int> activity, Formula effect)
         {
             this.activity = activity;
             this.effect = effect;
@@ -193,9 +175,9 @@ namespace RWLogic
 
     public class Query_ExecutableAlways
     {
-        public List<(int agent, int action)> program { get; } //program dzialan
+        public List<int> program { get; } //program dzialan
 
-        public Query_ExecutableAlways(List<(int agent, int action)> program)
+        public Query_ExecutableAlways(List<int> program)
         {
             this.program = program;
         }
@@ -203,9 +185,9 @@ namespace RWLogic
     
     public class Query_ExecutableEver
     {
-        public List<(int agent, int action)> program { get; } //program dzialan
+        public List<int> program { get; } //program dzialan
 
-        public Query_ExecutableEver(List<(int agent, int action)> program)
+        public Query_ExecutableEver(List<int> program)
         {
             this.program = program;
         }
@@ -213,11 +195,11 @@ namespace RWLogic
 
     public class Query_AccessibleAlways
     {
-        public List<(int agent, int action)> program { get; } //program dzialan
+        public List<int> program { get; } //program dzialan
         public Formula initialCondition { get; }
         public Formula endCondition { get; }
 
-        public Query_AccessibleAlways(List<(int agent, int action)> program, Formula initialCondition, Formula endCondition)
+        public Query_AccessibleAlways(List<int> program, Formula initialCondition, Formula endCondition)
         {
             this.program = program;
             this.initialCondition = initialCondition;
@@ -227,11 +209,11 @@ namespace RWLogic
 
     public class Query_AccessibleTypically
     {
-        public List<(int agent, int action)> program { get; } //program dzialan
+        public List<int> program { get; } //program dzialan
         public Formula initialCondition { get; }
         public Formula endCondition { get; }
 
-        public Query_AccessibleTypically(List<(int agent, int action)> program, Formula initialCondition, Formula endCondition)
+        public Query_AccessibleTypically(List<int> program, Formula initialCondition, Formula endCondition)
         {
             this.program = program;
             this.initialCondition = initialCondition;
@@ -241,11 +223,11 @@ namespace RWLogic
 
     public class Query_AccessibleEver
     {
-        public List<(int agent, int action)> program { get; } //program dzialan
+        public List<int> program { get; } //program dzialan
         public Formula initialCondition { get; }
         public Formula endCondition { get; }
 
-        public Query_AccessibleEver(List<(int agent, int action)> program, Formula initialCondition, Formula endCondition)
+        public Query_AccessibleEver(List<int> program, Formula initialCondition, Formula endCondition)
         {
             this.program = program;
             this.initialCondition = initialCondition;
@@ -255,10 +237,10 @@ namespace RWLogic
 
     public class Query_InvolvedAlways
     {
-        public List<(int agent, int action)> program { get; } //program dzialan
+        public List<int> program { get; } //program dzialan
         public int agent { get; } //id agenta
 
-        public Query_InvolvedAlways(List<(int agent, int action)> program, int agent)
+        public Query_InvolvedAlways(List<int> program, int agent)
         {
             this.program = program;
             this.agent = agent;
@@ -267,10 +249,10 @@ namespace RWLogic
 
     public class Query_InvolvedEver
     {
-        public List<(int agent, int action)> program { get; } //program dzialan
+        public List<int> program { get; } //program dzialan
         public int agent { get; } //id agenta
 
-        public Query_InvolvedEver(List<(int agent, int action)> program, int agent)
+        public Query_InvolvedEver(List<int> program, int agent)
         {
             this.program = program;
             this.agent = agent;

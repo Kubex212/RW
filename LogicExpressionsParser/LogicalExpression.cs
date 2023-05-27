@@ -99,7 +99,7 @@ namespace LogicExpressionsParser
 
             for (int i = 0; i < Math.Pow(2, FluentsName.Length); i++)
             {
-                State s = new State(tab, 1, 1);
+                State s = new State(tab, 1);
 
                 for(int j=0;j<FluentsName.Length;j++)
                 {

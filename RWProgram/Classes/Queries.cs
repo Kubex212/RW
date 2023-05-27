@@ -23,11 +23,6 @@ namespace RWProgram.Classes
         }
     }
 
-    public abstract class QueryWithW : Query
-    {
-        public Actor W { get; set; }
-    }
-
     public class AlwaysExecutable : Query
     {
         public override string ToString()
@@ -79,22 +74,6 @@ namespace RWProgram.Classes
             if (!string.IsNullOrEmpty(Pi.ToString()))
                 str = str + $" from {Pi.ToString()}";
             return str;
-        }
-    }
-
-    public class AlwaysWInvolved : QueryWithW
-    {
-        public override string ToString()
-        {
-            return $"Always {W.ToString()} involved";
-        }
-    }
-
-    public class EverWInvolved : QueryWithW
-    {
-        public override string ToString()
-        {
-            return $"Ever {W.ToString()} involved";
         }
     }
 }
