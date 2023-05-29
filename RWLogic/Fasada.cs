@@ -43,10 +43,10 @@ namespace RWLogic
             log += "stany poczatkowe to:\n";
             for (int i = 0; i < model.initial.Count; i++) log += model.initial[i].Print();
             log += "efekty akcji:\n";
-            for(int i=0;i<model.state.Length;i++)
+            for(int i=0;i<model.States.Length;i++)
             {
-                log += "\nstan " + model.state[i].Print();
-                if (model.state[i].forbidden)
+                log += "\nstan " + model.States[i].Print();
+                if (model.States[i].forbidden)
                 {
                     log += "jest niezgodny z dziedzina\n";
                     continue;
@@ -67,19 +67,19 @@ namespace RWLogic
                 log += "- typowe efekty: \n";
                 for (int action = 0; action < model.action.Length; action++)
                 {
-                    if (model.state[i].typicalEffects[action].Count != 0)
+                    if (model.States[i].typicalEffects[action].Count != 0)
                     {
                         log += model.action[action] + ":\n";
-                        foreach (State s in model.state[i].typicalEffects[action]) log += s.Print();
+                        foreach (State s in model.States[i].typicalEffects[action]) log += s.Print();
                     }
                 }
                 log += "- nietypowe efekty: \n";
                 for (int action = 0; action < model.action.Length; action++)
                 {
-                    if (model.state[i].abnormalEffects[action].Count != 0)
+                    if (model.States[i].abnormalEffects[action].Count != 0)
                     {
                         log += model.action[action] + ":\n";
-                        foreach (State s in model.state[i].abnormalEffects[action]) log += s.Print();
+                        foreach (State s in model.States[i].abnormalEffects[action]) log += s.Print();
                     }
                 }
             }
@@ -87,6 +87,16 @@ namespace RWLogic
         }
         // tutaj bedzie obsluga kwerend
         
+        public bool Query(Query_NecessaryAfter query)
+        {
+            return model.AlwaysAfter(query);
+        }
+
+        public bool Query(Query_PossiblyAfter query)
+        {
+            return model.PossiblyAfter(query);
+        }
+
         public bool Query(Query_ExecutableAlways query)
         {
             return model.IsAlwaysExecutable(query);

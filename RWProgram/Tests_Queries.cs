@@ -14,7 +14,18 @@ namespace RWProgram
         {
             get
             {
-                return new AlwaysAccesibleYFromPi(new State("alive", new string[] { "alive" }),new State("alive && not loaded", new string[] { "alive", "loaded" }));
+                return new AlwaysAccesibleYFromPi(new State("alive", new string[] { "alive" }),new State("alive && not loaded", new string[] { "alive", "loaded" }), 10);
+            }
+        }
+
+        public static AlwaysAfter Test1b
+        {
+            get
+            {
+                return new AlwaysAfter()
+                {
+                    Alpha = new State("alive", new string[] { "alive" })
+                };
             }
         }
 
@@ -22,7 +33,7 @@ namespace RWProgram
         {
             get
             {
-                return new EverAccesibleYFromPi(new State("alive", new string[] { "alive" }), new State("alive", new string[] { "alive" }));
+                return new EverAccesibleYFromPi(new State("alive", new string[] { "alive" }), new State("alive", new string[] { "alive" }), 10);
             }
         }
 
@@ -32,6 +43,8 @@ namespace RWProgram
             {
                 return new AlwaysExecutable
                 {
+                    Cost = 18,
+                    Pi = new State("alive", new string[] { "alive" })
                 };
             }
         }
@@ -60,7 +73,7 @@ namespace RWProgram
         {
             get
             {
-                return new AlwaysAccesibleYFromPi(new State("loaded", new string[] { "loaded" }), new State("not loaded", new string[] { "loaded" }));
+                return new AlwaysAccesibleYFromPi(new State("loaded", new string[] { "loaded" }), new State("not loaded", new string[] { "loaded" }), 10);
 
             }
         }

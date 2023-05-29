@@ -376,6 +376,7 @@ namespace RWProgram
         {
             var queryIndex = QueriesComboBox.SelectedIndex;
             var queryEnum = (QueriesEnum)queryIndex;
+            var cost = (int)numericUpDown3.Value;
 
             string gammaString, piString;
             LogicalExpressionRoot gammaExpression, piExpression;
@@ -419,21 +420,21 @@ namespace RWProgram
                 case QueriesEnum.AlwaysAccesibleYFromPi:
                     if (!string.IsNullOrEmpty(gammaString))
                     {
-                        var QueryAlways = new AlwaysAccesibleYFromPi(gammaState, piState);
+                        var QueryAlways = new AlwaysAccesibleYFromPi(gammaState, piState, cost);
                         Query = QueryAlways;
                     }
                     break;
                 case QueriesEnum.EverAccesibleYFromPi:
                     if (!string.IsNullOrEmpty(gammaString))
                     {
-                        var QueryAlways = new EverAccesibleYFromPi(gammaState, piState);
+                        var QueryAlways = new EverAccesibleYFromPi(gammaState, piState, cost);
                         Query = QueryAlways;
                     }
                     break;
                 case QueriesEnum.TypicallyAccesibleYFromPi:
                     if (!string.IsNullOrEmpty(gammaString))
                     {
-                        var QueryAlways = new TypicallyAccesibleYFromPi(gammaState, piState);
+                        var QueryAlways = new TypicallyAccesibleYFromPi(gammaState, piState, cost);
                         Query = QueryAlways;
                     }
                     break;
@@ -612,6 +613,7 @@ namespace RWProgram
         {
             SetHardcodedLogicInFrontEnd(Tests_Logic.Test1);
             SetHardcodedProgramInFrontEnd(Tests_Programs.Test1b);
+            SetHardcodedQueryInFrontEnd(Tests_Queries.Test1b);
         }
 
         private void przykładKwerenda3ToolStripMenuItem_Click(object sender, EventArgs e)

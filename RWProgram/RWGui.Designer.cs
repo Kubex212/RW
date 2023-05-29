@@ -32,6 +32,7 @@
             this.actionsTextBox = new System.Windows.Forms.TextBox();
             this.fluentsTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.StatementsComboBox = new System.Windows.Forms.ComboBox();
             this.StatementsLabel = new System.Windows.Forms.Label();
@@ -94,13 +95,15 @@
             this.GammaTextBox = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.FluentComboBox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -165,6 +168,21 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Fluenty:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(2, 38);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(71, 40);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Akcje:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
             // 
@@ -562,7 +580,7 @@
             // 
             this.przykładKwerenda2ToolStripMenuItem.Name = "przykładKwerenda2ToolStripMenuItem";
             this.przykładKwerenda2ToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
-            this.przykładKwerenda2ToolStripMenuItem.Text = "Przykład 2 - Kwerenda AlwaysInvolved";
+            this.przykładKwerenda2ToolStripMenuItem.Text = "Przykład 2 - Kwerenda AlwaysAfter";
             this.przykładKwerenda2ToolStripMenuItem.Click += new System.EventHandler(this.przykładKwerenda2ToolStripMenuItem_Click);
             // 
             // przykładKwerenda3ToolStripMenuItem
@@ -762,21 +780,6 @@
             this.FluentComboBox.Size = new System.Drawing.Size(84, 21);
             this.FluentComboBox.TabIndex = 7;
             // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(2, 38);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 40);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Akcje:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(139, 160);
@@ -801,6 +804,33 @@
             this.numericUpDown2.Size = new System.Drawing.Size(80, 20);
             this.numericUpDown2.TabIndex = 106;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(77, 606);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 107;
+            this.label1.Text = "koszt:";
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.Location = new System.Drawing.Point(118, 601);
+            this.numericUpDown3.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(80, 20);
+            this.numericUpDown3.TabIndex = 108;
+            this.numericUpDown3.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
             // RWGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -808,6 +838,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(647, 749);
+            this.Controls.Add(this.numericUpDown3);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.FluentComboBox);
@@ -865,6 +897,7 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -941,6 +974,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown numericUpDown3;
     }
 }
 

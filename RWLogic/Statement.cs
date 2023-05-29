@@ -173,23 +173,55 @@ namespace RWLogic
 
     // dalej syntaktyka kwerend
 
+    public class Query_NecessaryAfter
+    {
+        public List<int> program { get; } //program dzialan
+        public Formula FinalCondition { get; }
+
+        public Query_NecessaryAfter(List<int> program, Formula initialCondition)
+        {
+            this.program = program;
+            this.FinalCondition = initialCondition;
+        }
+    }
+
+    public class Query_PossiblyAfter
+    {
+        public List<int> program { get; } //program dzialan
+        public Formula FinalCondition { get; }
+
+        public Query_PossiblyAfter(List<int> program, Formula initialCondition)
+        {
+            this.program = program;
+            this.FinalCondition = initialCondition;
+        }
+    }
+
     public class Query_ExecutableAlways
     {
         public List<int> program { get; } //program dzialan
+        public Formula InitialCondition { get; }
+        public int Cost { get; }
 
-        public Query_ExecutableAlways(List<int> program)
+        public Query_ExecutableAlways(List<int> program, Formula initialCondition, int Cost)
         {
             this.program = program;
+            this.InitialCondition = initialCondition;
+            this.Cost = Cost;
         }
     }
     
     public class Query_ExecutableEver
     {
         public List<int> program { get; } //program dzialan
+        public Formula InitialCondition { get; }
+        public int Cost { get; }
 
-        public Query_ExecutableEver(List<int> program)
+        public Query_ExecutableEver(List<int> program, Formula initialCondition, int Cost)
         {
             this.program = program;
+            this.InitialCondition = initialCondition;
+            this.Cost = Cost;
         }
     }
 

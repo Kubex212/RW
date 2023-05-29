@@ -11,7 +11,7 @@ namespace RWLogic
     {
         public string[] fluent { get; } // fluenty z nazwami
         public bool[] noninertial { get; private set; } // ktore fluenty sa nieinercjalne
-        public State[] state { get; private set; } // tablica wszystkich mozliwych stanow
+        public State[] States { get; private set; } // tablica wszystkich mozliwych stanow
         public List<State> initial { get; private set; } // lista stanow poczatkowych
         public string[] action { get; } // akcje z nazwami
 
@@ -23,7 +23,7 @@ namespace RWLogic
             bool[] fluentValues = new bool[fluent.Count];
             noninertial = new bool[fluent.Count];
             int t = 0;
-            state = new State[stateCount];
+            States = new State[stateCount];
             for(int i = 0; i < stateCount; i++)
             {
                 for(int j=0; j < fluent.Count; j++)
@@ -33,7 +33,7 @@ namespace RWLogic
                     t /= ((int)Math.Pow(2, j));
                     fluentValues[j] = t==1 ? true : false;
                 }
-                state[i] = new State(fluentValues, action.Count);
+                States[i] = new State(fluentValues, action.Count);
             }
             this.fluent = new string[fluent.Count];
             this.action = new string[action.Count];
@@ -52,7 +52,7 @@ namespace RWLogic
 
         public void SetAlways(List<Always> always)
         {
-            foreach(State s in state)
+            foreach(State s in States)
             {
                 foreach(Always a in always)
                 {
@@ -65,7 +65,7 @@ namespace RWLogic
 
         public void SetPossibleEffects(List<Causes> causes, List<Releases> releases)
         {
-            foreach(State s in state)
+            foreach(State s in States)
             {
                 if (!s.forbidden)
                     for(int j=0;j<action.Length; j++)
@@ -78,7 +78,7 @@ namespace RWLogic
 
         public void SetTypicalEffects(List<Causes> causes, List<TypicallyCauses> typicallyCauses, List<Releases> releases, List<TypicallyReleases> typicallyReleases)
         {
-            foreach (State s in state)
+            foreach (State s in States)
             {
                 if (!s.forbidden)
                     for (int j = 0; j < action.Length; j++)
@@ -92,7 +92,7 @@ namespace RWLogic
         public void SetAbnormalEffects()
         {
             List<State> result = new List<State>();
-            foreach (State s in state)
+            foreach (State s in States)
             {
                 if (!s.forbidden)
                     for (int j = 0; j < action.Length; j++)
@@ -120,7 +120,7 @@ namespace RWLogic
             //initially
             if (initially.Count != 0)
             {
-                foreach (State s in state)
+                foreach (State s in States)
                 {
                     initial.Add(s);
                     foreach (Initially statement in initially)
@@ -130,7 +130,7 @@ namespace RWLogic
                 }
 
             }
-            else initial.AddRange(state);
+            else initial.AddRange(States);
 
             //after
             if (after.Count != 0)
@@ -266,8 +266,39 @@ namespace RWLogic
         }
         */
 
+        public bool AlwaysAfter(Query_NecessaryAfter query)
+        {
+            return true;
+        }
+
+        public bool PossiblyAfter(Query_PossiblyAfter query)
+        {
+            return true;
+        }
+
         public bool IsAlwaysExecutable(Query_ExecutableAlways query)
         {
+            // zaczynamy od tych co spelniaja Pi
+            var initialStates = new List<State>();
+            if (query.InitialCondition.EmptyRoot)
+            {
+                initialStates = initial;
+            }
+            else
+            {
+                initialStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition)).ToList();
+            }
+            foreach(var state in initialStates)
+            {
+                var currentCost = 0;
+                for(int i = 0; i < query.program.Count; i++)
+                {
+                    if (state.forbidden) return false;
+                    var possibleNextStates = state.possibleEffects[query.program[i]];
+                    if (possibleNextStates.Count == 0 || possibleNextStates is null) return false;
+                    //nextStates.AddRange(possibleNextStates);
+                }
+            }
             List<State> currentStates = initial;
             List<State> nextStates = new List<State>();
 
@@ -336,7 +367,7 @@ namespace RWLogic
             }
             else
             {
-                currentStates = new List<State>(state);
+                currentStates = new List<State>(States);
             }
 
             List<State> nextStates = new List<State>();
@@ -381,7 +412,7 @@ namespace RWLogic
             }
             else
             {
-                startStates = new List<State>(state);
+                startStates = new List<State>(States);
             }
 
             List<(State, int)> currentStates = new List<(State, int)>();
@@ -440,7 +471,7 @@ namespace RWLogic
             }
             else
             {
-                currentStates = new List<State>(state);
+                currentStates = new List<State>(States);
             }
 
             List<State> nextStates = new List<State>();
@@ -500,13 +531,13 @@ namespace RWLogic
 
             List<State> result = new List<State>();
             //bool[] contains = new bool[state.Length];
-            for (int i = 0; i < state.Length; i++)
+            for (int i = 0; i < States.Length; i++)
             {
-                if (!state[i].forbidden && Res0_Condition(s, action, state[i], causes))
+                if (!States[i].forbidden && Res0_Condition(s, action, States[i], causes))
                 {
                     //if (!contains[i])
                     {
-                        result.Add(state[i]);
+                        result.Add(States[i]);
                         //contains[i] = true;
                     }
                 }
@@ -603,14 +634,14 @@ namespace RWLogic
             }
 
             List<State> result = new List<State>();
-            bool[] contains = new bool[state.Length];
-            for (int i = 0; i < state.Length; i++)
+            bool[] contains = new bool[States.Length];
+            for (int i = 0; i < States.Length; i++)
             {
-                if (!state[i].forbidden && Res0_Condition(s, action, state[i], causes, typically))
+                if (!States[i].forbidden && Res0_Condition(s, action, States[i], causes, typically))
                 {
                     if (!contains[i])
                     {
-                        result.Add(state[i]);
+                        result.Add(States[i]);
                         contains[i] = true;
                     }
                 }

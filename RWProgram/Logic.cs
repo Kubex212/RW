@@ -45,10 +45,14 @@ namespace RWProgram
 
             switch (query)
             {
+                case AlwaysAfter q:
+                    return fasada.Query(new RWLogic.Query_NecessaryAfter(LogicProgram, q.Alpha.ToLogic()));
+                case PossiblyAfter q:
+                    return fasada.Query(new RWLogic.Query_PossiblyAfter(LogicProgram, q.Alpha.ToLogic()));
                 case AlwaysExecutable q:
-                    return fasada.Query(new RWLogic.Query_ExecutableAlways(LogicProgram));
+                    return fasada.Query(new RWLogic.Query_ExecutableAlways(LogicProgram, q.Pi.ToLogic(), q.Cost));
                 case EverExecutable q:
-                    return fasada.Query(new RWLogic.Query_ExecutableEver(LogicProgram));
+                    return fasada.Query(new RWLogic.Query_ExecutableEver(LogicProgram, q.Pi.ToLogic(), q.Cost));
                 case AlwaysAccesibleYFromPi q:
                     return fasada.Query(new RWLogic.Query_AccessibleAlways(LogicProgram, q.Pi.ToLogic(), q.Gamma.ToLogic()));
                 case EverAccesibleYFromPi q:
