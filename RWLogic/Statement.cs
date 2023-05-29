@@ -26,6 +26,7 @@ namespace RWLogic
     public interface CausesOrTypicallyCauses
     {
         int action { get; } //id akcji
+        int Cost { get; }
         Formula condition { get; } 
         Formula effect { get; } 
     }
@@ -33,6 +34,7 @@ namespace RWLogic
     public class Causes : CausesOrTypicallyCauses
     {
         public int action { get; } //id akcji
+        public int Cost { get; }
         public Formula condition { get; } 
         public Formula effect { get; } 
 
@@ -54,6 +56,7 @@ namespace RWLogic
     public class TypicallyCauses : CausesOrTypicallyCauses
     {
         public int action { get; } //id akcji
+        public int Cost { get; }
         public Formula condition { get; } 
         public Formula effect { get; } 
 
@@ -77,11 +80,13 @@ namespace RWLogic
         int action { get; } //id akcji
         Formula condition { get; }
         int fluent { get; }
+        int Cost { get; }
     }
 
     public class Releases : ReleasesOrTypicallyReleases
     {
         public int action { get; } //id akcji
+        public int Cost { get; }
         public Formula condition { get; }
         public int fluent { get; }
 
@@ -104,6 +109,7 @@ namespace RWLogic
     public class TypicallyReleases : ReleasesOrTypicallyReleases
     {
         public int action { get; } //id akcji
+        public int Cost { get; }
         public Formula condition { get; } 
         public int fluent { get; }
 
