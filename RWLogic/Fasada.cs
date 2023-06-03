@@ -17,21 +17,17 @@ namespace RWLogic
             List<Noninertial> noninertial,
             List<Always> always,
             List<Causes> causes,
-            List<TypicallyCauses> typicallyCauses,
             List<Releases> releases,
-            List<TypicallyReleases> typicallyReleases,
             List<Initially> initially,
             List<After> after,
-            List<TypicallyAfter> typicallyAfter,
             List<ObservableAfter> observableAfter)
         {
             model = new Model(fluents, actions);
             model.SetNoninertial(noninertial);
             model.SetAlways(always);
             model.SetPossibleEffects(causes, releases);
-            model.SetTypicalEffects(causes, typicallyCauses, releases, typicallyReleases);
             model.SetAbnormalEffects();
-            model.SetInitialStates(initially, after, typicallyAfter, observableAfter);
+            model.SetInitialStates(initially, after, observableAfter);
         }
 
         public string test()

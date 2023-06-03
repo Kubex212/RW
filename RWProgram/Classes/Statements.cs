@@ -191,48 +191,6 @@ namespace RWProgram.Classes
         }
     }
 
-    public class ActionTypicallyCausesAlphaIfFluents : ConditionActionStatement
-    {
-        public State Alpha { get; set; }
-
-        public ActionTypicallyCausesAlphaIfFluents(State Alpha, Action Action, State Pi, int Cost) : base(Action, Pi, Cost)
-        {
-            this.Alpha = Alpha;
-        }
-
-        public override string ToString()
-        {
-            var conditionStr = string.IsNullOrEmpty(Pi?.ToString().Trim()) ? string.Empty : $"if { Pi}";
-            return $"{Action} typically casues {Alpha} {conditionStr} cost {Cost}";
-        }
-
-        public override object ToLogic()
-        {
-            return new RWLogic.TypicallyCauses(Action.Index, Alpha.ToLogic(), Pi.ToLogic(), Cost);
-        }
-    }
-
-    public class ActionTypicallyReleasesFluent1IfFluents : ConditionActionStatement
-    {
-        public Fluent F { get; set; }
-
-        public ActionTypicallyReleasesFluent1IfFluents(Fluent F, Action Action, State Pi, int Cost) : base(Action, Pi, Cost)
-        {
-            this.F = F;
-        }
-
-        public override string ToString()
-        {
-            var conditionStr = string.IsNullOrEmpty(Pi?.ToString().Trim()) ? string.Empty : $"if { Pi}";
-            return $"{Action} typically releases {F} {conditionStr} cost {Cost}";
-        }
-
-        public override object ToLogic()
-        {
-            return new RWLogic.TypicallyReleases(Action.Index, F.Index, Pi.ToLogic(), Cost);
-        }
-    }
-
     public class ImpossibleActionIfFluents : ActionCausesAlphaIfFluents
     {
         public ImpossibleActionIfFluents(Action Action, State Pi, int Cost) : base(new State(), Action, Pi, Cost) { }

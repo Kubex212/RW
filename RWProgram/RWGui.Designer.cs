@@ -95,15 +95,15 @@
             this.GammaTextBox = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.FluentComboBox = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.costUpDown = new System.Windows.Forms.NumericUpDown();
+            this.costUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.costUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costUpDown3)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -782,27 +782,37 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(139, 160);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.costUpDown.Location = new System.Drawing.Point(139, 160);
+            this.costUpDown.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(80, 20);
-            this.numericUpDown1.TabIndex = 105;
+            this.costUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.costUpDown.Name = "costUpDown";
+            this.costUpDown.Size = new System.Drawing.Size(80, 20);
+            this.costUpDown.TabIndex = 105;
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(172, 405);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.costUpDown2.Location = new System.Drawing.Point(172, 405);
+            this.costUpDown2.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(80, 20);
-            this.numericUpDown2.TabIndex = 106;
+            this.costUpDown2.Name = "costUpDown2";
+            this.costUpDown2.Size = new System.Drawing.Size(80, 20);
+            this.costUpDown2.TabIndex = 106;
+            this.costUpDown2.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label1
             // 
@@ -816,17 +826,17 @@
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(118, 601);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            this.costUpDown3.Location = new System.Drawing.Point(118, 601);
+            this.costUpDown3.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(80, 20);
-            this.numericUpDown3.TabIndex = 108;
-            this.numericUpDown3.Value = new decimal(new int[] {
-            5,
+            this.costUpDown3.Name = "costUpDown3";
+            this.costUpDown3.Size = new System.Drawing.Size(80, 20);
+            this.costUpDown3.TabIndex = 108;
+            this.costUpDown3.Value = new decimal(new int[] {
+            1,
             0,
             0,
             0});
@@ -838,10 +848,10 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(647, 749);
-            this.Controls.Add(this.numericUpDown3);
+            this.Controls.Add(this.costUpDown3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.costUpDown2);
+            this.Controls.Add(this.costUpDown);
             this.Controls.Add(this.FluentComboBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.GammaTextBox);
@@ -895,9 +905,9 @@
             this.tableLayoutPanel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.costUpDown3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -972,10 +982,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox FluentComboBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown costUpDown;
+        private System.Windows.Forms.NumericUpDown costUpDown2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown costUpDown3;
     }
 }
 

@@ -9,16 +9,12 @@ namespace RWProgram.Enums
     public enum StatementEnum
     {
         InitiallyFluent,
-        FluentAfterActionbyActor,
-        FluentTypicallyAfterActionbyActor,
-        ObservableFluentAfterActionByActor,
-        ActionByActorCausesAlphaIfFluents,
-        ActionByActorReleasesFluent1IfFluents,
-        ActionByActorTypicallyCausesAlphaIfFluents,
-        ActionByActorTypicallyReleasesFluent1IfFluents,
-        ImpossibleActionByActorIfFluents,
-        AlwaysPi,
+        FluentAfterActions,
+        ObservableFluentAfterActions,
+        ActionCausesAlphaIfFluents,
+        ActionReleasesFluent1IfFluents,
+        ImpossibleActionIfFluents,
+        AlwaysFluent,
         NoninertialFluent,
-        None
     }
 }
