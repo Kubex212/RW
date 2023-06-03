@@ -780,7 +780,7 @@
             this.FluentComboBox.Size = new System.Drawing.Size(84, 21);
             this.FluentComboBox.TabIndex = 7;
             // 
-            // numericUpDown1
+            // costUpDown
             // 
             this.costUpDown.Location = new System.Drawing.Point(139, 160);
             this.costUpDown.Maximum = new decimal(new int[] {
@@ -788,16 +788,16 @@
             0,
             0,
             0});
+            this.costUpDown.Name = "costUpDown";
+            this.costUpDown.Size = new System.Drawing.Size(80, 20);
+            this.costUpDown.TabIndex = 105;
             this.costUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.costUpDown.Name = "costUpDown";
-            this.costUpDown.Size = new System.Drawing.Size(80, 20);
-            this.costUpDown.TabIndex = 105;
             // 
-            // numericUpDown2
+            // costUpDown2
             // 
             this.costUpDown2.Location = new System.Drawing.Point(172, 405);
             this.costUpDown2.Maximum = new decimal(new int[] {
@@ -824,7 +824,7 @@
             this.label1.TabIndex = 107;
             this.label1.Text = "koszt:";
             // 
-            // numericUpDown3
+            // costUpDown3
             // 
             this.costUpDown3.Location = new System.Drawing.Point(118, 601);
             this.costUpDown3.Maximum = new decimal(new int[] {
