@@ -268,12 +268,46 @@ namespace RWLogic
 
         public bool AlwaysAfter(Query_NecessaryAfter query)
         {
-            return true;
+            var currentStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition)).ToList();
+            var nextStates = new List<State>();
+
+            foreach(var action in query.program)
+            {
+                foreach (var state in currentStates)
+                {
+                    if (state.forbidden) return false;
+                    List<State> possibleNextStates = state.possibleEffects[action];
+                    if (possibleNextStates.Count == 0) return false;
+                    nextStates.AddRange(possibleNextStates);
+                }
+
+                currentStates = nextStates;
+                nextStates = new List<State>();
+            }
+
+            return currentStates.All(s => s.SatisfiesCondition(query.FinalCondition));
         }
 
         public bool PossiblyAfter(Query_PossiblyAfter query)
         {
-            return true;
+            var currentStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition)).ToList();
+            var nextStates = new List<State>();
+
+            foreach (var action in query.program)
+            {
+                foreach (var state in currentStates)
+                {
+                    if (state.forbidden) return false;
+                    List<State> possibleNextStates = state.possibleEffects[action];
+                    if (possibleNextStates.Count == 0) return false;
+                    nextStates.AddRange(possibleNextStates);
+                }
+
+                currentStates = nextStates;
+                nextStates = new List<State>();
+            }
+
+            return currentStates.Any(s => s.SatisfiesCondition(query.FinalCondition));
         }
 
         public bool IsAlwaysExecutable(Query_ExecutableAlways query)

@@ -182,24 +182,30 @@ namespace RWLogic
     public class Query_NecessaryAfter
     {
         public List<int> program { get; } //program dzialan
+        public Formula InitialCondition { get; }
+
         public Formula FinalCondition { get; }
 
-        public Query_NecessaryAfter(List<int> program, Formula initialCondition)
+        public Query_NecessaryAfter(List<int> program, Formula initialCondition, Formula finalCondition)
         {
             this.program = program;
-            this.FinalCondition = initialCondition;
+            this.InitialCondition = initialCondition;
+            FinalCondition = finalCondition;
         }
     }
 
     public class Query_PossiblyAfter
     {
         public List<int> program { get; } //program dzialan
+        public Formula InitialCondition { get; }
+
         public Formula FinalCondition { get; }
 
-        public Query_PossiblyAfter(List<int> program, Formula initialCondition)
+        public Query_PossiblyAfter(List<int> program, Formula initialCondition, Formula finalCondition)
         {
             this.program = program;
-            this.FinalCondition = initialCondition;
+            this.InitialCondition = initialCondition;
+            FinalCondition = finalCondition;
         }
     }
 

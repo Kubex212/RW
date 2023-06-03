@@ -23,7 +23,7 @@ namespace RWProgram
             {
                 return new List<Action>
                 {
-                    new Action { Name = "SHOOT", Index = 0 },
+                    new Action { Name = "SHOOT", Index = 1 },
                 };
             }
         }

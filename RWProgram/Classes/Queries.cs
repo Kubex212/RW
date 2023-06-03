@@ -15,9 +15,11 @@ namespace RWProgram.Classes
     {
         public State Alpha { get; set; }
 
+        public State Pi { get; set; }
+
         public override string ToString()
         {
-            return $"Always {Alpha} after...";
+            return $"Always {Alpha} after... from {Pi}";
         }
     }
 
@@ -25,9 +27,11 @@ namespace RWProgram.Classes
     {
         public State Alpha { get; set; }
 
+        public State Pi { get; set; }
+
         public override string ToString()
         {
-            return $"Possibly {Alpha} after...";
+            return $"Possibly {Alpha} after... from {Pi}";
         }
     }
 

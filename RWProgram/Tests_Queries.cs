@@ -24,7 +24,8 @@ namespace RWProgram
             {
                 return new AlwaysAfter()
                 {
-                    Alpha = new State("alive", new string[] { "alive" })
+                    Alpha = new State("alive", new string[] { "loaded", "alive"}),
+                    Pi = new State("loaded", new string[] { "loaded", "alive"})
                 };
             }
         }
