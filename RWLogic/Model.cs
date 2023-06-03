@@ -297,9 +297,9 @@ namespace RWLogic
             {
                 foreach (var state in currentStates)
                 {
-                    if (state.forbidden) return false;
+                    if (state.forbidden) continue;
                     List<State> possibleNextStates = state.possibleEffects[action];
-                    if (possibleNextStates.Count == 0) return false;
+                    if (possibleNextStates.Count == 0) continue;
                     nextStates.AddRange(possibleNextStates);
                 }
 
