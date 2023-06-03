@@ -27,9 +27,9 @@ namespace RWProgram
                     Statements = new List<Statement> {
                         new InitiallyFluent(new State("not loaded", fluents)),
                         new InitiallyFluent(new State("alive", fluents)),
-                        new ActionCausesAlphaIfFluents(new State("loaded", fluents), load, new State()),
-                        new ActionCausesAlphaIfFluents(new State("not loaded", fluents), shoot, new State()),
-                        new ActionCausesAlphaIfFluents (new State("not alive", fluents), shoot, new State("loaded", fluents)),
+                        new ActionCausesAlphaIfFluents(new State("loaded", fluents), load, new State(), 10),
+                        new ActionCausesAlphaIfFluents(new State("not loaded", fluents), shoot, new State(), 10),
+                        new ActionCausesAlphaIfFluents (new State("not alive", fluents), shoot, new State("loaded", fluents), 10),
                     }
                 };
             }
@@ -56,9 +56,9 @@ namespace RWProgram
                     Actions = new List<Action> { load, shoot, anything },
                     Statements = new List<Statement> {
                         new InitiallyFluent(new State("alive", fluents)),
-                        new ActionCausesAlphaIfFluents(new State("loaded", fluents), load, new State()),
-                        new ActionCausesAlphaIfFluents(new State("not loaded", fluents), shoot, new State()),
-                        new ActionCausesAlphaIfFluents(new State("not alive", fluents), shoot, new State("loaded", fluents)),
+                        new ActionCausesAlphaIfFluents(new State("loaded", fluents), load, new State(), 10),
+                        new ActionCausesAlphaIfFluents(new State("not loaded", fluents), shoot, new State(), 10),
+                        new ActionCausesAlphaIfFluents(new State("not alive", fluents), shoot, new State("loaded", fluents), 10),
                         new FluentAfterActionbyActor(new State("not alive", fluents), new List<Classes.Action> { shoot })
                     }
                 };
@@ -87,10 +87,10 @@ namespace RWProgram
                     Actions = new List<Action> { load, shoot, spin, anything },
                     Statements = new List<Statement> {
                         new InitiallyFluent(new State("not loaded && alive", fluents)),
-                        new ActionCausesAlphaIfFluents(new State("loaded", fluents), load, new State()),
-                        new ActionCausesAlphaIfFluents(new State("not loaded", fluents), shoot, new State()),
-                        new ActionCausesAlphaIfFluents(new State("not alive", fluents), shoot, new State("loaded", fluents)),
-                        new ActionReleasesFluent1IfFluents(loaded, spin,  new State("loaded", fluents)),
+                        new ActionCausesAlphaIfFluents(new State("loaded", fluents), load, new State(), 10),
+                        new ActionCausesAlphaIfFluents(new State("not loaded", fluents), shoot, new State(), 10),
+                        new ActionCausesAlphaIfFluents(new State("not alive", fluents), shoot, new State("loaded", fluents), 10),
+                        new ActionReleasesFluent1IfFluents(loaded, spin,  new State("loaded", fluents), 10),
                     }
                 };
             }
@@ -116,8 +116,8 @@ namespace RWProgram
                     Actions = new List<Action> { insertCard, anything },
                     Statements = new List<Statement> {
                         new InitiallyFluent(new State("not open", fluents)),
-                        new ActionCausesAlphaIfFluents(new State("open", fluents), insertCard, new State()),
-                        new ImpossibleActionIfFluents(insertCard, new State("hasCard", fluents))
+                        new ActionCausesAlphaIfFluents(new State("open", fluents), insertCard, new State(), 10),
+                        new ImpossibleActionIfFluents(insertCard, new State("hasCard", fluents), 10)
                     }
                 };
             }
@@ -145,9 +145,9 @@ namespace RWProgram
                     Statements = new List<Statement> {
                         new InitiallyFluent(new State("not loaded", fluents)),
                         new InitiallyFluent(new State("alive", fluents)),
-                        new ActionCausesAlphaIfFluents(new State("loaded", fluents), load, new State()),
-                        new ActionCausesAlphaIfFluents(new State("not loaded", fluents), shoot, new State()),
-                        new ActionCausesAlphaIfFluents(new State("not alive", fluents), shoot, new State("loaded", fluents)),
+                        new ActionCausesAlphaIfFluents(new State("loaded", fluents), load, new State(), 10),
+                        new ActionCausesAlphaIfFluents(new State("not loaded", fluents), shoot, new State(), 10),
+                        new ActionCausesAlphaIfFluents(new State("not alive", fluents), shoot, new State("loaded", fluents), 10),
                     }
                 };
             }

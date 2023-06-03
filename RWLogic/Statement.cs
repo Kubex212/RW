@@ -38,18 +38,20 @@ namespace RWLogic
         public Formula condition { get; } 
         public Formula effect { get; } 
 
-        public Causes(int action, Formula effect, Formula condition)
+        public Causes(int action, Formula effect, Formula condition, int cost)
         {
             this.action = action;
             this.condition = condition;
             this.effect = effect;
+            Cost = cost;
         }
 
-        public Causes(int action, Formula effect)
+        public Causes(int action, Formula effect, int cost)
         {
             this.action = action;
             this.condition = new Formula();
             this.effect = effect;
+            Cost = cost;
         }
     }
 
@@ -60,18 +62,20 @@ namespace RWLogic
         public Formula condition { get; } 
         public Formula effect { get; } 
 
-        public TypicallyCauses(int action, Formula effect, Formula condition)
+        public TypicallyCauses(int action, Formula effect, Formula condition, int cost)
         {
             this.action = action;
             this.condition = condition;
             this.effect = effect;
+            Cost = cost;
         }
 
-        public TypicallyCauses(int action, Formula effect)
+        public TypicallyCauses(int action, Formula effect, int cost)
         {
             this.action = action;
             this.condition = new Formula();
             this.effect = effect;
+            Cost = cost;
         }
     }
 
@@ -90,18 +94,20 @@ namespace RWLogic
         public Formula condition { get; }
         public int fluent { get; }
 
-        public Releases(int action, int fluent, Formula condition)
+        public Releases(int action, int fluent, Formula condition, int cost)
         {
             this.action = action;
             this.condition = condition;
             this.fluent = fluent;
+            Cost = cost;
         }
 
-        public Releases(int action, int fluent)
+        public Releases(int action, int fluent, int cost)
         {
             this.action = action;
             this.condition = new Formula();
             this.fluent = fluent;
+            Cost = cost;
         }
 
     }
@@ -113,18 +119,20 @@ namespace RWLogic
         public Formula condition { get; } 
         public int fluent { get; }
 
-        public TypicallyReleases(int action, int fluent, Formula condition)
+        public TypicallyReleases(int action, int fluent, Formula condition, int cost)
         {
             this.action = action;
             this.condition = condition;
             this.fluent = fluent;
+            Cost = cost;
         }
 
-        public TypicallyReleases(int action, int fluent)
+        public TypicallyReleases(int action, int fluent, int cost)
         {
             this.action = action;
             this.condition = new Formula();
             this.fluent = fluent;
+            Cost = cost;
         }
 
     }

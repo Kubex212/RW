@@ -117,6 +117,7 @@ namespace RWProgram
             var index = StatementsComboBox.SelectedIndex;
             StatementEnum statementEnum = (StatementEnum)index;
 
+            int cost = 1;
             string alphaString, piString;
             LogicalExpressionRoot alphaExpression, piExpression;
             State alphaState, piState;
@@ -188,7 +189,8 @@ namespace RWProgram
                     (
                         alphaState,
                         (Action)ActionComboBox.SelectedItem,
-                        piState
+                        piState,
+                        cost
                     ));
                     break;
                 case StatementEnum.ActionByActorReleasesFluent1IfFluents:
@@ -198,7 +200,8 @@ namespace RWProgram
                     (
                         (Fluent)FluentComboBox.SelectedItem,
                         (Action)ActionComboBox.SelectedItem,
-                        piState
+                        piState,
+                        cost
                     ));
                     break;
                 case StatementEnum.ActionByActorTypicallyCausesAlphaIfFluents:
@@ -208,7 +211,8 @@ namespace RWProgram
                     (
                         alphaState,
                         (Action)ActionComboBox.SelectedItem,
-                        piState
+                        piState,
+                        cost
                     ));
                     break;
                 case StatementEnum.ActionByActorTypicallyReleasesFluent1IfFluents:
@@ -218,7 +222,8 @@ namespace RWProgram
                     (
                         (Fluent)FluentComboBox.SelectedItem,
                         (Action)ActionComboBox.SelectedItem,
-                        piState
+                        piState,
+                        cost
                     ));
                     break;
                 case StatementEnum.ImpossibleActionByActorIfFluents:
@@ -227,7 +232,8 @@ namespace RWProgram
                     Logic.Statements.Add(new ImpossibleActionIfFluents
                     (
                         (Action)ActionComboBox.SelectedItem,
-                        piState
+                        piState,
+                        cost
                     ));
                     break;
                 case StatementEnum.AlwaysPi:

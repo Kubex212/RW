@@ -12,6 +12,7 @@ namespace LogicExpressionsParser
 
         public readonly bool[] fluents; // jak ustawione sa fluenty w danym stanie
         public List<State>[] possibleEffects; // lista wszystkich możliwych bezpośrednich efektow danej akcji danego agenta w tym stanie
+        public List<int>[] costs; // koszty którymi można dostać się do odpowiadających stanów
         public List<State>[] typicalEffects; // lista typowych efektów bezpośrednich
         public List<State>[] abnormalEffects; // lista efektów nietypowych
 
@@ -20,6 +21,7 @@ namespace LogicExpressionsParser
             this.fluents = new bool[fluents.Length];
             for (int i = 0; i < fluents.Length; i++) this.fluents[i] = fluents[i];
             possibleEffects = new List<State>[actions];
+            costs = new List<int>[actions];
             typicalEffects = new List<State>[actions];
             abnormalEffects = new List<State>[actions];
 

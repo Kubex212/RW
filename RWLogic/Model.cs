@@ -70,7 +70,9 @@ namespace RWLogic
                 if (!s.forbidden)
                     for(int j=0;j<action.Length; j++)
                     {
-                        s.possibleEffects[j] = Res(s, j, causes, releases);
+                        var res = Res(s, j, causes, releases);
+                        s.possibleEffects[j] = res.Item1;
+                        s.costs[j] = res.Item2;
                     }
             }
             return;
@@ -547,9 +549,9 @@ namespace RWLogic
 
         // dalej jest magia, ktora dzieje przy generowaniu grafu
 
-        private List<State> Res0(State s, int action, List<Causes> causes)
+        private List<(State, int)> Res0(State s, int action, List<Causes> causes)
         {
-            bool Res0_Condition(State cond_state, int cond_action, State res, List<Causes> cond_causes)
+            int Res0_Condition(State cond_state, int cond_action, State res, List<Causes> cond_causes)
             {
                 foreach (Causes c in cond_causes)
                 {
@@ -557,21 +559,23 @@ namespace RWLogic
                         cond_state.SatisfiesCondition(c.condition)) &&
                         !res.SatisfiesCondition(c.effect))
                     {
-                        return false;
+                        return -1;
                     }
                 }
-                return true;
+                var costSum = cond_causes.Where(c => c.action == cond_action && cond_state.SatisfiesCondition(c.condition) && res.SatisfiesCondition(c.effect)).Select(c => c.Cost).Sum();
+                return costSum;
             }
 
-            List<State> result = new List<State>();
+            var result = new List<(State, int)>();
             //bool[] contains = new bool[state.Length];
             for (int i = 0; i < States.Length; i++)
             {
-                if (!States[i].forbidden && Res0_Condition(s, action, States[i], causes))
+                var res0Cond = Res0_Condition(s, action, States[i], causes);
+                if (!States[i].forbidden && res0Cond != -1)
                 {
                     //if (!contains[i])
                     {
-                        result.Add(States[i]);
+                        result.Add((States[i], res0Cond));
                         //contains[i] = true;
                     }
                 }
@@ -617,9 +621,11 @@ namespace RWLogic
             return true;
         }
 
-        private List<State> Res(State s, int action, List<Causes> causes, List<Releases> releases)
+        private (List<State>, List<int>) Res(State s, int action, List<Causes> causes, List<Releases> releases)
         {
-            List<State> res0 = Res0(s, action, causes);
+            var res0Tuple = Res0(s, action, causes);
+            List<State> res0 = res0Tuple.Select(r => r.Item1).ToList();
+            List<int> res0Costs = res0Tuple.Select(r => r.Item2).ToList();
             List<bool[]> newSet = new List<bool[]>();
             foreach(State res in res0)
             {
@@ -638,12 +644,17 @@ namespace RWLogic
                 }
             }
 
-            List<State> result = new List<State>();
+            List<State> resultStates = new List<State>();
+            List<int> resultCosts = new List<int>();
             for(int i=0;i<res0.Count;i++)
             {
-                if (isMinimal[i]) result.Add(res0[i]);
+                if (isMinimal[i])
+                {
+                    resultStates.Add(res0[i]);
+                    resultCosts.Add(res0Costs[i]);
+                }
             }
-            return result;
+            return (resultStates, resultCosts);
         }
 
         // Resy dla typowych

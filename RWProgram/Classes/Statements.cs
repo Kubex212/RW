@@ -31,10 +31,13 @@ namespace RWProgram.Classes
     {
         public Action Action { get; set; }
 
+        public int Cost { get; set; } = 1;
 
-        public ConditionActionStatement(Action Action, State Pi) : base(Pi)
+
+        public ConditionActionStatement(Action Action, State Pi, int Cost) : base(Pi)
         {
             this.Action = Action;
+            this.Cost = Cost;
         }
     }
 
@@ -150,7 +153,7 @@ namespace RWProgram.Classes
         public State Alpha { get; set; }
 
 
-        public ActionCausesAlphaIfFluents(State Alpha, Action Action, State Pi) : base(Action, Pi)
+        public ActionCausesAlphaIfFluents(State Alpha, Action Action, State Pi, int Cost) : base(Action, Pi, Cost)
         {
             this.Alpha = Alpha;
         }
@@ -158,12 +161,12 @@ namespace RWProgram.Classes
         public override string ToString()
         {
             var conditionStr = string.IsNullOrEmpty(Pi.ToString()?.Trim()) ? string.Empty : $"if { Pi.ToString()}";
-            return $"{Action} casues {Alpha.ToString()} {conditionStr}";
+            return $"{Action} casues {Alpha.ToString()} {conditionStr} cost {Cost}";
         }
 
         public override object ToLogic()
         {
-            return new RWLogic.Causes(Action.Index, Alpha.ToLogic(), Pi.ToLogic());
+            return new RWLogic.Causes(Action.Index, Alpha.ToLogic(), Pi.ToLogic(), Cost);
         }
     }
 
@@ -171,7 +174,7 @@ namespace RWProgram.Classes
     {
         public Fluent F { get; set; }
 
-        public ActionReleasesFluent1IfFluents(Fluent F, Action Action, State Pi) : base(Action, Pi)
+        public ActionReleasesFluent1IfFluents(Fluent F, Action Action, State Pi, int Cost) : base(Action, Pi, Cost)
         {
             this.F = F;
         }
@@ -179,12 +182,12 @@ namespace RWProgram.Classes
         public override string ToString()
         {
             var conditionStr = string.IsNullOrEmpty(Pi?.ToString().Trim()) ? string.Empty : $"if {Pi}";
-            return $"{Action} releases {F} {conditionStr}";
+            return $"{Action} releases {F} {conditionStr} cost {Cost}";
         }
 
         public override object ToLogic()
         {
-            return new RWLogic.Releases(Action.Index, F.Index, Pi.ToLogic());
+            return new RWLogic.Releases(Action.Index, F.Index, Pi.ToLogic(), Cost);
         }
     }
 
@@ -192,7 +195,7 @@ namespace RWProgram.Classes
     {
         public State Alpha { get; set; }
 
-        public ActionTypicallyCausesAlphaIfFluents(State Alpha, Action Action, State Pi) : base(Action, Pi)
+        public ActionTypicallyCausesAlphaIfFluents(State Alpha, Action Action, State Pi, int Cost) : base(Action, Pi, Cost)
         {
             this.Alpha = Alpha;
         }
@@ -200,12 +203,12 @@ namespace RWProgram.Classes
         public override string ToString()
         {
             var conditionStr = string.IsNullOrEmpty(Pi?.ToString().Trim()) ? string.Empty : $"if { Pi}";
-            return $"{Action} typically casues {Alpha} {conditionStr}";
+            return $"{Action} typically casues {Alpha} {conditionStr} cost {Cost}";
         }
 
         public override object ToLogic()
         {
-            return new RWLogic.TypicallyCauses(Action.Index, Alpha.ToLogic(), Pi.ToLogic());
+            return new RWLogic.TypicallyCauses(Action.Index, Alpha.ToLogic(), Pi.ToLogic(), Cost);
         }
     }
 
@@ -213,7 +216,7 @@ namespace RWProgram.Classes
     {
         public Fluent F { get; set; }
 
-        public ActionTypicallyReleasesFluent1IfFluents(Fluent F, Action Action, State Pi) : base(Action, Pi)
+        public ActionTypicallyReleasesFluent1IfFluents(Fluent F, Action Action, State Pi, int Cost) : base(Action, Pi, Cost)
         {
             this.F = F;
         }
@@ -221,18 +224,18 @@ namespace RWProgram.Classes
         public override string ToString()
         {
             var conditionStr = string.IsNullOrEmpty(Pi?.ToString().Trim()) ? string.Empty : $"if { Pi}";
-            return $"{Action} typically releases {F} {conditionStr}";
+            return $"{Action} typically releases {F} {conditionStr} cost {Cost}";
         }
 
         public override object ToLogic()
         {
-            return new RWLogic.TypicallyReleases(Action.Index, F.Index, Pi.ToLogic());
+            return new RWLogic.TypicallyReleases(Action.Index, F.Index, Pi.ToLogic(), Cost);
         }
     }
 
     public class ImpossibleActionIfFluents : ActionCausesAlphaIfFluents
     {
-        public ImpossibleActionIfFluents(Action Action, State Pi) : base(new State(), Action, Pi) { }
+        public ImpossibleActionIfFluents(Action Action, State Pi, int Cost) : base(new State(), Action, Pi, Cost) { }
 
         public override string ToString()
         {
@@ -242,7 +245,7 @@ namespace RWProgram.Classes
 
         public override object ToLogic()
         {
-            return new RWLogic.Causes(Action.Index, new Formula(), Pi.ToLogic());
+            return new RWLogic.Causes(Action.Index, new Formula(), Pi.ToLogic(), Cost);
         }
     }
 
