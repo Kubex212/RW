@@ -36,7 +36,8 @@ namespace RWProgram
         public List<string> Queries = new List<string>()
         {
             "necessary executable A1, ..., An from π cost k",
-            "necessary α after A1, ..., An from π",
+            "possibly executable A1, ..., An from π cost k",
+            //"necessary α after A1, ..., An from π",
             "possibly α after A1, ..., An from π",
             "necessary accessible γ from π cost k",
             "possibly accessible γ from π cost k",
@@ -368,7 +369,7 @@ namespace RWProgram
                     piState = new State();
                 else
                 {
-                    piExpression = Parser.Parse(PiTextBox1.Text);
+                    piExpression = Parser.Parse(PiTextBox2.Text);
                     piState = new State(piExpression, piString, Logic.Fluents);
                 }
             }
@@ -383,10 +384,10 @@ namespace RWProgram
             switch (queryEnum)
             {
                 case QueriesEnum.AlwaysExecutable:
-                    Query = new AlwaysExecutable();
+                    Query = new AlwaysExecutable(piState, cost);
                     break;
                 case QueriesEnum.EverExecutable:
-                    Query = new EverExecutable();
+                    Query = new EverExecutable(piState, cost);
                     break;
                 case QueriesEnum.AlwaysAccesibleYFromPi:
                     if (!string.IsNullOrEmpty(gammaString))
@@ -590,6 +591,8 @@ namespace RWProgram
         {
             SetHardcodedLogicInFrontEnd(Tests_Logic.Test1);
             SetHardcodedProgramInFrontEnd(Tests_Programs.Test1c);
+            SetHardcodedQueryInFrontEnd(Tests_Queries.Test1c);
+
         }
 
         private void przykładKwerenda1ToolStripMenuItem1_Click(object sender, EventArgs e)

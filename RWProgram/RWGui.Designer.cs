@@ -349,7 +349,7 @@
             // ResponseTextBox
             // 
             this.ResponseTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ResponseTextBox.Location = new System.Drawing.Point(146, 713);
+            this.ResponseTextBox.Location = new System.Drawing.Point(153, 715);
             this.ResponseTextBox.Margin = new System.Windows.Forms.Padding(8);
             this.ResponseTextBox.Multiline = true;
             this.ResponseTextBox.Name = "ResponseTextBox";
@@ -498,6 +498,7 @@
             this.QueryTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.QueryTextBox.Multiline = true;
             this.QueryTextBox.Name = "QueryTextBox";
+            this.QueryTextBox.ReadOnly = true;
             this.QueryTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.QueryTextBox.Size = new System.Drawing.Size(365, 63);
             this.QueryTextBox.TabIndex = 103;
@@ -556,7 +557,7 @@
             this.przykład4OpeningTheDoorToolStripMenuItem,
             this.przykład5ModificationOfYSPToolStripMenuItem});
             this.przykładyToolStripMenuItem.Name = "przykładyToolStripMenuItem";
-            this.przykładyToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.przykładyToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
             this.przykładyToolStripMenuItem.Text = "Przykłady";
             // 
             // przykład1ToolStripMenuItem
@@ -586,8 +587,8 @@
             // przykładKwerenda3ToolStripMenuItem
             // 
             this.przykładKwerenda3ToolStripMenuItem.Name = "przykładKwerenda3ToolStripMenuItem";
-            this.przykładKwerenda3ToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
-            this.przykładKwerenda3ToolStripMenuItem.Text = "Przykład 3 - Kwerenda EverInvolved";
+            this.przykładKwerenda3ToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
+            this.przykładKwerenda3ToolStripMenuItem.Text = "Przykład 3 - Kwerenda AlwaysExecutable";
             this.przykładKwerenda3ToolStripMenuItem.Click += new System.EventHandler(this.przykładKwerenda3ToolStripMenuItem_Click);
             // 
             // przykład2ToolStripMenuItem
@@ -847,7 +848,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(647, 749);
+            this.ClientSize = new System.Drawing.Size(647, 761);
             this.Controls.Add(this.costUpDown3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.costUpDown2);
@@ -898,7 +899,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(663, 981);
-            this.MinimumSize = new System.Drawing.Size(663, 738);
+            this.MinimumSize = new System.Drawing.Size(663, 800);
             this.Name = "RWGui";
             this.Text = "Realizacja efektywnych programów działań";
             this.tableLayoutPanel1.ResumeLayout(false);
