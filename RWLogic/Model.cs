@@ -271,40 +271,43 @@ namespace RWLogic
             {
                 initialStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition)).ToList();
             }
-            foreach(var state in initialStates)
-            {
-                var currentCost = 0;
-                for(int i = 0; i < query.program.Count; i++)
-                {
-                    if (state.forbidden) return false;
-                    var possibleNextStates = state.possibleEffects[query.program[i]];
-                    if (possibleNextStates.Count == 0 || possibleNextStates is null) return false;
-                    //nextStates.AddRange(possibleNextStates);
-                }
-            }
-            List<State> currentStates = initial;
-            List<State> nextStates = new List<State>();
+            //foreach(var state in initialStates)
+            //{
+            //    var currentCost = 0;
+            //    for(int i = 0; i < query.program.Count; i++)
+            //    {
+            //        if (state.forbidden) return false;
+            //        var possibleNextStates = state.possibleEffects[query.program[i]];
+            //        if (possibleNextStates.Count == 0 || possibleNextStates is null) return false;
+            //        //nextStates.AddRange(possibleNextStates);
+            //    }
+            //}
+            List<(State state, int cost)> currentStates = initialStates.Select(x => (x, 0)).ToList();
+            List<(State state, int cost)> nextStates = new List<(State state, int cost)>();
 
             for (int step = 0; step < query.program.Count; step++)
             {
-                foreach (State state in currentStates)
+                foreach (var tuple in currentStates)
                 {
+                    var state = tuple.state;
+                    var cost = tuple.cost;
                     if (state.forbidden) return false;
 
                     List<State> possibleNextStates = state.possibleEffects[query.program[step]];
+                    List<int> possibleNextCosts = state.costs[query.program[step]];
 
-                    if (possibleNextStates.Count == 0 || possibleNextStates is null) return false;
+                    if (possibleNextStates is null || possibleNextStates.Count == 0 || possibleNextCosts.Any(x => x + cost > query.Cost)) return false;
 
-                    nextStates.AddRange(possibleNextStates);
+                    nextStates.AddRange(possibleNextStates.Select((x, index) => (x, possibleNextCosts[index] + cost)));
                 }
 
                 currentStates = nextStates;
-                nextStates = new List<State>();
+                nextStates = new List<(State state, int cost)>();
             }
 
-            foreach (State state in currentStates)
+            foreach (var tuple in currentStates)
             {
-                if (state.forbidden) return false;
+                if (tuple.state.forbidden) return false;
             }
 
             return true;
@@ -312,28 +315,41 @@ namespace RWLogic
 
         public bool IsEverExecutable(Query_ExecutableEver query)
         {
-            if (initial.Count == 0) return true;
+            var initialStates = new List<State>();
+            if (query.InitialCondition.EmptyRoot)
+            {
+                initialStates = initial;
+            }
+            else
+            {
+                initialStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition)).ToList();
+            }
 
-            List<State> currentStates = initial;
-            List<State> nextStates = new List<State>();
+            if (initialStates.Count == 0) return true;
+
+            List<(State state, int cost)> currentStates = initialStates.Select(x => (x, 0)).ToList();
+            List<(State state, int cost)> nextStates = new List<(State state, int cost)>();
 
             for (int step = 0; step < query.program.Count; step++)
             {
                 if (currentStates.Count == 0) return false;
 
-                foreach (State state in currentStates)
+                foreach (var tuple in currentStates)
                 {
+                    var state = tuple.state;
+                    var cost = tuple.cost;
                     if (state.forbidden) continue;
 
                     List<State> possibleNextStates = state.possibleEffects[query.program[step]];
+                    List<int> possibleNextCosts = state.costs[query.program[step]];
 
-                    if (possibleNextStates.Count == 0 || possibleNextStates is null) continue;
+                    if (possibleNextStates is null || possibleNextStates.Count == 0 || possibleNextCosts.Any(x => x + cost > query.Cost)) continue;
 
-                    nextStates.AddRange(possibleNextStates);
+                    nextStates.AddRange(possibleNextStates.Select((x, index) => (x, possibleNextCosts[index] + cost)));
                 }
 
                 currentStates = nextStates;
-                nextStates = new List<State>();
+                nextStates = new List<(State state, int cost)>();
             }
 
             if (currentStates.Count > 0) return true;

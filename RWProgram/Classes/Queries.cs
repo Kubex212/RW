@@ -52,21 +52,41 @@ namespace RWProgram.Classes
 
     public class AlwaysExecutable : Query
     {
+        public AlwaysExecutable()
+        {
+            
+        }
+        public AlwaysExecutable(State pi, int cost)
+        {
+            Pi = pi;
+            Cost = cost;
+        }
+
         public State Pi { get; set; }
         public int Cost { get; set; }
         public override string ToString()
         {
-            return $"Is program always executable from {Pi} cost {Cost}";
+            return $"Is program always executable" + (!string.IsNullOrEmpty(Pi?.ToString()) ? $" from {Pi}" : string.Empty) + $" cost {Cost}";
         }
     }
 
     public class EverExecutable : Query
     {
+        public EverExecutable()
+        {
+            
+        }
+        public EverExecutable(State pi, int cost)
+        {
+            Pi = pi;
+            Cost = cost;
+        }
+
         public State Pi { get; set; }
         public int Cost { get; set; }
         public override string ToString()
         {
-            return $"Is program possibly executable from {Pi} cost {Cost}";
+            return $"Is program possibly executable" + (!string.IsNullOrEmpty(Pi?.ToString()) ? $" from {Pi} " : string.Empty) + $"cost {Cost}";
         }
     }
 

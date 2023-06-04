@@ -30,6 +30,14 @@ namespace RWProgram
             }
         }
 
+        public static AlwaysExecutable Test1c
+        {
+            get
+            {
+                return new AlwaysExecutable( new State("alive && not loaded", new string[] { "loaded", "alive" }), cost: 19);
+            }
+        }
+
         public static EverAccesibleYFromPi Test2a
         {
             get
@@ -42,11 +50,7 @@ namespace RWProgram
         {
             get
             {
-                return new AlwaysExecutable
-                {
-                    Cost = 18,
-                    Pi = new State("alive", new string[] { "alive" })
-                };
+                return new AlwaysExecutable(cost: 18, pi: new State("alive", new string[] { "alive" }));
             }
         }
 
@@ -54,9 +58,7 @@ namespace RWProgram
         {
             get
             {
-                return new EverExecutable
-                {
-                };
+                return new EverExecutable(cost: 18, pi: new State("alive", new string[] { "alive" }));
             }
         }
 
@@ -64,9 +66,7 @@ namespace RWProgram
         {
             get
             {
-                return new AlwaysExecutable
-                {
-                };
+                return new AlwaysExecutable(new State("alive && not loaded", new string[] { "loaded", "alive" }), 35);
             }
         }
 
@@ -83,9 +83,7 @@ namespace RWProgram
         {
             get
             {
-                return new EverExecutable
-                {
-                };
+                return new EverExecutable(new State("alive && not loaded", new string[] { "loaded", "alive" }), 35);
             }
         }
 
@@ -93,9 +91,7 @@ namespace RWProgram
         {
             get
             {
-                return new EverExecutable
-                {
-                };
+                return new EverExecutable(new State("not open", new string[] { "open" }), 10);
             }
         }
 
@@ -103,9 +99,7 @@ namespace RWProgram
         {
             get
             {
-                return new AlwaysExecutable
-                {
-                };
+                return new AlwaysExecutable(new State("not open", new string[] { "open" }), 10);
             }
         }
 
@@ -113,9 +107,7 @@ namespace RWProgram
         {
             get
             {
-                return new AlwaysExecutable
-                {
-                };
+                return new AlwaysExecutable(new State("alive && not loaded", new string[] { "loaded", "alive" }), cost: 19);
             }
         }
     }
