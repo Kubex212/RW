@@ -95,7 +95,7 @@ namespace RWProgram.Classes
         public AlwaysAccesibleYFromPi(State Gamma, State Pi, int Cost) : base(Gamma, Pi, Cost) { }
         public override string ToString()
         {
-            var str = $"Is {Gamma.ToString()} always accessible";
+            var str = $"Is {Gamma.ToString()} necessarily accessible";
             if (!string.IsNullOrEmpty(Pi.ToString()))
                 str = str + $" from {Pi.ToString()} cost {Cost}";
             return str;

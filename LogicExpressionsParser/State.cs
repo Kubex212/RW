@@ -8,6 +8,7 @@ namespace LogicExpressionsParser
 {
     public class State
     {
+        public List<string> fluentNames = new List<string>();
         public bool forbidden = false; // czy stan jest niedozwolony (nie spelnia always costam)
 
         public readonly bool[] fluents; // jak ustawione sa fluenty w danym stanie
@@ -16,7 +17,7 @@ namespace LogicExpressionsParser
         public List<State>[] typicalEffects; // lista typowych efektów bezpośrednich
         public List<State>[] abnormalEffects; // lista efektów nietypowych
 
-        public State(bool[] fluents, int actions)
+        public State(bool[] fluents, int actions, List<string> fluentNames)
         {
             this.fluents = new bool[fluents.Length];
             for (int i = 0; i < fluents.Length; i++) this.fluents[i] = fluents[i];
@@ -24,6 +25,7 @@ namespace LogicExpressionsParser
             costs = new List<int>[actions];
             typicalEffects = new List<State>[actions];
             abnormalEffects = new List<State>[actions];
+            this.fluentNames = fluentNames;
 
             for (int i = 0; i < actions; i++)
             {
@@ -51,6 +53,7 @@ namespace LogicExpressionsParser
             string result = "(";
             for (int i = 0; i < fluents.Length; i++)
             {
+                result += fluentNames[i] + ": ";
                 if (fluents[i]) result += 1 + " ";
                 else result += 0 + " ";
             }
@@ -58,5 +61,42 @@ namespace LogicExpressionsParser
             return result;
         }
 
+    }
+
+    public class StateEqualityComparer : IEqualityComparer<State>
+    {
+        public bool Equals(State x, State y)
+        {
+            if (ReferenceEquals(x, y))
+                return true;
+
+            if (ReferenceEquals(x, null) || ReferenceEquals(y, null))
+                return false;
+
+            if (x.fluents.Length != y.fluents.Length)
+                return false; // shouldnt happen
+
+            for (int i = 0; i < x.fluents.Length; i++)
+            {
+                if (x.fluents[i] != y.fluents[i])
+                    return false;
+            }
+
+            return true;
+        }
+
+        public int GetHashCode(State obj)
+        {
+            if (ReferenceEquals(obj, null))
+                return 0;
+
+            int hash = 17;
+            foreach (bool variable in obj.fluents)
+            {
+                hash = hash * 23 + variable.GetHashCode();
+            }
+
+            return hash;
+        }
     }
 }

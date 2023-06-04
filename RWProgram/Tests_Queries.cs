@@ -14,7 +14,7 @@ namespace RWProgram
         {
             get
             {
-                return new AlwaysAccesibleYFromPi(new State("alive", new string[] { "alive" }),new State("alive && not loaded", new string[] { "alive", "loaded" }), 10);
+                return new AlwaysAccesibleYFromPi(new State("alive", new string[] { "alive" }),new State("not loaded && alive", new string[] { "loaded", "alive" }), 10);
             }
         }
 
@@ -34,7 +34,7 @@ namespace RWProgram
         {
             get
             {
-                return new AlwaysExecutable( new State("alive && not loaded", new string[] { "loaded", "alive" }), cost: 19);
+                return new AlwaysExecutable( new State("not loaded && alive", new string[] { "loaded", "alive" }), cost: 19);
             }
         }
 
@@ -42,7 +42,7 @@ namespace RWProgram
         {
             get
             {
-                return new EverAccesibleYFromPi(new State("alive", new string[] { "alive" }), new State("alive", new string[] { "alive" }), 10);
+                return new EverAccesibleYFromPi(Gamma: new State("not alive", new string[] { "loaded", "alive" }), Pi: new State("alive", new string[] { "loaded", "alive" }), Cost: 21);
             }
         }
 
@@ -50,7 +50,7 @@ namespace RWProgram
         {
             get
             {
-                return new AlwaysExecutable(cost: 18, pi: new State("alive", new string[] { "alive" }));
+                return new AlwaysExecutable(cost: 18, pi: new State("alive", new string[] { "loaded", "alive" }));
             }
         }
 
@@ -58,7 +58,7 @@ namespace RWProgram
         {
             get
             {
-                return new EverExecutable(cost: 18, pi: new State("alive", new string[] { "alive" }));
+                return new EverExecutable(cost: 18, pi: new State("alive", new string[] { "loaded", "alive" }));
             }
         }
 

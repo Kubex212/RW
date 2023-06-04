@@ -557,7 +557,7 @@
             this.przykład4OpeningTheDoorToolStripMenuItem,
             this.przykład5ModificationOfYSPToolStripMenuItem});
             this.przykładyToolStripMenuItem.Name = "przykładyToolStripMenuItem";
-            this.przykładyToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
+            this.przykładyToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.przykładyToolStripMenuItem.Text = "Przykłady";
             // 
             // przykład1ToolStripMenuItem
@@ -573,22 +573,22 @@
             // przykładKwerenda1ToolStripMenuItem
             // 
             this.przykładKwerenda1ToolStripMenuItem.Name = "przykładKwerenda1ToolStripMenuItem";
-            this.przykładKwerenda1ToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
-            this.przykładKwerenda1ToolStripMenuItem.Text = "Przykład 1 - Kwerenda AlwaysAccesible";
+            this.przykładKwerenda1ToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda1ToolStripMenuItem.Text = "Przykład 1 - Kwerenda NecessarilyAccesible";
             this.przykładKwerenda1ToolStripMenuItem.Click += new System.EventHandler(this.przykładKwerenda1ToolStripMenuItem_Click);
             // 
             // przykładKwerenda2ToolStripMenuItem
             // 
             this.przykładKwerenda2ToolStripMenuItem.Name = "przykładKwerenda2ToolStripMenuItem";
-            this.przykładKwerenda2ToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
-            this.przykładKwerenda2ToolStripMenuItem.Text = "Przykład 2 - Kwerenda AlwaysAfter";
+            this.przykładKwerenda2ToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda2ToolStripMenuItem.Text = "Przykład 2 - Kwerenda NecessarilyAfter";
             this.przykładKwerenda2ToolStripMenuItem.Click += new System.EventHandler(this.przykładKwerenda2ToolStripMenuItem_Click);
             // 
             // przykładKwerenda3ToolStripMenuItem
             // 
             this.przykładKwerenda3ToolStripMenuItem.Name = "przykładKwerenda3ToolStripMenuItem";
-            this.przykładKwerenda3ToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
-            this.przykładKwerenda3ToolStripMenuItem.Text = "Przykład 3 - Kwerenda AlwaysExecutable";
+            this.przykładKwerenda3ToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda3ToolStripMenuItem.Text = "Przykład 3 - Kwerenda NecessarilyExecutable";
             this.przykładKwerenda3ToolStripMenuItem.Click += new System.EventHandler(this.przykładKwerenda3ToolStripMenuItem_Click);
             // 
             // przykład2ToolStripMenuItem
@@ -604,22 +604,22 @@
             // przykładKwerenda1ToolStripMenuItem1
             // 
             this.przykładKwerenda1ToolStripMenuItem1.Name = "przykładKwerenda1ToolStripMenuItem1";
-            this.przykładKwerenda1ToolStripMenuItem1.Size = new System.Drawing.Size(287, 22);
-            this.przykładKwerenda1ToolStripMenuItem1.Text = "Przykład 1 - Kwerenda EverAccesible";
+            this.przykładKwerenda1ToolStripMenuItem1.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda1ToolStripMenuItem1.Text = "Przykład 1 - Kwerenda PossiblyAccesible";
             this.przykładKwerenda1ToolStripMenuItem1.Click += new System.EventHandler(this.przykładKwerenda1ToolStripMenuItem1_Click);
             // 
             // przykładKwerenda2ToolStripMenuItem1
             // 
             this.przykładKwerenda2ToolStripMenuItem1.Name = "przykładKwerenda2ToolStripMenuItem1";
-            this.przykładKwerenda2ToolStripMenuItem1.Size = new System.Drawing.Size(287, 22);
-            this.przykładKwerenda2ToolStripMenuItem1.Text = "Przykład 2 - Kwerenda AlwaysExecutable";
+            this.przykładKwerenda2ToolStripMenuItem1.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda2ToolStripMenuItem1.Text = "Przykład 2 - Kwerenda NecessarilyExecutable";
             this.przykładKwerenda2ToolStripMenuItem1.Click += new System.EventHandler(this.przykładKwerenda2ToolStripMenuItem1_Click);
             // 
             // przykładKwerenda3ToolStripMenuItem1
             // 
             this.przykładKwerenda3ToolStripMenuItem1.Name = "przykładKwerenda3ToolStripMenuItem1";
-            this.przykładKwerenda3ToolStripMenuItem1.Size = new System.Drawing.Size(287, 22);
-            this.przykładKwerenda3ToolStripMenuItem1.Text = "Przykład 3 - Kwerenda EverExecutable";
+            this.przykładKwerenda3ToolStripMenuItem1.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda3ToolStripMenuItem1.Text = "Przykład 3 - Kwerenda PossiblyExecutable";
             this.przykładKwerenda3ToolStripMenuItem1.Click += new System.EventHandler(this.przykładKwerenda3ToolStripMenuItem1_Click);
             // 
             // przykład3ToolStripMenuItem
@@ -635,22 +635,22 @@
             // przykładKwerenda1ToolStripMenuItem2
             // 
             this.przykładKwerenda1ToolStripMenuItem2.Name = "przykładKwerenda1ToolStripMenuItem2";
-            this.przykładKwerenda1ToolStripMenuItem2.Size = new System.Drawing.Size(287, 22);
-            this.przykładKwerenda1ToolStripMenuItem2.Text = "Przykład 1 - Kwerenda AlwaysExecutable";
+            this.przykładKwerenda1ToolStripMenuItem2.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda1ToolStripMenuItem2.Text = "Przykład 1 - Kwerenda NecessarilyExecutable";
             this.przykładKwerenda1ToolStripMenuItem2.Click += new System.EventHandler(this.przykładKwerenda1ToolStripMenuItem2_Click);
             // 
             // przykładKwerenda2ToolStripMenuItem2
             // 
             this.przykładKwerenda2ToolStripMenuItem2.Name = "przykładKwerenda2ToolStripMenuItem2";
-            this.przykładKwerenda2ToolStripMenuItem2.Size = new System.Drawing.Size(287, 22);
-            this.przykładKwerenda2ToolStripMenuItem2.Text = "Przykład 2 - Kwerenda AlwaysAccesible";
+            this.przykładKwerenda2ToolStripMenuItem2.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda2ToolStripMenuItem2.Text = "Przykład 2 - Kwerenda NecessarilyAccesible";
             this.przykładKwerenda2ToolStripMenuItem2.Click += new System.EventHandler(this.przykładKwerenda2ToolStripMenuItem2_Click);
             // 
             // przykładKwerenda3ToolStripMenuItem2
             // 
             this.przykładKwerenda3ToolStripMenuItem2.Name = "przykładKwerenda3ToolStripMenuItem2";
-            this.przykładKwerenda3ToolStripMenuItem2.Size = new System.Drawing.Size(287, 22);
-            this.przykładKwerenda3ToolStripMenuItem2.Text = "Przykład 3 - Kwerenda EverExecutable";
+            this.przykładKwerenda3ToolStripMenuItem2.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda3ToolStripMenuItem2.Text = "Przykład 3 - Kwerenda PossiblyExecutable";
             this.przykładKwerenda3ToolStripMenuItem2.Click += new System.EventHandler(this.przykładKwerenda3ToolStripMenuItem2_Click);
             // 
             // przykład4OpeningTheDoorToolStripMenuItem
@@ -666,22 +666,22 @@
             // przykładKwerenda1ToolStripMenuItem3
             // 
             this.przykładKwerenda1ToolStripMenuItem3.Name = "przykładKwerenda1ToolStripMenuItem3";
-            this.przykładKwerenda1ToolStripMenuItem3.Size = new System.Drawing.Size(287, 22);
-            this.przykładKwerenda1ToolStripMenuItem3.Text = "Przykład 1 - Kwerenda AlwaysInvolved";
+            this.przykładKwerenda1ToolStripMenuItem3.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda1ToolStripMenuItem3.Text = "Przykład 1 - Kwerenda PossiblyAccesible";
             this.przykładKwerenda1ToolStripMenuItem3.Click += new System.EventHandler(this.przykładKwerenda1ToolStripMenuItem3_Click);
             // 
             // przykładKwerenda2ToolStripMenuItem3
             // 
             this.przykładKwerenda2ToolStripMenuItem3.Name = "przykładKwerenda2ToolStripMenuItem3";
-            this.przykładKwerenda2ToolStripMenuItem3.Size = new System.Drawing.Size(287, 22);
-            this.przykładKwerenda2ToolStripMenuItem3.Text = "Przykład 2 - Kwerenda EverExecutable";
+            this.przykładKwerenda2ToolStripMenuItem3.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda2ToolStripMenuItem3.Text = "Przykład 2 - Kwerenda PossiblyExecutable";
             this.przykładKwerenda2ToolStripMenuItem3.Click += new System.EventHandler(this.przykładKwerenda2ToolStripMenuItem3_Click);
             // 
             // przykładKwerenda3ToolStripMenuItem3
             // 
             this.przykładKwerenda3ToolStripMenuItem3.Name = "przykładKwerenda3ToolStripMenuItem3";
-            this.przykładKwerenda3ToolStripMenuItem3.Size = new System.Drawing.Size(287, 22);
-            this.przykładKwerenda3ToolStripMenuItem3.Text = "Przykład 3 - Kwerenda AlwaysExecutable";
+            this.przykładKwerenda3ToolStripMenuItem3.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda3ToolStripMenuItem3.Text = "Przykład 3 - Kwerenda NecessarilyExecutable";
             this.przykładKwerenda3ToolStripMenuItem3.Click += new System.EventHandler(this.przykładKwerenda3ToolStripMenuItem3_Click);
             // 
             // przykład5ModificationOfYSPToolStripMenuItem
@@ -698,7 +698,7 @@
             // 
             this.przykładKwerenda1ToolStripMenuItem4.Name = "przykładKwerenda1ToolStripMenuItem4";
             this.przykładKwerenda1ToolStripMenuItem4.Size = new System.Drawing.Size(287, 22);
-            this.przykładKwerenda1ToolStripMenuItem4.Text = "Przykład 1 - Kwerenda EverInvolved";
+            this.przykładKwerenda1ToolStripMenuItem4.Text = "Przykład 1 - NecessarilyAccesible";
             this.przykładKwerenda1ToolStripMenuItem4.Click += new System.EventHandler(this.przykładKwerenda1ToolStripMenuItem4_Click);
             // 
             // przykładKwerenda2ToolStripMenuItem4
@@ -712,7 +712,7 @@
             // 
             this.przykładKwerenda3ToolStripMenuItem4.Name = "przykładKwerenda3ToolStripMenuItem4";
             this.przykładKwerenda3ToolStripMenuItem4.Size = new System.Drawing.Size(287, 22);
-            this.przykładKwerenda3ToolStripMenuItem4.Text = "Przykład 3 - Kwerenda AlwaysInvolved";
+            this.przykładKwerenda3ToolStripMenuItem4.Text = "Przykład 3 - Kwerenda NecessarilyAfter";
             this.przykładKwerenda3ToolStripMenuItem4.Click += new System.EventHandler(this.przykładKwerenda3ToolStripMenuItem4_Click);
             // 
             // ResetAllButton

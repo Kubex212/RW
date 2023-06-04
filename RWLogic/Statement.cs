@@ -250,12 +250,14 @@ namespace RWLogic
         public List<int> program { get; } //program dzialan
         public Formula initialCondition { get; }
         public Formula endCondition { get; }
+        public int cost { get; }
 
-        public Query_AccessibleAlways(List<int> program, Formula initialCondition, Formula endCondition)
+        public Query_AccessibleAlways(List<int> program, Formula initialCondition, Formula endCondition, int cost)
         {
             this.program = program;
             this.initialCondition = initialCondition;
             this.endCondition = endCondition;
+            this.cost = cost;
         }
     }
 
@@ -264,12 +266,14 @@ namespace RWLogic
         public List<int> program { get; } //program dzialan
         public Formula initialCondition { get; }
         public Formula endCondition { get; }
+        public int cost { get; }
 
-        public Query_AccessibleTypically(List<int> program, Formula initialCondition, Formula endCondition)
+        public Query_AccessibleTypically(List<int> program, Formula initialCondition, Formula endCondition, int cost)
         {
             this.program = program;
             this.initialCondition = initialCondition;
             this.endCondition = endCondition;
+            this.cost = cost;
         }
     }
 
@@ -278,12 +282,14 @@ namespace RWLogic
         public List<int> program { get; } //program dzialan
         public Formula initialCondition { get; }
         public Formula endCondition { get; }
+        public int cost { get; }
 
-        public Query_AccessibleEver(List<int> program, Formula initialCondition, Formula endCondition)
+        public Query_AccessibleEver(List<int> program, Formula initialCondition, Formula endCondition, int cost)
         {
             this.program = program;
             this.initialCondition = initialCondition;
             this.endCondition = endCondition;
+            this.cost = cost;
         }
     }
 

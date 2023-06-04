@@ -29,6 +29,7 @@ namespace RWProgram
             "observable α after A1, A2, ... ,An",
             "A causes α if π costs k",
             "A releases α if π costs k",
+            "impossible A if π",
             "always α",
             "noninertial α"
         };
@@ -534,7 +535,7 @@ namespace RWProgram
 
         private void SetQueryTextBox()
         {
-            QueryTextBox.Text = Query != null ? Query.ToString() + $" with program: {string.Join(",",Logic.Program.Select(x => $" {x.Name}"))}?" : string.Empty;
+            QueryTextBox.Text = Query != null ? Query.ToString() : string.Empty;
         }
 
         private void DeleteLastStatementButton_Click(object sender, EventArgs e)

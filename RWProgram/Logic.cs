@@ -51,11 +51,11 @@ namespace RWProgram
                 case EverExecutable q:
                     return fasada.Query(new RWLogic.Query_ExecutableEver(LogicProgram, q.Pi.ToLogic(), q.Cost));
                 case AlwaysAccesibleYFromPi q:
-                    return fasada.Query(new RWLogic.Query_AccessibleAlways(LogicProgram, q.Pi.ToLogic(), q.Gamma.ToLogic()));
+                    return fasada.Query(new RWLogic.Query_AccessibleAlways(LogicProgram, q.Pi.ToLogic(), q.Gamma.ToLogic(), q.Cost));
                 case EverAccesibleYFromPi q:
-                    return fasada.Query(new RWLogic.Query_AccessibleEver(LogicProgram, q.Pi.ToLogic(), q.Gamma.ToLogic()));
+                    return fasada.Query(new RWLogic.Query_AccessibleEver(LogicProgram, q.Pi.ToLogic(), q.Gamma.ToLogic(), q.Cost));
                 case TypicallyAccesibleYFromPi q:
-                    return fasada.Query(new RWLogic.Query_AccessibleTypically(LogicProgram, q.Pi.ToLogic(), q.Gamma.ToLogic()));
+                    return fasada.Query(new RWLogic.Query_AccessibleTypically(LogicProgram, q.Pi.ToLogic(), q.Gamma.ToLogic(), q.Cost));
                 default:
                     return true;
             }

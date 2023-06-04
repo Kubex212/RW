@@ -33,7 +33,7 @@ namespace RWLogic
                     t /= ((int)Math.Pow(2, j));
                     fluentValues[j] = t==1 ? true : false;
                 }
-                States[i] = new State(fluentValues, action.Count);
+                States[i] = new State(fluentValues, action.Count, fluent);
             }
             this.fluent = new string[fluent.Count];
             this.action = new string[action.Count];
@@ -217,7 +217,7 @@ namespace RWLogic
 
         public bool AlwaysAfter(Query_NecessaryAfter query)
         {
-            var currentStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition)).ToList();
+            var currentStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition) && !s.forbidden).ToList();
             var nextStates = new List<State>();
 
             foreach(var action in query.program)
@@ -239,7 +239,7 @@ namespace RWLogic
 
         public bool PossiblyAfter(Query_PossiblyAfter query)
         {
-            var currentStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition)).ToList();
+            var currentStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition) && !s.forbidden).ToList();
             var nextStates = new List<State>();
 
             foreach (var action in query.program)
@@ -269,7 +269,7 @@ namespace RWLogic
             }
             else
             {
-                initialStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition)).ToList();
+                initialStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition) && !s.forbidden).ToList();
             }
             //foreach(var state in initialStates)
             //{
@@ -322,7 +322,7 @@ namespace RWLogic
             }
             else
             {
-                initialStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition)).ToList();
+                initialStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition) && !s.forbidden).ToList();
             }
 
             if (initialStates.Count == 0) return true;
@@ -358,156 +358,108 @@ namespace RWLogic
 
         public bool IsAlwaysAccessible(Query_AccessibleAlways query)
         {
-            List<State> currentStates;
-
-            if(query.initialCondition.EmptyRoot)
+            var initialStates = new List<State>();
+            if (query.initialCondition.EmptyRoot)
             {
-                currentStates = initial;
+                initialStates = initial;
             }
             else
             {
-                currentStates = new List<State>(States);
+                initialStates = States.Where(s => s.SatisfiesCondition(query.initialCondition) && !s.forbidden).ToList();
             }
 
-            List<State> nextStates = new List<State>();
-
-            foreach (State state in currentStates)
+            var endStates = new List<State>();
+            if (query.endCondition.EmptyRoot)
             {
-                if (state.SatisfiesCondition(query.initialCondition) && !state.forbidden)
-                    nextStates.Add(state);
+                endStates = States.ToList();
             }
-
-            currentStates = nextStates;
-            nextStates = new List<State>();
-
-            for (int step = 0; step < query.program.Count; step++)
+            else
             {
-                foreach (State state in currentStates)
-                {
-                    List<State> possibleNextStates = state.possibleEffects[query.program[step]];
-                    nextStates.AddRange(possibleNextStates);
-                }
-
-                currentStates = nextStates;
-                nextStates = new List<State>();
+                endStates = States.Where(s => s.SatisfiesCondition(query.endCondition) && !s.forbidden).ToList();
             }
 
-            foreach (State state in currentStates)
-            {
-                if (!state.SatisfiesCondition(query.endCondition)) return false;
-            }
-
-            return true;
-
+            return initialStates.All(s => DFS(s, endStates, query.cost));
         }
 
         public bool IsTypicallyAccessible(Query_AccessibleTypically query)
         {
-            List<State> startStates;
-
-            if (query.initialCondition.EmptyRoot)
-            {
-                startStates = initial;
-            }
-            else
-            {
-                startStates = new List<State>(States);
-            }
-
-            List<(State, int)> currentStates = new List<(State, int)>();
-            List<(State, int)> nextStates = new List<(State, int)>();
-
-            foreach (State state in startStates)
-            {
-                if (state.SatisfiesCondition(query.initialCondition) && !state.forbidden)
-                    nextStates.Add((state, 0));
-            }
-
-            currentStates = nextStates;
-            nextStates = new List<(State, int)>();
-
-            for (int step = 0; step < query.program.Count; step++)
-            {
-                foreach ((State,int) state in currentStates)
-                {
-                    foreach(State nextState in state.Item1.typicalEffects[query.program[step]])
-                    {
-                        nextStates.Add((nextState, state.Item2));
-                    }
-                    foreach (State nextState in state.Item1.abnormalEffects[query.program[step]])
-                    {
-                        nextStates.Add((nextState, state.Item2 + 1));
-                    }
-                }
-
-                currentStates = nextStates;
-                nextStates = new List<(State, int)>();
-            }
-
-            int min = query.program.Count + 100;
-
-            foreach((_,int atypical) in currentStates)
-            {
-                if (min > atypical)
-                    min = atypical;
-            }
-
-            foreach ((State,int) state in currentStates)
-            {
-                if (state.Item2 == min && !state.Item1.SatisfiesCondition(query.endCondition)) return false;
-            }
-
+            // niepotrzebne
             return true;
         }
 
         public bool IsEverAccessible(Query_AccessibleEver query)
         {
-            List<State> currentStates;
-
+            var initialStates = new List<State>();
             if (query.initialCondition.EmptyRoot)
             {
-                currentStates = initial;
+                initialStates = initial;
             }
             else
             {
-                currentStates = new List<State>(States);
+                initialStates = States.Where(s => s.SatisfiesCondition(query.initialCondition)).ToList();
             }
 
-            List<State> nextStates = new List<State>();
-
-            foreach (State state in currentStates)
+            var endStates = new List<State>();
+            if (query.endCondition.EmptyRoot)
             {
-                if (state.SatisfiesCondition(query.initialCondition) && !state.forbidden)
-                    nextStates.Add(state);
+                endStates = States.ToList();
+            }
+            else
+            {
+                endStates = States.Where(s => s.SatisfiesCondition(query.endCondition)).ToList();
             }
 
-            currentStates = nextStates;
-            if (currentStates.Count == 0) return true;
-            nextStates = new List<State>();
+            return initialStates.Any(s => DFS(s, endStates, query.cost));
+        }
 
-            for (int step = 0; step < query.program.Count; step++)
+        public bool DFS(State currentState, List<State> endStates, int maxCost)
+        {
+            // Create an array to track visited states
+            bool[] visited = new bool[States.Length];
+
+            return DFSHelper(currentState, endStates, maxCost, visited);
+        }
+
+        public bool DFSHelper(State currentState, List<State> endStates, int maxCost, bool[] visited)
+        {
+            // Check if the current state is one of the end states
+            if (endStates.Contains(currentState, new StateEqualityComparer()))
             {
-                foreach (State state in currentStates)
+                // Check if the cost is within the given maximum
+                return true;
+            }
+
+            var currentStateIndex = States.ToList().IndexOf(currentState);
+
+            // Mark the current state as visited
+            visited[currentStateIndex] = true;
+
+            // Iterate over the possible effects
+            for (int i = 0; i < currentState.possibleEffects.Length; i++)
+            {
+                var nextStates = currentState.possibleEffects[i];
+                var costs = currentState.costs[i];
+                for(int j = 0; j < nextStates.Count; j++)
                 {
-                    List<State> possibleNextStates = state.abnormalEffects[query.program[step]];
-                    nextStates.AddRange(possibleNextStates);
-                    possibleNextStates = state.typicalEffects[query.program[step]];
-                    nextStates.AddRange(possibleNextStates);
+                    var nextState = nextStates[j];
+                    var nextStateIndex = States.ToList().IndexOf(nextState);
+                    var cost = costs[j];
+                    if (!visited[nextStateIndex] && !nextState.forbidden && cost <= maxCost)
+                    {
+                        // Recursively call DFSHelper on the next state
+                        bool canReachEndState = DFSHelper(nextState, endStates, maxCost - cost, visited);
+
+                        // If any of the end states can be reached from the next state within the remaining cost, return true
+                        if (canReachEndState)
+                        {
+                            return true;
+                        }
+                    }
                 }
-
-                currentStates = nextStates;
-                nextStates = new List<State>();
             }
-
-            foreach (State state in currentStates)
-            {
-                if (state.SatisfiesCondition(query.endCondition)) nextStates.Add(state);
-            }
-
-            currentStates = nextStates;
-
-            if (currentStates.Count > 0) return true;
-            else return false;
+            // czy ta linijka moze doprowadzic do nieskonczonych pêtli?
+            visited[currentStateIndex] = false;
+            return false;
         }
 
         // dalej jest magia, ktora dzieje przy generowaniu grafu
