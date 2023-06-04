@@ -78,19 +78,6 @@ namespace RWLogic
             return;
         }
 
-        public void SetTypicalEffects(List<Causes> causes, List<TypicallyCauses> typicallyCauses, List<Releases> releases, List<TypicallyReleases> typicallyReleases)
-        {
-            foreach (State s in States)
-            {
-                if (!s.forbidden)
-                    for (int j = 0; j < action.Length; j++)
-                    {
-                        s.typicalEffects[j] = TypicalRes(s, j, causes, typicallyCauses, releases, typicallyReleases);
-                    }
-            }
-            return;
-        }
-
         public void SetAbnormalEffects()
         {
             List<State> result = new List<State>();
@@ -115,7 +102,7 @@ namespace RWLogic
             return;
         }
 
-        public void SetInitialStates(List<Initially> initially, List<After> after, List<TypicallyAfter> typicallyAfter, List<ObservableAfter> observableAfter)
+        public void SetInitialStates(List<Initially> initially, List<After> after, List<ObservableAfter> observableAfter)
         {
             List<State> result = new List<State>();
 
@@ -171,46 +158,6 @@ namespace RWLogic
                 initial.AddRange(result);
                 result.Clear();
             }
-
-
-            //typically after
-            if(typicallyAfter.Count != 0)
-            {
-                foreach (State s in initial)
-                {
-                    result.Add(s);
-                    bool end = false;
-                    foreach (TypicallyAfter statement in typicallyAfter)
-                    {
-                        if (end) break;
-                        Stack<(State state, int i)> DFS = new Stack<(State state, int i)>();
-                        (State state, int index) current;
-                        DFS.Push((s, 0));
-                        while (DFS.Count != 0)
-                        {
-                            current = DFS.Pop();
-                            if (current.index == statement.activity.Count)
-                            {
-                                if (!current.state.SatisfiesCondition(statement.effect))
-                                {
-                                    result.Remove(s);
-                                    end = true;
-                                    break;
-                                }
-                            }
-                            else foreach (State res in current.state.possibleEffects[statement.activity[current.index]])
-                            {
-                                DFS.Push((res, current.index + 1));
-                            }
-                        }
-
-                    }
-                }
-                initial.Clear();
-                initial.AddRange(result);
-                result.Clear();
-            }
-
 
             //observable
             if(observableAfter.Count != 0)

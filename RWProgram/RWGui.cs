@@ -28,12 +28,12 @@ namespace RWProgram
             "α after A1, A2, ... , An",
             "observable α after A1, A2, ... ,An",
             "A causes α if π costs k",
-            "A releases f if π costs k",
+            "A releases α if π costs k",
             "always α",
             "noninertial α"
         };
 
-        public List<string> Querends = new List<string>()
+        public List<string> Queries = new List<string>()
         {
             "necessary executable A1, ..., An from π cost k",
             "necessary α after A1, ..., An from π",
@@ -63,7 +63,7 @@ namespace RWProgram
             StatementsComboBox.Items.Clear();
             StatementsComboBox.Items.AddRange(Statements.ToArray());
             QueriesComboBox.Items.Clear();
-            QueriesComboBox.Items.AddRange(Querends.ToArray());
+            QueriesComboBox.Items.AddRange(Queries.ToArray());
             Logic.Actions.Add(new Action() { Name = "Anything", Index = 1000 });
             ActionComboBox.Items.Clear();
             ActionComboBox.Items.AddRange(Logic.Actions.ToArray());
@@ -71,15 +71,10 @@ namespace RWProgram
             ProgramActionComboBox.Items.AddRange(Logic.Actions.Where(n => n.Name != "Anything").ToArray());
         }
 
-        private void ActorsTextBox_Changed(object sender, EventArgs e)
-        {
-            
-        }
-
         private void FluentsTextBox_Changed(object sender, EventArgs e)
         {
             var fluents_names = fluentsTextBox.Text.Split(',', ';', '\n');
-            fluents_names = fluents_names.Select(f => f.Trim()).Where(f => f != string.Empty).ToArray();
+            fluents_names = fluents_names.Select(f => f.ToLower().Trim()).Where(f => f != string.Empty).ToArray();
 
             var to_create = fluents_names.Where(f => !Logic.Fluents.Any(x => x.Name == f));
             Logic.Fluents = Logic.Fluents.Where(x => fluents_names.Any(f => f == x.Name)).ToList();
@@ -96,7 +91,7 @@ namespace RWProgram
         private void ActionsTextBox_Changed(object sender, EventArgs e)
         {
             var actions_names = actionsTextBox.Text.Split(',', ';', '\n');
-            actions_names = actions_names.Select(a => a.Trim()).Where(a => a != string.Empty).ToArray();
+            actions_names = actions_names.Select(a => a.ToUpper().Trim()).Where(a => a != string.Empty).ToArray();
 
             var to_create = actions_names.Where(a => !Logic.Actions.Any(x => x.Name == a));
             Logic.Actions = Logic.Actions.Where(x => actions_names.Any(a => a == x.Name) || x.Name == "Anything").ToList();
@@ -140,6 +135,8 @@ namespace RWProgram
                     piExpression = Parser.Parse(PiTextBox1.Text);
                     piState = new State(piExpression, piString, Logic.Fluents);
                 }
+
+                cost = (int)costUpDown.Value;
             }
             catch (Exception)
             {
@@ -155,7 +152,7 @@ namespace RWProgram
                     if(!string.IsNullOrEmpty(alphaString))
                         Logic.Statements.Add(new InitiallyFluent (alphaState));
                     break;
-                case StatementEnum.FluentAfterActionbyActor:
+                case StatementEnum.FluentAfterActions:
                     if (ActionComboBox.SelectedItem == null)
                         return;
                     Logic.Statements.Add(new FluentAfterActionbyActor
@@ -164,16 +161,7 @@ namespace RWProgram
                         new List<Action> { (Action)ActionComboBox.SelectedItem}
                     ));
                     break;
-                case StatementEnum.FluentTypicallyAfterActionbyActor:
-                    if (ActionComboBox.SelectedItem == null)
-                        return;
-                    Logic.Statements.Add(new FluentTypicallyAfterAction
-                    (
-                        alphaState,
-                        new List<Action> { (Action)ActionComboBox.SelectedItem }
-                    ));
-                    break;
-                case StatementEnum.ObservableFluentAfterActionByActor:
+                case StatementEnum.ObservableFluentAfterActions:
                     if (ActionComboBox.SelectedItem == null)
                         return;
                     Logic.Statements.Add(new ObservableFluentAfterAction
@@ -182,7 +170,7 @@ namespace RWProgram
                         new List<Action> { (Action)ActionComboBox.SelectedItem }
                     ));
                     break;
-                case StatementEnum.ActionByActorCausesAlphaIfFluents:
+                case StatementEnum.ActionCausesAlphaIfFluents:
                     if (ActionComboBox.SelectedItem == null)
                         return;
                     Logic.Statements.Add(new ActionCausesAlphaIfFluents
@@ -193,7 +181,7 @@ namespace RWProgram
                         cost
                     ));
                     break;
-                case StatementEnum.ActionByActorReleasesFluent1IfFluents:
+                case StatementEnum.ActionReleasesFluent1IfFluents:
                     if (ActionComboBox.SelectedItem == null)
                         return;
                     Logic.Statements.Add(new ActionReleasesFluent1IfFluents
@@ -204,29 +192,15 @@ namespace RWProgram
                         cost
                     ));
                     break;
-                case StatementEnum.ActionByActorTypicallyCausesAlphaIfFluents:
-                    if (ActionComboBox.SelectedItem == null)
+                case StatementEnum.AlwaysFluent:
+                    if (string.IsNullOrEmpty(piString))
                         return;
-                    Logic.Statements.Add(new ActionTypicallyCausesAlphaIfFluents
+                    Logic.Statements.Add(new AlwaysPi
                     (
-                        alphaState,
-                        (Action)ActionComboBox.SelectedItem,
-                        piState,
-                        cost
+                        piState
                     ));
                     break;
-                case StatementEnum.ActionByActorTypicallyReleasesFluent1IfFluents:
-                    if (ActionComboBox.SelectedItem == null)
-                        return;
-                    Logic.Statements.Add(new ActionTypicallyReleasesFluent1IfFluents
-                    (
-                        (Fluent)FluentComboBox.SelectedItem,
-                        (Action)ActionComboBox.SelectedItem,
-                        piState,
-                        cost
-                    ));
-                    break;
-                case StatementEnum.ImpossibleActionByActorIfFluents:
+                case StatementEnum.ImpossibleActionIfFluents:
                     if (ActionComboBox.SelectedItem == null)
                         return;
                     Logic.Statements.Add(new ImpossibleActionIfFluents
@@ -234,14 +208,6 @@ namespace RWProgram
                         (Action)ActionComboBox.SelectedItem,
                         piState,
                         cost
-                    ));
-                    break;
-                case StatementEnum.AlwaysPi:
-                    if (string.IsNullOrEmpty(piString))
-                        return;
-                    Logic.Statements.Add(new AlwaysPi
-                    (
-                        piState
                     ));
                     break;
                 case StatementEnum.NoninertialFluent:
@@ -256,7 +222,7 @@ namespace RWProgram
                     break;
             }
 
-            if (statementEnum == StatementEnum.FluentAfterActionbyActor || statementEnum == StatementEnum.FluentTypicallyAfterActionbyActor || statementEnum == StatementEnum.ObservableFluentAfterActionByActor)
+            if (statementEnum == StatementEnum.FluentAfterActions  || statementEnum == StatementEnum.ObservableFluentAfterActions)
                 ShowButtons();
 
             SetStatementsText();
@@ -325,9 +291,8 @@ namespace RWProgram
             var statementWIP = (StatementEnum)StatementsComboBox.SelectedIndex;
             switch (statementWIP)
             {
-                case StatementEnum.FluentAfterActionbyActor:
-                case StatementEnum.ObservableFluentAfterActionByActor:
-                case StatementEnum.FluentTypicallyAfterActionbyActor:
+                case StatementEnum.FluentAfterActions:
+                case StatementEnum.ObservableFluentAfterActions:
                     {
                         var statement = Logic.Statements.Last();
                         var afterActionByActor = statement as StatementAfterActionByUser;
@@ -382,7 +347,7 @@ namespace RWProgram
         {
             var queryIndex = QueriesComboBox.SelectedIndex;
             var queryEnum = (QueriesEnum)queryIndex;
-            var cost = (int)numericUpDown3.Value;
+            var cost = (int)costUpDown3.Value;
 
             string gammaString, piString;
             LogicalExpressionRoot gammaExpression, piExpression;
@@ -587,7 +552,6 @@ namespace RWProgram
 
         private void SetHardcodedLogicInFrontEnd(Logic logic)
         {
-            ActorsTextBox_Changed(null, null);
             fluentsTextBox.Text = string.Join(", ", logic.Fluents.Where(f => !(f is NegatedFluent)).Select(x => x.ToString()));
             FluentsTextBox_Changed(null, null);
             actionsTextBox.Text = string.Join(", ", logic.Actions.Where(a => a.Name != "Anything").Select(x => x.ToString()));

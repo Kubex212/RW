@@ -34,12 +34,9 @@ namespace RWProgram
                 noninertial: GetStatements<NoninertialFluent, RWLogic.Noninertial>().ToList(),
                 always: GetStatements<AlwaysPi, RWLogic.Always>().ToList(),
                 causes: GetStatementsForConditionActionByActor<ActionCausesAlphaIfFluents, RWLogic.Causes>().ToList(),
-                typicallyCauses: GetStatementsForConditionActionByActor<ActionTypicallyCausesAlphaIfFluents, RWLogic.TypicallyCauses>().ToList(),
                 releases: GetStatementsForConditionActionByActor<ActionReleasesFluent1IfFluents, RWLogic.Releases>().ToList(),
-                typicallyReleases: GetStatementsForConditionActionByActor<ActionTypicallyReleasesFluent1IfFluents, RWLogic.TypicallyReleases>().ToList(),
                 initially: GetStatements<InitiallyFluent, RWLogic.Initially>().ToList(),
                 after: GetStatements<FluentAfterActionbyActor, RWLogic.After>().ToList(),
-                typicallyAfter: GetStatements<FluentTypicallyAfterAction, RWLogic.TypicallyAfter>().ToList(),
                 observableAfter: GetStatements<ObservableFluentAfterAction, RWLogic.ObservableAfter>().ToList()
             );
 
