@@ -102,12 +102,32 @@ namespace RWProgram
                 return new AlwaysExecutable(new State("not open", new string[] { "open" }), 10);
             }
         }
-
-        public static AlwaysExecutable Test5b
+        
+        public static AlwaysAccesibleYFromPi Test5a
         {
             get
             {
-                return new AlwaysExecutable(new State("alive && not loaded", new string[] { "loaded", "alive" }), cost: 19);
+                return new AlwaysAccesibleYFromPi(new State("not vase", new string[] { "vase" }), new State(), 2);
+            }
+        }
+
+        public static EverAccesibleYFromPi Test5b
+        {
+            get
+            {
+                return new EverAccesibleYFromPi(new State("not vase", new string[] { "vase" }), new State(), 2);
+            }
+        }
+
+        public static AlwaysAfter Test5c
+        {
+            get
+            {
+                return new AlwaysAfter()
+                {
+                    Alpha = new State("not vase", new string[] { "vase", "cat" }),
+                    Pi = new State("vase", new string[] { "vase", "cat" })
+                };
             }
         }
     }

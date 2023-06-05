@@ -97,7 +97,8 @@ namespace RWProgram.Classes
         {
             var str = $"Is {Gamma.ToString()} necessarily accessible";
             if (!string.IsNullOrEmpty(Pi.ToString()))
-                str = str + $" from {Pi.ToString()} cost {Cost}";
+                str = str + $" from {Pi.ToString()}";
+            str += $" cost {Cost}";
             return str;
         }
     }

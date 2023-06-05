@@ -149,8 +149,7 @@ namespace RWProgram
             {
                 return new List<Action>
                 {
-                    new Action { Name = "LOAD", Index = 0 },
-                    new Action { Name = "SHOOT", Index = 1 },
+
                 };
             }
         }
@@ -161,7 +160,7 @@ namespace RWProgram
             {
                 return new List<Action>
                 {
-                    new Action { Name = "SHOOT", Index = 1 },
+
                 };
             }
         }
@@ -172,7 +171,8 @@ namespace RWProgram
             {
                 return new List<Action>
                 {
-                    new Action { Name = "LOAD", Index = 0 },
+                    new Action { Name = "OPENDOOR", Index = 0 },
+                    new Action { Name = "JUMP", Index = 1 },
                 };
             }
         }

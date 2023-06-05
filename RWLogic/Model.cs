@@ -498,9 +498,10 @@ namespace RWLogic
             return result;
         }
 
-        private bool[] New(State s, int action, State res, List<Releases> releases)
+        private (bool[], int) New(State s, int action, State res, List<Releases> releases)
         {
             bool[] result = new bool[fluent.Length];
+            var cost = 0;
             for(int i=0;i<fluent.Length;i++)
             {
                 if (!noninertial[i] && s.fluents[i] != res.fluents[i]) // warunek 1 dla inercjalnych
@@ -514,12 +515,12 @@ namespace RWLogic
                             statement.fluent == i)//!res.SatisfiesCondition(statement.effect))
                         {
                             result[i] = true;
-                            break;
+                            cost += statement.Cost;
                         }
                     }
                 }
             }
-            return result;
+            return (result, cost);
         }
 
         private bool Subset(bool[] A, bool[] B)
@@ -542,9 +543,12 @@ namespace RWLogic
             List<State> res0 = res0Tuple.Select(r => r.Item1).ToList();
             List<int> res0Costs = res0Tuple.Select(r => r.Item2).ToList();
             List<bool[]> newSet = new List<bool[]>();
-            foreach(State res in res0)
+            for(int i = 0; i < res0.Count; i++)
             {
-                newSet.Add(New(s, action, res, releases));
+                var res = res0[i];
+                var newRes = New(s, action, res, releases);
+                newSet.Add(newRes.Item1);
+                res0Costs[i] += newRes.Item2;
             }
 
             bool[] isMinimal = new bool[newSet.Count];

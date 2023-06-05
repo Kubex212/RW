@@ -36,11 +36,11 @@ namespace RWProgram
 
         public List<string> Queries = new List<string>()
         {
-            "necessary executable A1, ..., An from π cost k",
+            "necessarily executable A1, ..., An from π cost k",
             "possibly executable A1, ..., An from π cost k",
-            //"necessary α after A1, ..., An from π",
+            "necessarily α after A1, ..., An from π",
             "possibly α after A1, ..., An from π",
-            "necessary accessible γ from π cost k",
+            "necessarily accessible γ from π cost k",
             "possibly accessible γ from π cost k",
         };
 
@@ -404,12 +404,26 @@ namespace RWProgram
                         Query = QueryAlways;
                     }
                     break;
-                case QueriesEnum.TypicallyAccesibleYFromPi:
-                    if (!string.IsNullOrEmpty(gammaString))
+                //case QueriesEnum.TypicallyAccesibleYFromPi:
+                //    if (!string.IsNullOrEmpty(gammaString))
+                //    {
+                //        var QueryAlways = new TypicallyAccesibleYFromPi(gammaState, piState, cost);
+                //        Query = QueryAlways;
+                //    }
+                //    break;
+                case QueriesEnum.AlwaysAfter:
+                    Query = new AlwaysAfter()
                     {
-                        var QueryAlways = new TypicallyAccesibleYFromPi(gammaState, piState, cost);
-                        Query = QueryAlways;
-                    }
+                        Pi = piState,
+                        Alpha = piState
+                    };
+                    break;
+                case QueriesEnum.EverAfter:
+                    Query = new PossiblyAfter()
+                    {
+                        Pi = piState,
+                        Alpha = piState
+                    };
                     break;
                 default:
                     break;
@@ -661,7 +675,8 @@ namespace RWProgram
         private void przykładKwerenda1ToolStripMenuItem4_Click(object sender, EventArgs e)
         {
             SetHardcodedLogicInFrontEnd(Tests_Logic.Test5);
-            SetHardcodedProgramInFrontEnd(Tests_Programs.Test5a);
+            //SetHardcodedProgramInFrontEnd(Tests_Programs.Test5a);
+            SetHardcodedQueryInFrontEnd(Tests_Queries.Test5a);
         }
 
         private void przykładKwerenda2ToolStripMenuItem4_Click(object sender, EventArgs e)
@@ -675,6 +690,7 @@ namespace RWProgram
         {
             SetHardcodedLogicInFrontEnd(Tests_Logic.Test5);
             SetHardcodedProgramInFrontEnd(Tests_Programs.Test5c);
+            SetHardcodedQueryInFrontEnd(Tests_Queries.Test5c);
         }
 
         private void ResetAllButton_Click(object sender, EventArgs e)

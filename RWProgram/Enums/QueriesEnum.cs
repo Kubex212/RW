@@ -10,9 +10,10 @@ namespace RWProgram.Enums
     {
         AlwaysExecutable,
         EverExecutable,
+        AlwaysAfter,
+        EverAfter,
         AlwaysAccesibleYFromPi,
         EverAccesibleYFromPi,
-        TypicallyAccesibleYFromPi,
         None
     }
 }
