@@ -655,7 +655,8 @@ namespace RWProgram
         private void przykładKwerenda1ToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             SetHardcodedLogicInFrontEnd(Tests_Logic.Test4);
-            SetHardcodedProgramInFrontEnd(Tests_Programs.Test4a);
+            //SetHardcodedProgramInFrontEnd(Tests_Programs.Test4a);
+            SetHardcodedQueryInFrontEnd(Tests_Queries.Test4a);
         }
 
         private void przykładKwerenda2ToolStripMenuItem3_Click(object sender, EventArgs e)
@@ -712,6 +713,75 @@ namespace RWProgram
             StatementsComboBox.ResetText();
             ProgramActionComboBox.ResetText();
             SetQueryTextBox();
+        }
+
+        private void pSosnoStudentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //SetHardcodedLogicInFrontEnd(Tests_Logic.Test6);
+            //SetHardcodedProgramInFrontEnd(Tests_Programs.Test5c);
+            //SetHardcodedQueryInFrontEnd(Tests_Queries.Test6a);
+        }
+
+        private void placeholderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetHardcodedLogicInFrontEnd(Tests_Logic.Test6);
+            //SetHardcodedProgramInFrontEnd(Tests_Programs.Test5c);
+            SetHardcodedQueryInFrontEnd(Tests_Queries.Test6a);
+        }
+        private void przykład2KwerendaPossiblyAccessibleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetHardcodedLogicInFrontEnd(Tests_Logic.Test6);
+            //SetHardcodedProgramInFrontEnd(Tests_Programs.Test5c);
+            SetHardcodedQueryInFrontEnd(Tests_Queries.Test6b);
+        }
+
+        private void przykład3KwerendaNecessarilyAfterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetHardcodedLogicInFrontEnd(Tests_Logic.Test6);
+            SetHardcodedProgramInFrontEnd(Tests_Programs.Test6c);
+            SetHardcodedQueryInFrontEnd(Tests_Queries.Test6c);
+        }
+
+        private void placeholderToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SetHardcodedLogicInFrontEnd(Tests_Logic.Test7);
+            SetHardcodedProgramInFrontEnd(Tests_Programs.Test7);
+            SetHardcodedQueryInFrontEnd(Tests_Queries.Test7a);
+        }
+
+        private void przykład2NecessarilyExecutableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetHardcodedLogicInFrontEnd(Tests_Logic.Test7);
+            SetHardcodedProgramInFrontEnd(Tests_Programs.Test7);
+            SetHardcodedQueryInFrontEnd(Tests_Queries.Test7b);
+        }
+
+        private void przykład3NecessarilyAccessibleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetHardcodedLogicInFrontEnd(Tests_Logic.Test7);
+            SetHardcodedProgramInFrontEnd(Tests_Programs.Test7);
+            SetHardcodedQueryInFrontEnd(Tests_Queries.Test7c);
+        }
+
+        private void placeholderToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            SetHardcodedLogicInFrontEnd(Tests_Logic.Test8);
+            SetHardcodedProgramInFrontEnd(Tests_Programs.Test8a);
+            SetHardcodedQueryInFrontEnd(Tests_Queries.Test8a);
+        }
+
+        private void przykład1KwerendaNecessarilyExecutableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetHardcodedLogicInFrontEnd(Tests_Logic.Test8);
+            SetHardcodedProgramInFrontEnd(Tests_Programs.Test8b);
+            SetHardcodedQueryInFrontEnd(Tests_Queries.Test8b);
+        }
+
+        private void przykład1KwerendaNecessarilyExecutableToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SetHardcodedLogicInFrontEnd(Tests_Logic.Test8);
+            SetHardcodedProgramInFrontEnd(Tests_Programs.Test8c);
+            SetHardcodedQueryInFrontEnd(Tests_Queries.Test8c);
         }
     }
 }

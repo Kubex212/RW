@@ -86,7 +86,7 @@ namespace RWProgram.Classes
         public int Cost { get; set; }
         public override string ToString()
         {
-            return $"Is program possibly executable" + (!string.IsNullOrEmpty(Pi?.ToString()) ? $" from {Pi} " : string.Empty) + $"cost {Cost}";
+            return $"Is program possibly executable " + (!string.IsNullOrEmpty(Pi?.ToString()) ? $" from {Pi} " : string.Empty) + $"cost {Cost}";
         }
     }
 
@@ -111,7 +111,8 @@ namespace RWProgram.Classes
         {
             var str = $"Is {Gamma.ToString()} possibly accessible";
             if (!string.IsNullOrEmpty(Pi.ToString()))
-                str = str + $" from {Pi.ToString()} cost {Cost}";
+                str = str + $" from {Pi.ToString()}";
+            str += $" cost {Cost}";
             return str;
         }
     }

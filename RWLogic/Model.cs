@@ -60,6 +60,7 @@ namespace RWLogic
                         s.forbidden = true;
                 }
             }
+            var forbiddens = States.Where(s => s.forbidden).ToList();
             return;
         }
 
@@ -217,7 +218,15 @@ namespace RWLogic
 
         public bool AlwaysAfter(Query_NecessaryAfter query)
         {
-            var currentStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition) && !s.forbidden).ToList();
+            var currentStates = new List<State>();
+            if (query.InitialCondition.EmptyRoot)
+            {
+                currentStates = initial;
+            }
+            else
+            {
+                currentStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition) && !s.forbidden).ToList();
+            }
             var nextStates = new List<State>();
 
             foreach(var action in query.program)
@@ -239,7 +248,15 @@ namespace RWLogic
 
         public bool PossiblyAfter(Query_PossiblyAfter query)
         {
-            var currentStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition) && !s.forbidden).ToList();
+            var currentStates = new List<State>();
+            if (query.InitialCondition.EmptyRoot)
+            {
+                currentStates = initial;
+            }
+            else
+            {
+                currentStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition) && !s.forbidden).ToList();
+            }
             var nextStates = new List<State>();
 
             foreach (var action in query.program)

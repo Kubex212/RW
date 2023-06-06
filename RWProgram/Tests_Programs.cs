@@ -176,5 +176,68 @@ namespace RWProgram
                 };
             }
         }
+
+        public static List<Action> Test6c
+        {
+            get
+            {
+                return new List<Action>
+                {
+                    new Action { Name = "BUY_A", Index = 0 },
+                    new Action { Name = "BUY_B", Index = 1 },
+                    new Action { Name = "READ", Index = 3 },
+                };
+            }
+        }
+
+        public static List<Action> Test7
+        {
+            get
+            {
+                return new List<Action>
+                {
+                    new Action { Name = "GET_FUEL", Index = 0 },
+                    new Action { Name = "GET_OIL", Index = 1 },
+                    new Action { Name = "CUT_TREE", Index = 2 },
+                };
+            }
+        }
+
+        public static List<Action> Test8a
+        {
+            get
+            {
+                return new List<Action>
+                {
+                    new Action { Name = "REFUEL", Index = 0 },
+                    new Action { Name = "DRIVE", Index = 1 },
+                };
+            }
+        }
+
+        public static List<Action> Test8b
+        {
+            get
+            {
+                return new List<Action>
+                {
+                    new Action { Name = "DRIVE", Index = 1 },
+                    new Action { Name = "DRIVE", Index = 1 },
+                };
+            }
+        }
+
+        public static List<Action> Test8c
+        {
+            get
+            {
+                return new List<Action>
+                {
+                    new Action { Name = "DRIVE", Index = 1 },
+                    new Action { Name = "DRIVE", Index = 1 },
+                    new Action { Name = "DRIVE", Index = 1 },
+                };
+            }
+        }
     }
 }
