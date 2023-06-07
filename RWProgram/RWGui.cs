@@ -415,14 +415,14 @@ namespace RWProgram
                     Query = new AlwaysAfter()
                     {
                         Pi = piState,
-                        Alpha = piState
+                        Alpha = gammaState
                     };
                     break;
                 case QueriesEnum.EverAfter:
                     Query = new PossiblyAfter()
                     {
                         Pi = piState,
-                        Alpha = piState
+                        Alpha = gammaState
                     };
                     break;
                 default:

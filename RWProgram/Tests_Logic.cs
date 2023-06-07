@@ -206,7 +206,7 @@ namespace RWProgram
                         new ActionCausesAlphaIfFluents(new State("readA", fluents), readBooks, new State("bookA", fluents), 100),
                         new ActionCausesAlphaIfFluents(new State("readB", fluents), readBooks, new State("bookB", fluents), 150),
                         new ActionCausesAlphaIfFluents(new State("readC", fluents), readBooks, new State("bookC", fluents), 180),
-                        new AlwaysPi(new State("((readA && readB) || (readA && readC) || (readB && readC)) -> pass && pass -> ((readA && readB) || (readA && readC) || (readB && readC))", fluents)),
+                        new AlwaysPi(new State("pass <-> ((readA && readB) || (readA && readC) || (readB && readC))", fluents)),
 
                     }
                 };
@@ -253,7 +253,8 @@ namespace RWProgram
                         new InitiallyFluent(new State("not oil", fluents)),
                         new InitiallyFluent(new State("not wood", fluents)),
                         new InitiallyFluent(new State("canUseSaw", fluents)),
-                        new AlwaysPi(new State("canUseChainsaw -> (fuel && oil) && (fuel && oil) -> canUseChainsaw", fluents)),
+                        //new AlwaysPi(new State("canUseChainsaw -> (fuel && oil) && (fuel && oil) -> canUseChainsaw", fluents)),
+                        new AlwaysPi(new State("canUseChainsaw <-> (fuel && oil)", fluents)),
                         new ActionCausesAlphaIfFluents(new State("fuel", fluents), getFuel, new State("", fluents), 3),
                         new ActionCausesAlphaIfFluents(new State("oil", fluents), getOil, new State("", fluents), 3),
                         new ActionCausesAlphaIfFluents(new State("wood", fluents), cutTree, new State("canUseSaw", fluents), 10),
