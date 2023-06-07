@@ -1,4 +1,6 @@
-﻿namespace RWProgram
+﻿using System.Drawing;
+
+namespace RWProgram
 {
     partial class RWGui
     {
@@ -200,22 +202,22 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label4.Location = new System.Drawing.Point(470, 35);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(189, 24);
+            this.label4.Size = new System.Drawing.Size(159, 20);
             this.label4.TabIndex = 1;
             this.label4.Text = "- dostępne wyrażenia";
             // 
             // StatementsComboBox
             // 
-            this.StatementsComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.StatementsComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.StatementsComboBox.FormattingEnabled = true;
             this.StatementsComboBox.Location = new System.Drawing.Point(20, 34);
             this.StatementsComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.StatementsComboBox.Name = "StatementsComboBox";
-            this.StatementsComboBox.Size = new System.Drawing.Size(446, 25);
+            this.StatementsComboBox.Size = new System.Drawing.Size(446, 28);
             this.StatementsComboBox.TabIndex = 4;
             this.StatementsComboBox.SelectedIndexChanged += new System.EventHandler(this.StatementsComboBox_SelectedIndexChanged);
             // 
@@ -233,11 +235,11 @@
             // QueriesLabel
             // 
             this.QueriesLabel.AutoSize = true;
-            this.QueriesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.QueriesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.QueriesLabel.Location = new System.Drawing.Point(446, 29);
             this.QueriesLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.QueriesLabel.Name = "QueriesLabel";
-            this.QueriesLabel.Size = new System.Drawing.Size(187, 24);
+            this.QueriesLabel.Size = new System.Drawing.Size(156, 20);
             this.QueriesLabel.TabIndex = 4;
             this.QueriesLabel.Text = "- dostępne kwerendy";
             // 
@@ -292,7 +294,7 @@
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button1.Location = new System.Drawing.Point(536, 68);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
@@ -401,7 +403,7 @@
             // 
             // AskQueryButton
             // 
-            this.AskQueryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.AskQueryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.AskQueryButton.Location = new System.Drawing.Point(507, 276);
             this.AskQueryButton.Margin = new System.Windows.Forms.Padding(2);
             this.AskQueryButton.Name = "AskQueryButton";
@@ -413,7 +415,7 @@
             // 
             // AddToProgramButton
             // 
-            this.AddToProgramButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.AddToProgramButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.AddToProgramButton.Location = new System.Drawing.Point(131, 42);
             this.AddToProgramButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddToProgramButton.Name = "AddToProgramButton";
@@ -425,7 +427,7 @@
             // 
             // ResetProgramButton
             // 
-            this.ResetProgramButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ResetProgramButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ResetProgramButton.Location = new System.Drawing.Point(131, 106);
             this.ResetProgramButton.Margin = new System.Windows.Forms.Padding(2);
             this.ResetProgramButton.Name = "ResetProgramButton";
@@ -437,7 +439,7 @@
             // 
             // ResetStatementButton
             // 
-            this.ResetStatementButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ResetStatementButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ResetStatementButton.Location = new System.Drawing.Point(50, 267);
             this.ResetStatementButton.Margin = new System.Windows.Forms.Padding(2);
             this.ResetStatementButton.Name = "ResetStatementButton";
@@ -450,7 +452,7 @@
             // AddConditionButton
             // 
             this.AddConditionButton.Enabled = false;
-            this.AddConditionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.AddConditionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.AddConditionButton.Location = new System.Drawing.Point(536, 109);
             this.AddConditionButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddConditionButton.Name = "AddConditionButton";
@@ -464,7 +466,7 @@
             // ConfirmStatementButton
             // 
             this.ConfirmStatementButton.Enabled = false;
-            this.ConfirmStatementButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ConfirmStatementButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ConfirmStatementButton.Location = new System.Drawing.Point(536, 142);
             this.ConfirmStatementButton.Margin = new System.Windows.Forms.Padding(2);
             this.ConfirmStatementButton.Name = "ConfirmStatementButton";
@@ -488,7 +490,7 @@
             // 
             // ResetQueryButton
             // 
-            this.ResetQueryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ResetQueryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ResetQueryButton.Location = new System.Drawing.Point(394, 276);
             this.ResetQueryButton.Margin = new System.Windows.Forms.Padding(2);
             this.ResetQueryButton.Name = "ResetQueryButton";
@@ -512,7 +514,7 @@
             // 
             // AddQueryButton
             // 
-            this.AddQueryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.AddQueryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.AddQueryButton.Location = new System.Drawing.Point(281, 276);
             this.AddQueryButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddQueryButton.Name = "AddQueryButton";
@@ -524,7 +526,7 @@
             // 
             // DeleteLastStatementButton
             // 
-            this.DeleteLastStatementButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.DeleteLastStatementButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.DeleteLastStatementButton.Location = new System.Drawing.Point(50, 235);
             this.DeleteLastStatementButton.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteLastStatementButton.Name = "DeleteLastStatementButton";
@@ -536,7 +538,7 @@
             // 
             // DeleteLastProgramButton
             // 
-            this.DeleteLastProgramButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.DeleteLastProgramButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.DeleteLastProgramButton.Location = new System.Drawing.Point(131, 74);
             this.DeleteLastProgramButton.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteLastProgramButton.Name = "DeleteLastProgramButton";
@@ -554,7 +556,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(684, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(684, 28);
             this.menuStrip1.TabIndex = 61;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -569,8 +571,9 @@
             this.pSosnoStudentToolStripMenuItem,
             this.pToolStripMenuItem,
             this.pDrabarekToolStripMenuItem});
+            this.przykładyToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykładyToolStripMenuItem.Name = "przykładyToolStripMenuItem";
-            this.przykładyToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.przykładyToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
             this.przykładyToolStripMenuItem.Text = "Przykłady";
             // 
             // przykład1ToolStripMenuItem
@@ -579,28 +582,32 @@
             this.przykładKwerenda1ToolStripMenuItem,
             this.przykładKwerenda2ToolStripMenuItem,
             this.przykładKwerenda3ToolStripMenuItem});
+            this.przykład1ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykład1ToolStripMenuItem.Name = "przykład1ToolStripMenuItem";
-            this.przykład1ToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.przykład1ToolStripMenuItem.Size = new System.Drawing.Size(350, 24);
             this.przykład1ToolStripMenuItem.Text = "A. Kuś - Yale Shooting Problem";
             // 
             // przykładKwerenda1ToolStripMenuItem
             // 
+            this.przykładKwerenda1ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykładKwerenda1ToolStripMenuItem.Name = "przykładKwerenda1ToolStripMenuItem";
-            this.przykładKwerenda1ToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda1ToolStripMenuItem.Size = new System.Drawing.Size(398, 24);
             this.przykładKwerenda1ToolStripMenuItem.Text = "Przykład 1 - Kwerenda NecessarilyAccesible";
             this.przykładKwerenda1ToolStripMenuItem.Click += new System.EventHandler(this.przykładKwerenda1ToolStripMenuItem_Click);
             // 
             // przykładKwerenda2ToolStripMenuItem
             // 
+            this.przykładKwerenda2ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykładKwerenda2ToolStripMenuItem.Name = "przykładKwerenda2ToolStripMenuItem";
-            this.przykładKwerenda2ToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda2ToolStripMenuItem.Size = new System.Drawing.Size(398, 24);
             this.przykładKwerenda2ToolStripMenuItem.Text = "Przykład 2 - Kwerenda NecessarilyAfter";
             this.przykładKwerenda2ToolStripMenuItem.Click += new System.EventHandler(this.przykładKwerenda2ToolStripMenuItem_Click);
             // 
             // przykładKwerenda3ToolStripMenuItem
             // 
+            this.przykładKwerenda3ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykładKwerenda3ToolStripMenuItem.Name = "przykładKwerenda3ToolStripMenuItem";
-            this.przykładKwerenda3ToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda3ToolStripMenuItem.Size = new System.Drawing.Size(398, 24);
             this.przykładKwerenda3ToolStripMenuItem.Text = "Przykład 3 - Kwerenda NecessarilyExecutable";
             this.przykładKwerenda3ToolStripMenuItem.Click += new System.EventHandler(this.przykładKwerenda3ToolStripMenuItem_Click);
             // 
@@ -610,28 +617,32 @@
             this.przykładKwerenda1ToolStripMenuItem1,
             this.przykładKwerenda2ToolStripMenuItem1,
             this.przykładKwerenda3ToolStripMenuItem1});
+            this.przykład2ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykład2ToolStripMenuItem.Name = "przykład2ToolStripMenuItem";
-            this.przykład2ToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.przykład2ToolStripMenuItem.Size = new System.Drawing.Size(350, 24);
             this.przykład2ToolStripMenuItem.Text = "W. Klusek - Stanford Murder Mystery";
             // 
             // przykładKwerenda1ToolStripMenuItem1
             // 
+            this.przykładKwerenda1ToolStripMenuItem1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykładKwerenda1ToolStripMenuItem1.Name = "przykładKwerenda1ToolStripMenuItem1";
-            this.przykładKwerenda1ToolStripMenuItem1.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda1ToolStripMenuItem1.Size = new System.Drawing.Size(398, 24);
             this.przykładKwerenda1ToolStripMenuItem1.Text = "Przykład 1 - Kwerenda PossiblyAccesible";
             this.przykładKwerenda1ToolStripMenuItem1.Click += new System.EventHandler(this.przykładKwerenda1ToolStripMenuItem1_Click);
             // 
             // przykładKwerenda2ToolStripMenuItem1
             // 
+            this.przykładKwerenda2ToolStripMenuItem1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykładKwerenda2ToolStripMenuItem1.Name = "przykładKwerenda2ToolStripMenuItem1";
-            this.przykładKwerenda2ToolStripMenuItem1.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda2ToolStripMenuItem1.Size = new System.Drawing.Size(398, 24);
             this.przykładKwerenda2ToolStripMenuItem1.Text = "Przykład 2 - Kwerenda NecessarilyExecutable";
             this.przykładKwerenda2ToolStripMenuItem1.Click += new System.EventHandler(this.przykładKwerenda2ToolStripMenuItem1_Click);
             // 
             // przykładKwerenda3ToolStripMenuItem1
             // 
+            this.przykładKwerenda3ToolStripMenuItem1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykładKwerenda3ToolStripMenuItem1.Name = "przykładKwerenda3ToolStripMenuItem1";
-            this.przykładKwerenda3ToolStripMenuItem1.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda3ToolStripMenuItem1.Size = new System.Drawing.Size(398, 24);
             this.przykładKwerenda3ToolStripMenuItem1.Text = "Przykład 3 - Kwerenda PossiblyExecutable";
             this.przykładKwerenda3ToolStripMenuItem1.Click += new System.EventHandler(this.przykładKwerenda3ToolStripMenuItem1_Click);
             // 
@@ -641,28 +652,32 @@
             this.przykładKwerenda1ToolStripMenuItem2,
             this.przykładKwerenda2ToolStripMenuItem2,
             this.przykładKwerenda3ToolStripMenuItem2});
+            this.przykład3ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykład3ToolStripMenuItem.Name = "przykład3ToolStripMenuItem";
-            this.przykład3ToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.przykład3ToolStripMenuItem.Size = new System.Drawing.Size(350, 24);
             this.przykład3ToolStripMenuItem.Text = "A. Goworek - Russian Turkey Scenario";
             // 
             // przykładKwerenda1ToolStripMenuItem2
             // 
+            this.przykładKwerenda1ToolStripMenuItem2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykładKwerenda1ToolStripMenuItem2.Name = "przykładKwerenda1ToolStripMenuItem2";
-            this.przykładKwerenda1ToolStripMenuItem2.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda1ToolStripMenuItem2.Size = new System.Drawing.Size(398, 24);
             this.przykładKwerenda1ToolStripMenuItem2.Text = "Przykład 1 - Kwerenda NecessarilyExecutable";
             this.przykładKwerenda1ToolStripMenuItem2.Click += new System.EventHandler(this.przykładKwerenda1ToolStripMenuItem2_Click);
             // 
             // przykładKwerenda2ToolStripMenuItem2
             // 
+            this.przykładKwerenda2ToolStripMenuItem2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykładKwerenda2ToolStripMenuItem2.Name = "przykładKwerenda2ToolStripMenuItem2";
-            this.przykładKwerenda2ToolStripMenuItem2.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda2ToolStripMenuItem2.Size = new System.Drawing.Size(398, 24);
             this.przykładKwerenda2ToolStripMenuItem2.Text = "Przykład 2 - Kwerenda NecessarilyAccesible";
             this.przykładKwerenda2ToolStripMenuItem2.Click += new System.EventHandler(this.przykładKwerenda2ToolStripMenuItem2_Click);
             // 
             // przykładKwerenda3ToolStripMenuItem2
             // 
+            this.przykładKwerenda3ToolStripMenuItem2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykładKwerenda3ToolStripMenuItem2.Name = "przykładKwerenda3ToolStripMenuItem2";
-            this.przykładKwerenda3ToolStripMenuItem2.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda3ToolStripMenuItem2.Size = new System.Drawing.Size(398, 24);
             this.przykładKwerenda3ToolStripMenuItem2.Text = "Przykład 3 - Kwerenda PossiblyExecutable";
             this.przykładKwerenda3ToolStripMenuItem2.Click += new System.EventHandler(this.przykładKwerenda3ToolStripMenuItem2_Click);
             // 
@@ -672,28 +687,32 @@
             this.przykładKwerenda1ToolStripMenuItem3,
             this.przykładKwerenda2ToolStripMenuItem3,
             this.przykładKwerenda3ToolStripMenuItem3});
+            this.przykład4OpeningTheDoorToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykład4OpeningTheDoorToolStripMenuItem.Name = "przykład4OpeningTheDoorToolStripMenuItem";
-            this.przykład4OpeningTheDoorToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.przykład4OpeningTheDoorToolStripMenuItem.Size = new System.Drawing.Size(350, 24);
             this.przykład4OpeningTheDoorToolStripMenuItem.Text = "J. Kurdek - Opening the door";
             // 
             // przykładKwerenda1ToolStripMenuItem3
             // 
+            this.przykładKwerenda1ToolStripMenuItem3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykładKwerenda1ToolStripMenuItem3.Name = "przykładKwerenda1ToolStripMenuItem3";
-            this.przykładKwerenda1ToolStripMenuItem3.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda1ToolStripMenuItem3.Size = new System.Drawing.Size(398, 24);
             this.przykładKwerenda1ToolStripMenuItem3.Text = "Przykład 1 - Kwerenda PossiblyAccesible";
             this.przykładKwerenda1ToolStripMenuItem3.Click += new System.EventHandler(this.przykładKwerenda1ToolStripMenuItem3_Click);
             // 
             // przykładKwerenda2ToolStripMenuItem3
             // 
+            this.przykładKwerenda2ToolStripMenuItem3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykładKwerenda2ToolStripMenuItem3.Name = "przykładKwerenda2ToolStripMenuItem3";
-            this.przykładKwerenda2ToolStripMenuItem3.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda2ToolStripMenuItem3.Size = new System.Drawing.Size(398, 24);
             this.przykładKwerenda2ToolStripMenuItem3.Text = "Przykład 2 - Kwerenda PossiblyExecutable";
             this.przykładKwerenda2ToolStripMenuItem3.Click += new System.EventHandler(this.przykładKwerenda2ToolStripMenuItem3_Click);
             // 
             // przykładKwerenda3ToolStripMenuItem3
             // 
+            this.przykładKwerenda3ToolStripMenuItem3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykładKwerenda3ToolStripMenuItem3.Name = "przykładKwerenda3ToolStripMenuItem3";
-            this.przykładKwerenda3ToolStripMenuItem3.Size = new System.Drawing.Size(309, 22);
+            this.przykładKwerenda3ToolStripMenuItem3.Size = new System.Drawing.Size(398, 24);
             this.przykładKwerenda3ToolStripMenuItem3.Text = "Przykład 3 - Kwerenda NecessarilyExecutable";
             this.przykładKwerenda3ToolStripMenuItem3.Click += new System.EventHandler(this.przykładKwerenda3ToolStripMenuItem3_Click);
             // 
@@ -703,28 +722,32 @@
             this.przykładKwerenda1ToolStripMenuItem4,
             this.przykładKwerenda2ToolStripMenuItem4,
             this.przykładKwerenda3ToolStripMenuItem4});
+            this.przykład5ModificationOfYSPToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykład5ModificationOfYSPToolStripMenuItem.Name = "przykład5ModificationOfYSPToolStripMenuItem";
-            this.przykład5ModificationOfYSPToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.przykład5ModificationOfYSPToolStripMenuItem.Size = new System.Drawing.Size(350, 24);
             this.przykład5ModificationOfYSPToolStripMenuItem.Text = "J. Kobojek - Kot";
             // 
             // przykładKwerenda1ToolStripMenuItem4
             // 
+            this.przykładKwerenda1ToolStripMenuItem4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykładKwerenda1ToolStripMenuItem4.Name = "przykładKwerenda1ToolStripMenuItem4";
-            this.przykładKwerenda1ToolStripMenuItem4.Size = new System.Drawing.Size(302, 22);
+            this.przykładKwerenda1ToolStripMenuItem4.Size = new System.Drawing.Size(387, 24);
             this.przykładKwerenda1ToolStripMenuItem4.Text = "Przykład 1 - Kwerenda NecessarilyAccesible";
             this.przykładKwerenda1ToolStripMenuItem4.Click += new System.EventHandler(this.przykładKwerenda1ToolStripMenuItem4_Click);
             // 
             // przykładKwerenda2ToolStripMenuItem4
             // 
+            this.przykładKwerenda2ToolStripMenuItem4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykładKwerenda2ToolStripMenuItem4.Name = "przykładKwerenda2ToolStripMenuItem4";
-            this.przykładKwerenda2ToolStripMenuItem4.Size = new System.Drawing.Size(302, 22);
+            this.przykładKwerenda2ToolStripMenuItem4.Size = new System.Drawing.Size(387, 24);
             this.przykładKwerenda2ToolStripMenuItem4.Text = "Przykład 2 - Kwerenda PossiblyAccesible";
             this.przykładKwerenda2ToolStripMenuItem4.Click += new System.EventHandler(this.przykładKwerenda2ToolStripMenuItem4_Click);
             // 
             // przykładKwerenda3ToolStripMenuItem4
             // 
+            this.przykładKwerenda3ToolStripMenuItem4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykładKwerenda3ToolStripMenuItem4.Name = "przykładKwerenda3ToolStripMenuItem4";
-            this.przykładKwerenda3ToolStripMenuItem4.Size = new System.Drawing.Size(302, 22);
+            this.przykładKwerenda3ToolStripMenuItem4.Size = new System.Drawing.Size(387, 24);
             this.przykładKwerenda3ToolStripMenuItem4.Text = "Przykład 3 - Kwerenda NecessarilyAfter";
             this.przykładKwerenda3ToolStripMenuItem4.Click += new System.EventHandler(this.przykładKwerenda3ToolStripMenuItem4_Click);
             // 
@@ -734,29 +757,33 @@
             this.placeholderToolStripMenuItem,
             this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem,
             this.przykład3KwerendaNecessarilyAfterToolStripMenuItem});
+            this.pSosnoStudentToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.pSosnoStudentToolStripMenuItem.Name = "pSosnoStudentToolStripMenuItem";
-            this.pSosnoStudentToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.pSosnoStudentToolStripMenuItem.Size = new System.Drawing.Size(350, 24);
             this.pSosnoStudentToolStripMenuItem.Text = "P. Sosno - Student";
             this.pSosnoStudentToolStripMenuItem.Click += new System.EventHandler(this.pSosnoStudentToolStripMenuItem_Click);
             // 
             // placeholderToolStripMenuItem
             // 
+            this.placeholderToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.placeholderToolStripMenuItem.Name = "placeholderToolStripMenuItem";
-            this.placeholderToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+            this.placeholderToolStripMenuItem.Size = new System.Drawing.Size(395, 24);
             this.placeholderToolStripMenuItem.Text = "Przykład 1 - Kwerenda NecessarilyAccessible";
             this.placeholderToolStripMenuItem.Click += new System.EventHandler(this.placeholderToolStripMenuItem_Click);
             // 
             // przykład2KwerendaPossiblyAccessibleToolStripMenuItem
             // 
+            this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem.Name = "przykład2KwerendaPossiblyAccessibleToolStripMenuItem";
-            this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+            this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem.Size = new System.Drawing.Size(395, 24);
             this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem.Text = "Przykład 2 - Kwerenda PossiblyAccessible";
             this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem.Click += new System.EventHandler(this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem_Click);
             // 
             // przykład3KwerendaNecessarilyAfterToolStripMenuItem
             // 
+            this.przykład3KwerendaNecessarilyAfterToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykład3KwerendaNecessarilyAfterToolStripMenuItem.Name = "przykład3KwerendaNecessarilyAfterToolStripMenuItem";
-            this.przykład3KwerendaNecessarilyAfterToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+            this.przykład3KwerendaNecessarilyAfterToolStripMenuItem.Size = new System.Drawing.Size(395, 24);
             this.przykład3KwerendaNecessarilyAfterToolStripMenuItem.Text = "Przykład 3 - Kwerenda NecessarilyAfter";
             this.przykład3KwerendaNecessarilyAfterToolStripMenuItem.Click += new System.EventHandler(this.przykład3KwerendaNecessarilyAfterToolStripMenuItem_Click);
             // 
@@ -766,28 +793,32 @@
             this.placeholderToolStripMenuItem1,
             this.przykład2NecessarilyExecutableToolStripMenuItem,
             this.przykład3NecessarilyAccessibleToolStripMenuItem});
+            this.pToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.pToolStripMenuItem.Name = "pToolStripMenuItem";
-            this.pToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.pToolStripMenuItem.Size = new System.Drawing.Size(350, 24);
             this.pToolStripMenuItem.Text = "J. Węgliński - Drwal";
             // 
             // placeholderToolStripMenuItem1
             // 
+            this.placeholderToolStripMenuItem1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.placeholderToolStripMenuItem1.Name = "placeholderToolStripMenuItem1";
-            this.placeholderToolStripMenuItem1.Size = new System.Drawing.Size(309, 22);
+            this.placeholderToolStripMenuItem1.Size = new System.Drawing.Size(398, 24);
             this.placeholderToolStripMenuItem1.Text = "Przykład 1 - Kwerenda NecessarilyExecutable";
             this.placeholderToolStripMenuItem1.Click += new System.EventHandler(this.placeholderToolStripMenuItem1_Click);
             // 
             // przykład2NecessarilyExecutableToolStripMenuItem
             // 
+            this.przykład2NecessarilyExecutableToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykład2NecessarilyExecutableToolStripMenuItem.Name = "przykład2NecessarilyExecutableToolStripMenuItem";
-            this.przykład2NecessarilyExecutableToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.przykład2NecessarilyExecutableToolStripMenuItem.Size = new System.Drawing.Size(398, 24);
             this.przykład2NecessarilyExecutableToolStripMenuItem.Text = "Przykład 2 - Kwerenda NecessarilyExecutable";
             this.przykład2NecessarilyExecutableToolStripMenuItem.Click += new System.EventHandler(this.przykład2NecessarilyExecutableToolStripMenuItem_Click);
             // 
             // przykład3NecessarilyAccessibleToolStripMenuItem
             // 
+            this.przykład3NecessarilyAccessibleToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykład3NecessarilyAccessibleToolStripMenuItem.Name = "przykład3NecessarilyAccessibleToolStripMenuItem";
-            this.przykład3NecessarilyAccessibleToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.przykład3NecessarilyAccessibleToolStripMenuItem.Size = new System.Drawing.Size(398, 24);
             this.przykład3NecessarilyAccessibleToolStripMenuItem.Text = "Przykład 3 - Kwerenda NecessarilyAccessible";
             this.przykład3NecessarilyAccessibleToolStripMenuItem.Click += new System.EventHandler(this.przykład3NecessarilyAccessibleToolStripMenuItem_Click);
             // 
@@ -797,37 +828,42 @@
             this.placeholderToolStripMenuItem2,
             this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem,
             this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1});
+            this.pDrabarekToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.pDrabarekToolStripMenuItem.Name = "pDrabarekToolStripMenuItem";
-            this.pDrabarekToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.pDrabarekToolStripMenuItem.Size = new System.Drawing.Size(350, 24);
             this.pDrabarekToolStripMenuItem.Text = "P. Drabarek - Kierowca";
             // 
             // placeholderToolStripMenuItem2
             // 
+            this.placeholderToolStripMenuItem2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.placeholderToolStripMenuItem2.Name = "placeholderToolStripMenuItem2";
-            this.placeholderToolStripMenuItem2.Size = new System.Drawing.Size(309, 22);
+            this.placeholderToolStripMenuItem2.Size = new System.Drawing.Size(398, 24);
             this.placeholderToolStripMenuItem2.Text = "Przykład 1 - Kwerenda NecessarilyExecutable";
             this.placeholderToolStripMenuItem2.Click += new System.EventHandler(this.placeholderToolStripMenuItem2_Click);
             // 
             // przykład1KwerendaNecessarilyExecutableToolStripMenuItem
             // 
+            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem.Name = "przykład1KwerendaNecessarilyExecutableToolStripMenuItem";
-            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem.Size = new System.Drawing.Size(398, 24);
             this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem.Text = "Przykład 2 - Kwerenda NecessarilyExecutable";
             this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem.Click += new System.EventHandler(this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem_Click);
             // 
             // przykład1KwerendaNecessarilyExecutableToolStripMenuItem1
             // 
+            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1.Name = "przykład1KwerendaNecessarilyExecutableToolStripMenuItem1";
-            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1.Size = new System.Drawing.Size(309, 22);
+            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1.Size = new System.Drawing.Size(398, 24);
             this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1.Text = "Przykład 3 - Kwerenda NecessarilyAfter";
             this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1.Click += new System.EventHandler(this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1_Click);
             // 
             // ResetAllButton
             // 
+            this.ResetAllButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.ResetAllButton.Location = new System.Drawing.Point(88, 0);
             this.ResetAllButton.Margin = new System.Windows.Forms.Padding(2);
             this.ResetAllButton.Name = "ResetAllButton";
-            this.ResetAllButton.Size = new System.Drawing.Size(110, 23);
+            this.ResetAllButton.Size = new System.Drawing.Size(121, 28);
             this.ResetAllButton.TabIndex = 62;
             this.ResetAllButton.Text = "Wyczyść";
             this.ResetAllButton.UseVisualStyleBackColor = true;
