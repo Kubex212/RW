@@ -28,18 +28,18 @@ namespace RWProgram
             "α after A1, A2, ... , An",
             "observable α after A1, A2, ... ,An",
             "A causes α if π costs k",
-            "A releases α if π costs k",
+            "A releases fluent if π costs k",
             "impossible A if π",
             "always α",
-            "noninertial α"
+            "noninertial fluent"
         };
 
         public List<string> Queries = new List<string>()
         {
             "necessarily executable A1, ..., An from π cost k",
             "possibly executable A1, ..., An from π cost k",
-            "necessarily α after A1, ..., An from π",
-            "possibly α after A1, ..., An from π",
+            "necessarily γ after A1, ..., An from π",
+            "possibly γ after A1, ..., An from π",
             "necessarily accessible γ from π cost k",
             "possibly accessible γ from π cost k",
         };
@@ -87,7 +87,7 @@ namespace RWProgram
                 Logic.Fluents.Add(new NegatedFluent() { Name = f, Original = fluent, Index = fluent.Index });
             }
             FluentComboBox.Items.Clear();
-            FluentComboBox.Items.AddRange(Logic.Fluents.ToArray());
+            FluentComboBox.Items.AddRange(Logic.Fluents.Where(f => !f.IsNegation).ToArray());
         }
 
         private void ActionsTextBox_Changed(object sender, EventArgs e)
@@ -195,11 +195,11 @@ namespace RWProgram
                     ));
                     break;
                 case StatementEnum.AlwaysFluent:
-                    if (string.IsNullOrEmpty(piString))
+                    if (string.IsNullOrEmpty(alphaString))
                         return;
                     Logic.Statements.Add(new AlwaysPi
                     (
-                        piState
+                        alphaState
                     ));
                     break;
                 case StatementEnum.ImpossibleActionIfFluents:
@@ -549,7 +549,7 @@ namespace RWProgram
 
         private void SetQueryTextBox()
         {
-            QueryTextBox.Text = Query != null ? Query.ToString() : string.Empty;
+            QueryTextBox.Text = Query != null ? Query.ToString(Logic.Program) : string.Empty;
         }
 
         private void DeleteLastStatementButton_Click(object sender, EventArgs e)

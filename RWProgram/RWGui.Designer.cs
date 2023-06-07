@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.actionsTextBox = new System.Windows.Forms.TextBox();
             this.fluentsTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.actionsTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.StatementsComboBox = new System.Windows.Forms.ComboBox();
@@ -86,6 +86,18 @@
             this.przykładKwerenda1ToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.przykładKwerenda2ToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.przykładKwerenda3ToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pSosnoStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.placeholderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.przykład3KwerendaNecessarilyAfterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.placeholderToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.przykład2NecessarilyExecutableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.przykład3NecessarilyAccessibleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pDrabarekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.placeholderToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ResetAllButton = new System.Windows.Forms.Button();
             this.PiTextBox1 = new System.Windows.Forms.RichTextBox();
             this.AlphaTextBox = new System.Windows.Forms.RichTextBox();
@@ -99,18 +111,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.pSosnoStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pDrabarekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.placeholderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.placeholderToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.placeholderToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.przykład3KwerendaNecessarilyAfterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.przykład2NecessarilyExecutableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.przykład3NecessarilyAccessibleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.costUpDown)).BeginInit();
@@ -138,26 +138,11 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(585, 78);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // actionsTextBox
-            // 
-            this.actionsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.actionsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.actionsTextBox.Location = new System.Drawing.Point(2, 40);
-            this.actionsTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.actionsTextBox.Multiline = true;
-            this.actionsTextBox.Name = "actionsTextBox";
-            this.actionsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.actionsTextBox.Size = new System.Drawing.Size(464, 36);
-            this.actionsTextBox.TabIndex = 3;
-            this.actionsTextBox.Leave += new System.EventHandler(this.ActionsTextBox_Changed);
-            // 
             // fluentsTextBox
             // 
             this.fluentsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.fluentsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.fluentsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.fluentsTextBox.Location = new System.Drawing.Point(2, 2);
             this.fluentsTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.fluentsTextBox.Multiline = true;
@@ -173,7 +158,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.Location = new System.Drawing.Point(470, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
@@ -182,13 +167,28 @@
             this.label2.Text = "- fluenty";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // actionsTextBox
+            // 
+            this.actionsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.actionsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.actionsTextBox.Location = new System.Drawing.Point(2, 40);
+            this.actionsTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.actionsTextBox.Multiline = true;
+            this.actionsTextBox.Name = "actionsTextBox";
+            this.actionsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.actionsTextBox.Size = new System.Drawing.Size(464, 36);
+            this.actionsTextBox.TabIndex = 3;
+            this.actionsTextBox.Leave += new System.EventHandler(this.ActionsTextBox_Changed);
+            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.Location = new System.Drawing.Point(470, 38);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
@@ -200,11 +200,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(470, 21);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Location = new System.Drawing.Point(470, 35);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(143, 17);
+            this.label4.Size = new System.Drawing.Size(189, 24);
             this.label4.TabIndex = 1;
             this.label4.Text = "- dostępne wyrażenia";
             // 
@@ -212,10 +212,10 @@
             // 
             this.StatementsComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.StatementsComboBox.FormattingEnabled = true;
-            this.StatementsComboBox.Location = new System.Drawing.Point(15, 18);
+            this.StatementsComboBox.Location = new System.Drawing.Point(20, 34);
             this.StatementsComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.StatementsComboBox.Name = "StatementsComboBox";
-            this.StatementsComboBox.Size = new System.Drawing.Size(451, 25);
+            this.StatementsComboBox.Size = new System.Drawing.Size(446, 25);
             this.StatementsComboBox.TabIndex = 4;
             this.StatementsComboBox.SelectedIndexChanged += new System.EventHandler(this.StatementsComboBox_SelectedIndexChanged);
             // 
@@ -223,7 +223,7 @@
             // 
             this.StatementsLabel.AutoSize = true;
             this.StatementsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.StatementsLabel.Location = new System.Drawing.Point(22, 187);
+            this.StatementsLabel.Location = new System.Drawing.Point(46, 190);
             this.StatementsLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.StatementsLabel.Name = "StatementsLabel";
             this.StatementsLabel.Size = new System.Drawing.Size(140, 20);
@@ -233,11 +233,11 @@
             // QueriesLabel
             // 
             this.QueriesLabel.AutoSize = true;
-            this.QueriesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.QueriesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.QueriesLabel.Location = new System.Drawing.Point(446, 29);
             this.QueriesLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.QueriesLabel.Name = "QueriesLabel";
-            this.QueriesLabel.Size = new System.Drawing.Size(140, 17);
+            this.QueriesLabel.Size = new System.Drawing.Size(187, 24);
             this.QueriesLabel.TabIndex = 4;
             this.QueriesLabel.Text = "- dostępne kwerendy";
             // 
@@ -247,7 +247,7 @@
             this.label8.Location = new System.Drawing.Point(17, 71);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(34, 13);
+            this.label8.Size = new System.Drawing.Size(48, 20);
             this.label8.TabIndex = 6;
             this.label8.Text = "Akcja";
             // 
@@ -257,7 +257,7 @@
             this.label9.Location = new System.Drawing.Point(180, 71);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(33, 13);
+            this.label9.Size = new System.Drawing.Size(49, 20);
             this.label9.TabIndex = 7;
             this.label9.Text = "Koszt";
             // 
@@ -267,7 +267,7 @@
             this.label10.Location = new System.Drawing.Point(479, 150);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(21, 13);
+            this.label10.Size = new System.Drawing.Size(30, 20);
             this.label10.TabIndex = 8;
             this.label10.Text = "- pi";
             // 
@@ -277,25 +277,26 @@
             this.label11.Location = new System.Drawing.Point(479, 117);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(30, 13);
+            this.label11.Size = new System.Drawing.Size(44, 20);
             this.label11.TabIndex = 9;
             this.label11.Text = "- alfa";
             // 
             // ActionComboBox
             // 
             this.ActionComboBox.FormattingEnabled = true;
-            this.ActionComboBox.Location = new System.Drawing.Point(50, 68);
+            this.ActionComboBox.Location = new System.Drawing.Point(69, 68);
             this.ActionComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.ActionComboBox.Name = "ActionComboBox";
-            this.ActionComboBox.Size = new System.Drawing.Size(117, 21);
+            this.ActionComboBox.Size = new System.Drawing.Size(98, 28);
             this.ActionComboBox.TabIndex = 5;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(545, 71);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button1.Location = new System.Drawing.Point(536, 68);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 28);
+            this.button1.Size = new System.Drawing.Size(113, 28);
             this.button1.TabIndex = 8;
             this.button1.Text = "Dodaj";
             this.button1.UseVisualStyleBackColor = true;
@@ -303,96 +304,104 @@
             // 
             // StatementsTextBox
             // 
-            this.StatementsTextBox.Location = new System.Drawing.Point(199, 187);
+            this.StatementsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.StatementsTextBox.Location = new System.Drawing.Point(242, 187);
             this.StatementsTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.StatementsTextBox.Name = "StatementsTextBox";
-            this.StatementsTextBox.Size = new System.Drawing.Size(416, 79);
+            this.StatementsTextBox.ReadOnly = true;
+            this.StatementsTextBox.Size = new System.Drawing.Size(416, 121);
             this.StatementsTextBox.TabIndex = 101;
             this.StatementsTextBox.Text = "";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(11, 43);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label12.Location = new System.Drawing.Point(15, 42);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(34, 13);
+            this.label12.Size = new System.Drawing.Size(48, 20);
             this.label12.TabIndex = 16;
             this.label12.Text = "Akcja";
             // 
             // ProgramActionComboBox
             // 
             this.ProgramActionComboBox.FormattingEnabled = true;
-            this.ProgramActionComboBox.Location = new System.Drawing.Point(50, 40);
+            this.ProgramActionComboBox.Location = new System.Drawing.Point(14, 65);
             this.ProgramActionComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.ProgramActionComboBox.Name = "ProgramActionComboBox";
-            this.ProgramActionComboBox.Size = new System.Drawing.Size(84, 21);
+            this.ProgramActionComboBox.Size = new System.Drawing.Size(84, 28);
             this.ProgramActionComboBox.TabIndex = 15;
             // 
             // ProgramTextBox
             // 
-            this.ProgramTextBox.Location = new System.Drawing.Point(199, 18);
+            this.ProgramTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ProgramTextBox.Location = new System.Drawing.Point(242, 18);
             this.ProgramTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.ProgramTextBox.Name = "ProgramTextBox";
-            this.ProgramTextBox.Size = new System.Drawing.Size(417, 167);
+            this.ProgramTextBox.ReadOnly = true;
+            this.ProgramTextBox.Size = new System.Drawing.Size(417, 133);
             this.ProgramTextBox.TabIndex = 102;
             this.ProgramTextBox.Text = "";
             // 
             // ResponseTextBox
             // 
-            this.ResponseTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ResponseTextBox.Location = new System.Drawing.Point(131, 283);
+            this.ResponseTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ResponseTextBox.Location = new System.Drawing.Point(146, 283);
             this.ResponseTextBox.Margin = new System.Windows.Forms.Padding(8);
             this.ResponseTextBox.Multiline = true;
             this.ResponseTextBox.Name = "ResponseTextBox";
-            this.ResponseTextBox.Size = new System.Drawing.Size(132, 21);
+            this.ResponseTextBox.Size = new System.Drawing.Size(110, 21);
             this.ResponseTextBox.TabIndex = 104;
             // 
             // QueriesComboBox
             // 
-            this.QueriesComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.QueriesComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.QueriesComboBox.FormattingEnabled = true;
             this.QueriesComboBox.Location = new System.Drawing.Point(20, 28);
             this.QueriesComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.QueriesComboBox.Name = "QueriesComboBox";
-            this.QueriesComboBox.Size = new System.Drawing.Size(419, 25);
+            this.QueriesComboBox.Size = new System.Drawing.Size(419, 28);
             this.QueriesComboBox.TabIndex = 20;
             this.QueriesComboBox.SelectedIndexChanged += new System.EventHandler(this.QueriesComboBox_SelectedIndexChanged);
             // 
             // QueriesOutcomeLabel
             // 
             this.QueriesOutcomeLabel.AutoSize = true;
-            this.QueriesOutcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.QueriesOutcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.QueriesOutcomeLabel.Location = new System.Drawing.Point(16, 283);
             this.QueriesOutcomeLabel.Margin = new System.Windows.Forms.Padding(8);
             this.QueriesOutcomeLabel.Name = "QueriesOutcomeLabel";
             this.QueriesOutcomeLabel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 8);
-            this.QueriesOutcomeLabel.Size = new System.Drawing.Size(114, 25);
+            this.QueriesOutcomeLabel.Size = new System.Drawing.Size(126, 28);
             this.QueriesOutcomeLabel.TabIndex = 24;
             this.QueriesOutcomeLabel.Text = "Wynik kwerendy:";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label15.Location = new System.Drawing.Point(443, 102);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(21, 13);
+            this.label15.Size = new System.Drawing.Size(30, 20);
             this.label15.TabIndex = 25;
             this.label15.Text = "- pi";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label16.Location = new System.Drawing.Point(443, 70);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(47, 13);
+            this.label16.Size = new System.Drawing.Size(71, 20);
             this.label16.TabIndex = 26;
             this.label16.Text = "- gamma";
             // 
             // AskQueryButton
             // 
+            this.AskQueryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.AskQueryButton.Location = new System.Drawing.Point(507, 276);
             this.AskQueryButton.Margin = new System.Windows.Forms.Padding(2);
             this.AskQueryButton.Name = "AskQueryButton";
@@ -404,7 +413,8 @@
             // 
             // AddToProgramButton
             // 
-            this.AddToProgramButton.Location = new System.Drawing.Point(10, 81);
+            this.AddToProgramButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.AddToProgramButton.Location = new System.Drawing.Point(131, 42);
             this.AddToProgramButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddToProgramButton.Name = "AddToProgramButton";
             this.AddToProgramButton.Size = new System.Drawing.Size(97, 28);
@@ -415,7 +425,8 @@
             // 
             // ResetProgramButton
             // 
-            this.ResetProgramButton.Location = new System.Drawing.Point(10, 145);
+            this.ResetProgramButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ResetProgramButton.Location = new System.Drawing.Point(131, 106);
             this.ResetProgramButton.Margin = new System.Windows.Forms.Padding(2);
             this.ResetProgramButton.Name = "ResetProgramButton";
             this.ResetProgramButton.Size = new System.Drawing.Size(97, 28);
@@ -426,10 +437,11 @@
             // 
             // ResetStatementButton
             // 
-            this.ResetStatementButton.Location = new System.Drawing.Point(14, 226);
+            this.ResetStatementButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ResetStatementButton.Location = new System.Drawing.Point(50, 267);
             this.ResetStatementButton.Margin = new System.Windows.Forms.Padding(2);
             this.ResetStatementButton.Name = "ResetStatementButton";
-            this.ResetStatementButton.Size = new System.Drawing.Size(74, 28);
+            this.ResetStatementButton.Size = new System.Drawing.Size(122, 28);
             this.ResetStatementButton.TabIndex = 13;
             this.ResetStatementButton.Text = "Wyczyść";
             this.ResetStatementButton.UseVisualStyleBackColor = true;
@@ -438,12 +450,13 @@
             // AddConditionButton
             // 
             this.AddConditionButton.Enabled = false;
-            this.AddConditionButton.Location = new System.Drawing.Point(545, 109);
+            this.AddConditionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.AddConditionButton.Location = new System.Drawing.Point(536, 109);
             this.AddConditionButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddConditionButton.Name = "AddConditionButton";
-            this.AddConditionButton.Size = new System.Drawing.Size(91, 28);
+            this.AddConditionButton.Size = new System.Drawing.Size(113, 28);
             this.AddConditionButton.TabIndex = 9;
-            this.AddConditionButton.Text = "Dodaj warunek";
+            this.AddConditionButton.Text = "Dodaj akcję";
             this.AddConditionButton.UseVisualStyleBackColor = true;
             this.AddConditionButton.Visible = false;
             this.AddConditionButton.Click += new System.EventHandler(this.AddConditionButton_Click);
@@ -451,10 +464,11 @@
             // ConfirmStatementButton
             // 
             this.ConfirmStatementButton.Enabled = false;
-            this.ConfirmStatementButton.Location = new System.Drawing.Point(545, 142);
+            this.ConfirmStatementButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ConfirmStatementButton.Location = new System.Drawing.Point(536, 142);
             this.ConfirmStatementButton.Margin = new System.Windows.Forms.Padding(2);
             this.ConfirmStatementButton.Name = "ConfirmStatementButton";
-            this.ConfirmStatementButton.Size = new System.Drawing.Size(90, 28);
+            this.ConfirmStatementButton.Size = new System.Drawing.Size(113, 28);
             this.ConfirmStatementButton.TabIndex = 10;
             this.ConfirmStatementButton.Text = "Zatwierdź";
             this.ConfirmStatementButton.UseVisualStyleBackColor = true;
@@ -464,16 +478,17 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(17, 189);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.Location = new System.Drawing.Point(5, 197);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 34);
+            this.label5.Size = new System.Drawing.Size(111, 40);
             this.label5.TabIndex = 39;
             this.label5.Text = "Wprowadzona\r\nkwerenda\r\n";
             // 
             // ResetQueryButton
             // 
+            this.ResetQueryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ResetQueryButton.Location = new System.Drawing.Point(394, 276);
             this.ResetQueryButton.Margin = new System.Windows.Forms.Padding(2);
             this.ResetQueryButton.Name = "ResetQueryButton";
@@ -485,18 +500,19 @@
             // 
             // QueryTextBox
             // 
-            this.QueryTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.QueryTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.QueryTextBox.Location = new System.Drawing.Point(116, 175);
             this.QueryTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.QueryTextBox.Multiline = true;
             this.QueryTextBox.Name = "QueryTextBox";
             this.QueryTextBox.ReadOnly = true;
             this.QueryTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.QueryTextBox.Size = new System.Drawing.Size(497, 63);
+            this.QueryTextBox.Size = new System.Drawing.Size(533, 78);
             this.QueryTextBox.TabIndex = 103;
             // 
             // AddQueryButton
             // 
+            this.AddQueryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.AddQueryButton.Location = new System.Drawing.Point(281, 276);
             this.AddQueryButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddQueryButton.Name = "AddQueryButton";
@@ -508,10 +524,11 @@
             // 
             // DeleteLastStatementButton
             // 
-            this.DeleteLastStatementButton.Location = new System.Drawing.Point(95, 226);
+            this.DeleteLastStatementButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.DeleteLastStatementButton.Location = new System.Drawing.Point(50, 235);
             this.DeleteLastStatementButton.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteLastStatementButton.Name = "DeleteLastStatementButton";
-            this.DeleteLastStatementButton.Size = new System.Drawing.Size(88, 28);
+            this.DeleteLastStatementButton.Size = new System.Drawing.Size(122, 28);
             this.DeleteLastStatementButton.TabIndex = 14;
             this.DeleteLastStatementButton.Text = "Usuń ostatnie";
             this.DeleteLastStatementButton.UseVisualStyleBackColor = true;
@@ -519,7 +536,8 @@
             // 
             // DeleteLastProgramButton
             // 
-            this.DeleteLastProgramButton.Location = new System.Drawing.Point(10, 113);
+            this.DeleteLastProgramButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.DeleteLastProgramButton.Location = new System.Drawing.Point(131, 74);
             this.DeleteLastProgramButton.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteLastProgramButton.Name = "DeleteLastProgramButton";
             this.DeleteLastProgramButton.Size = new System.Drawing.Size(97, 28);
@@ -536,7 +554,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(657, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(684, 24);
             this.menuStrip1.TabIndex = 61;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -562,7 +580,7 @@
             this.przykładKwerenda2ToolStripMenuItem,
             this.przykładKwerenda3ToolStripMenuItem});
             this.przykład1ToolStripMenuItem.Name = "przykład1ToolStripMenuItem";
-            this.przykład1ToolStripMenuItem.Size = new System.Drawing.Size(264, 22);
+            this.przykład1ToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
             this.przykład1ToolStripMenuItem.Text = "A. Kuś - Yale Shooting Problem";
             // 
             // przykładKwerenda1ToolStripMenuItem
@@ -699,16 +717,110 @@
             // przykładKwerenda2ToolStripMenuItem4
             // 
             this.przykładKwerenda2ToolStripMenuItem4.Name = "przykładKwerenda2ToolStripMenuItem4";
-            this.przykładKwerenda2ToolStripMenuItem4.Size = new System.Drawing.Size(286, 22);
+            this.przykładKwerenda2ToolStripMenuItem4.Size = new System.Drawing.Size(302, 22);
             this.przykładKwerenda2ToolStripMenuItem4.Text = "Przykład 2 - Kwerenda PossiblyAccesible";
             this.przykładKwerenda2ToolStripMenuItem4.Click += new System.EventHandler(this.przykładKwerenda2ToolStripMenuItem4_Click);
             // 
             // przykładKwerenda3ToolStripMenuItem4
             // 
             this.przykładKwerenda3ToolStripMenuItem4.Name = "przykładKwerenda3ToolStripMenuItem4";
-            this.przykładKwerenda3ToolStripMenuItem4.Size = new System.Drawing.Size(287, 22);
+            this.przykładKwerenda3ToolStripMenuItem4.Size = new System.Drawing.Size(302, 22);
             this.przykładKwerenda3ToolStripMenuItem4.Text = "Przykład 3 - Kwerenda NecessarilyAfter";
             this.przykładKwerenda3ToolStripMenuItem4.Click += new System.EventHandler(this.przykładKwerenda3ToolStripMenuItem4_Click);
+            // 
+            // pSosnoStudentToolStripMenuItem
+            // 
+            this.pSosnoStudentToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.placeholderToolStripMenuItem,
+            this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem,
+            this.przykład3KwerendaNecessarilyAfterToolStripMenuItem});
+            this.pSosnoStudentToolStripMenuItem.Name = "pSosnoStudentToolStripMenuItem";
+            this.pSosnoStudentToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.pSosnoStudentToolStripMenuItem.Text = "P. Sosno - Student";
+            this.pSosnoStudentToolStripMenuItem.Click += new System.EventHandler(this.pSosnoStudentToolStripMenuItem_Click);
+            // 
+            // placeholderToolStripMenuItem
+            // 
+            this.placeholderToolStripMenuItem.Name = "placeholderToolStripMenuItem";
+            this.placeholderToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+            this.placeholderToolStripMenuItem.Text = "Przykład 1 - Kwerenda NecessarilyAccessible";
+            this.placeholderToolStripMenuItem.Click += new System.EventHandler(this.placeholderToolStripMenuItem_Click);
+            // 
+            // przykład2KwerendaPossiblyAccessibleToolStripMenuItem
+            // 
+            this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem.Name = "przykład2KwerendaPossiblyAccessibleToolStripMenuItem";
+            this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+            this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem.Text = "Przykład 2 - Kwerenda PossiblyAccessible";
+            this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem.Click += new System.EventHandler(this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem_Click);
+            // 
+            // przykład3KwerendaNecessarilyAfterToolStripMenuItem
+            // 
+            this.przykład3KwerendaNecessarilyAfterToolStripMenuItem.Name = "przykład3KwerendaNecessarilyAfterToolStripMenuItem";
+            this.przykład3KwerendaNecessarilyAfterToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+            this.przykład3KwerendaNecessarilyAfterToolStripMenuItem.Text = "Przykład 3 - Kwerenda NecessarilyAfter";
+            this.przykład3KwerendaNecessarilyAfterToolStripMenuItem.Click += new System.EventHandler(this.przykład3KwerendaNecessarilyAfterToolStripMenuItem_Click);
+            // 
+            // pToolStripMenuItem
+            // 
+            this.pToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.placeholderToolStripMenuItem1,
+            this.przykład2NecessarilyExecutableToolStripMenuItem,
+            this.przykład3NecessarilyAccessibleToolStripMenuItem});
+            this.pToolStripMenuItem.Name = "pToolStripMenuItem";
+            this.pToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.pToolStripMenuItem.Text = "J. Węgliński - Drwal";
+            // 
+            // placeholderToolStripMenuItem1
+            // 
+            this.placeholderToolStripMenuItem1.Name = "placeholderToolStripMenuItem1";
+            this.placeholderToolStripMenuItem1.Size = new System.Drawing.Size(309, 22);
+            this.placeholderToolStripMenuItem1.Text = "Przykład 1 - Kwerenda NecessarilyExecutable";
+            this.placeholderToolStripMenuItem1.Click += new System.EventHandler(this.placeholderToolStripMenuItem1_Click);
+            // 
+            // przykład2NecessarilyExecutableToolStripMenuItem
+            // 
+            this.przykład2NecessarilyExecutableToolStripMenuItem.Name = "przykład2NecessarilyExecutableToolStripMenuItem";
+            this.przykład2NecessarilyExecutableToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.przykład2NecessarilyExecutableToolStripMenuItem.Text = "Przykład 2 - Kwerenda NecessarilyExecutable";
+            this.przykład2NecessarilyExecutableToolStripMenuItem.Click += new System.EventHandler(this.przykład2NecessarilyExecutableToolStripMenuItem_Click);
+            // 
+            // przykład3NecessarilyAccessibleToolStripMenuItem
+            // 
+            this.przykład3NecessarilyAccessibleToolStripMenuItem.Name = "przykład3NecessarilyAccessibleToolStripMenuItem";
+            this.przykład3NecessarilyAccessibleToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.przykład3NecessarilyAccessibleToolStripMenuItem.Text = "Przykład 3 - Kwerenda NecessarilyAccessible";
+            this.przykład3NecessarilyAccessibleToolStripMenuItem.Click += new System.EventHandler(this.przykład3NecessarilyAccessibleToolStripMenuItem_Click);
+            // 
+            // pDrabarekToolStripMenuItem
+            // 
+            this.pDrabarekToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.placeholderToolStripMenuItem2,
+            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem,
+            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1});
+            this.pDrabarekToolStripMenuItem.Name = "pDrabarekToolStripMenuItem";
+            this.pDrabarekToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.pDrabarekToolStripMenuItem.Text = "P. Drabarek - Kierowca";
+            // 
+            // placeholderToolStripMenuItem2
+            // 
+            this.placeholderToolStripMenuItem2.Name = "placeholderToolStripMenuItem2";
+            this.placeholderToolStripMenuItem2.Size = new System.Drawing.Size(309, 22);
+            this.placeholderToolStripMenuItem2.Text = "Przykład 1 - Kwerenda NecessarilyExecutable";
+            this.placeholderToolStripMenuItem2.Click += new System.EventHandler(this.placeholderToolStripMenuItem2_Click);
+            // 
+            // przykład1KwerendaNecessarilyExecutableToolStripMenuItem
+            // 
+            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem.Name = "przykład1KwerendaNecessarilyExecutableToolStripMenuItem";
+            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem.Text = "Przykład 2 - Kwerenda NecessarilyExecutable";
+            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem.Click += new System.EventHandler(this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem_Click);
+            // 
+            // przykład1KwerendaNecessarilyExecutableToolStripMenuItem1
+            // 
+            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1.Name = "przykład1KwerendaNecessarilyExecutableToolStripMenuItem1";
+            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1.Size = new System.Drawing.Size(309, 22);
+            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1.Text = "Przykład 3 - Kwerenda NecessarilyAfter";
+            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1.Click += new System.EventHandler(this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1_Click);
             // 
             // ResetAllButton
             // 
@@ -763,29 +875,29 @@
             this.label6.Location = new System.Drawing.Point(354, 71);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.Size = new System.Drawing.Size(54, 20);
             this.label6.TabIndex = 71;
             this.label6.Text = "Fluent";
             // 
             // FluentComboBox
             // 
             this.FluentComboBox.FormattingEnabled = true;
-            this.FluentComboBox.Location = new System.Drawing.Point(394, 68);
+            this.FluentComboBox.Location = new System.Drawing.Point(412, 68);
             this.FluentComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.FluentComboBox.Name = "FluentComboBox";
-            this.FluentComboBox.Size = new System.Drawing.Size(117, 21);
+            this.FluentComboBox.Size = new System.Drawing.Size(99, 28);
             this.FluentComboBox.TabIndex = 7;
             // 
             // costUpDown
             // 
-            this.costUpDown.Location = new System.Drawing.Point(217, 68);
+            this.costUpDown.Location = new System.Drawing.Point(234, 68);
             this.costUpDown.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
             this.costUpDown.Name = "costUpDown";
-            this.costUpDown.Size = new System.Drawing.Size(117, 20);
+            this.costUpDown.Size = new System.Drawing.Size(100, 26);
             this.costUpDown.TabIndex = 105;
             this.costUpDown.Value = new decimal(new int[] {
             1,
@@ -799,7 +911,7 @@
             this.label1.Location = new System.Drawing.Point(443, 141);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.Size = new System.Drawing.Size(56, 20);
             this.label1.TabIndex = 107;
             this.label1.Text = "- koszt";
             // 
@@ -812,7 +924,7 @@
             0,
             0});
             this.costUpDown3.Name = "costUpDown3";
-            this.costUpDown3.Size = new System.Drawing.Size(80, 20);
+            this.costUpDown3.Size = new System.Drawing.Size(80, 26);
             this.costUpDown3.TabIndex = 108;
             this.costUpDown3.Value = new decimal(new int[] {
             1,
@@ -841,9 +953,10 @@
             this.groupBox1.Controls.Add(this.ConfirmStatementButton);
             this.groupBox1.Controls.Add(this.AddConditionButton);
             this.groupBox1.Controls.Add(this.DeleteLastStatementButton);
-            this.groupBox1.Location = new System.Drawing.Point(9, 124);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox1.Location = new System.Drawing.Point(9, 110);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(641, 282);
+            this.groupBox1.Size = new System.Drawing.Size(663, 327);
             this.groupBox1.TabIndex = 109;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Wyrażenia";
@@ -856,9 +969,10 @@
             this.groupBox2.Controls.Add(this.AddToProgramButton);
             this.groupBox2.Controls.Add(this.ResetProgramButton);
             this.groupBox2.Controls.Add(this.DeleteLastProgramButton);
-            this.groupBox2.Location = new System.Drawing.Point(9, 412);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox2.Location = new System.Drawing.Point(9, 443);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(641, 190);
+            this.groupBox2.Size = new System.Drawing.Size(663, 159);
             this.groupBox2.TabIndex = 110;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Program działań";
@@ -880,106 +994,13 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.QueryTextBox);
             this.groupBox3.Controls.Add(this.ResetQueryButton);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox3.Location = new System.Drawing.Point(9, 608);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(641, 322);
+            this.groupBox3.Size = new System.Drawing.Size(663, 322);
             this.groupBox3.TabIndex = 111;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kwerenda";
-            // 
-            // pSosnoStudentToolStripMenuItem
-            // 
-            this.pSosnoStudentToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.placeholderToolStripMenuItem,
-            this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem,
-            this.przykład3KwerendaNecessarilyAfterToolStripMenuItem});
-            this.pSosnoStudentToolStripMenuItem.Name = "pSosnoStudentToolStripMenuItem";
-            this.pSosnoStudentToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
-            this.pSosnoStudentToolStripMenuItem.Text = "P. Sosno - Student";
-            this.pSosnoStudentToolStripMenuItem.Click += new System.EventHandler(this.pSosnoStudentToolStripMenuItem_Click);
-            // 
-            // pToolStripMenuItem
-            // 
-            this.pToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.placeholderToolStripMenuItem1,
-            this.przykład2NecessarilyExecutableToolStripMenuItem,
-            this.przykład3NecessarilyAccessibleToolStripMenuItem});
-            this.pToolStripMenuItem.Name = "pToolStripMenuItem";
-            this.pToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
-            this.pToolStripMenuItem.Text = "J. Węgliński - Drwal";
-            // 
-            // pDrabarekToolStripMenuItem
-            // 
-            this.pDrabarekToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.placeholderToolStripMenuItem2,
-            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem,
-            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1});
-            this.pDrabarekToolStripMenuItem.Name = "pDrabarekToolStripMenuItem";
-            this.pDrabarekToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
-            this.pDrabarekToolStripMenuItem.Text = "P. Drabarek - Kierowca";
-            // 
-            // placeholderToolStripMenuItem
-            // 
-            this.placeholderToolStripMenuItem.Name = "placeholderToolStripMenuItem";
-            this.placeholderToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
-            this.placeholderToolStripMenuItem.Text = "Przykład 1 - Kwerenda NecessarilyAccessible";
-            this.placeholderToolStripMenuItem.Click += new System.EventHandler(this.placeholderToolStripMenuItem_Click);
-            // 
-            // placeholderToolStripMenuItem1
-            // 
-            this.placeholderToolStripMenuItem1.Name = "placeholderToolStripMenuItem1";
-            this.placeholderToolStripMenuItem1.Size = new System.Drawing.Size(309, 22);
-            this.placeholderToolStripMenuItem1.Text = "Przykład 1 - Kwerenda NecessarilyExecutable";
-            this.placeholderToolStripMenuItem1.Click += new System.EventHandler(this.placeholderToolStripMenuItem1_Click);
-            // 
-            // placeholderToolStripMenuItem2
-            // 
-            this.placeholderToolStripMenuItem2.Name = "placeholderToolStripMenuItem2";
-            this.placeholderToolStripMenuItem2.Size = new System.Drawing.Size(309, 22);
-            this.placeholderToolStripMenuItem2.Text = "Przykład 1 - Kwerenda NecessarilyExecutable";
-            this.placeholderToolStripMenuItem2.Click += new System.EventHandler(this.placeholderToolStripMenuItem2_Click);
-            // 
-            // przykład2KwerendaPossiblyAccessibleToolStripMenuItem
-            // 
-            this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem.Name = "przykład2KwerendaPossiblyAccessibleToolStripMenuItem";
-            this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
-            this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem.Text = "Przykład 2 - Kwerenda PossiblyAccessible";
-            this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem.Click += new System.EventHandler(this.przykład2KwerendaPossiblyAccessibleToolStripMenuItem_Click);
-            // 
-            // przykład3KwerendaNecessarilyAfterToolStripMenuItem
-            // 
-            this.przykład3KwerendaNecessarilyAfterToolStripMenuItem.Name = "przykład3KwerendaNecessarilyAfterToolStripMenuItem";
-            this.przykład3KwerendaNecessarilyAfterToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
-            this.przykład3KwerendaNecessarilyAfterToolStripMenuItem.Text = "Przykład 3 - Kwerenda NecessarilyAfter";
-            this.przykład3KwerendaNecessarilyAfterToolStripMenuItem.Click += new System.EventHandler(this.przykład3KwerendaNecessarilyAfterToolStripMenuItem_Click);
-            // 
-            // przykład2NecessarilyExecutableToolStripMenuItem
-            // 
-            this.przykład2NecessarilyExecutableToolStripMenuItem.Name = "przykład2NecessarilyExecutableToolStripMenuItem";
-            this.przykład2NecessarilyExecutableToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
-            this.przykład2NecessarilyExecutableToolStripMenuItem.Text = "Przykład 2 - Kwerenda NecessarilyExecutable";
-            this.przykład2NecessarilyExecutableToolStripMenuItem.Click += new System.EventHandler(this.przykład2NecessarilyExecutableToolStripMenuItem_Click);
-            // 
-            // przykład3NecessarilyAccessibleToolStripMenuItem
-            // 
-            this.przykład3NecessarilyAccessibleToolStripMenuItem.Name = "przykład3NecessarilyAccessibleToolStripMenuItem";
-            this.przykład3NecessarilyAccessibleToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
-            this.przykład3NecessarilyAccessibleToolStripMenuItem.Text = "Przykład 3 - Kwerenda NecessarilyAccessible";
-            this.przykład3NecessarilyAccessibleToolStripMenuItem.Click += new System.EventHandler(this.przykład3NecessarilyAccessibleToolStripMenuItem_Click);
-            // 
-            // przykład1KwerendaNecessarilyExecutableToolStripMenuItem
-            // 
-            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem.Name = "przykład1KwerendaNecessarilyExecutableToolStripMenuItem";
-            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
-            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem.Text = "Przykład 2 - Kwerenda NecessarilyExecutable";
-            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem.Click += new System.EventHandler(this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem_Click);
-            // 
-            // przykład1KwerendaNecessarilyExecutableToolStripMenuItem1
-            // 
-            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1.Name = "przykład1KwerendaNecessarilyExecutableToolStripMenuItem1";
-            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1.Size = new System.Drawing.Size(309, 22);
-            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1.Text = "Przykład 3 - Kwerenda NecessarilyAfter";
-            this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1.Click += new System.EventHandler(this.przykład1KwerendaNecessarilyExecutableToolStripMenuItem1_Click);
             // 
             // RWGui
             // 
@@ -987,7 +1008,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(657, 942);
+            this.ClientSize = new System.Drawing.Size(684, 942);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

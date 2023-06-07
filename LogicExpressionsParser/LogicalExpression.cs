@@ -188,7 +188,7 @@ namespace LogicExpressionsParser
         {
             for(int i=0;i<fluentsName.Length;i++)
             {
-                if(fluentsName[i]==fluentName)
+                if(string.Equals(fluentsName[i],fluentName, StringComparison.OrdinalIgnoreCase))
                 {
                     fluentId = i;
                     return;

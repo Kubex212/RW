@@ -8,7 +8,7 @@ namespace RWProgram.Classes
 {
     public abstract class Query
     {
-
+        public abstract string ToString(List<Action> program);
     }
 
     public class AlwaysAfter : Query
@@ -21,6 +21,13 @@ namespace RWProgram.Classes
         {
             return $"Always {Alpha} after... from {Pi}";
         }
+
+        public override string ToString(List<Action> program)
+        {
+            var programString = string.Join(", ", program.Select(a => a.Name)) != "" ?
+                string.Join(", ", program.Select(a => a.Name)) : "[empty program]";
+            return $"Always {Alpha} after {programString} from {Pi}";
+        }
     }
 
     public class PossiblyAfter : Query
@@ -32,6 +39,13 @@ namespace RWProgram.Classes
         public override string ToString()
         {
             return $"Possibly {Alpha} after... from {Pi}";
+        }
+
+        public override string ToString(List<Action> program)
+        {
+            var programString = string.Join(", ", program.Select(a => a.Name)) != "" ?
+                string.Join(", ", program.Select(a => a.Name)) : "[empty program]";
+            return $"Possibly {Alpha} after {programString} from {Pi}";
         }
     }
 
@@ -66,7 +80,14 @@ namespace RWProgram.Classes
         public int Cost { get; set; }
         public override string ToString()
         {
-            return $"Is program always executable" + (!string.IsNullOrEmpty(Pi?.ToString()) ? $" from {Pi}" : string.Empty) + $" cost {Cost}";
+            return $"Is program necessarily executable" + (!string.IsNullOrEmpty(Pi?.ToString()) ? $" from {Pi}" : string.Empty) + $" cost {Cost}";
+        }
+
+        public override string ToString(List<Action> program)
+        {
+            var programString = string.Join(", ", program.Select(a => a.Name)) != "" ?
+                string.Join(", ", program.Select(a => a.Name)) : "[empty program]";
+            return $"Is program {programString} necessarily executable" + (!string.IsNullOrEmpty(Pi?.ToString()) ? $" from {Pi}" : string.Empty) + $" cost {Cost}";
         }
     }
 
@@ -88,6 +109,13 @@ namespace RWProgram.Classes
         {
             return $"Is program possibly executable " + (!string.IsNullOrEmpty(Pi?.ToString()) ? $" from {Pi} " : string.Empty) + $"cost {Cost}";
         }
+
+        public override string ToString(List<Action> program)
+        {
+            var programString = string.Join(", ", program.Select(a => a.Name)) != "" ?
+                string.Join(", ", program.Select(a => a.Name)) : "[empty program]";
+            return $"Is program {programString} possibly executable" + (!string.IsNullOrEmpty(Pi?.ToString()) ? $" from {Pi}" : string.Empty) + $" cost {Cost}";
+        }
     }
 
     public class AlwaysAccesibleYFromPi : QueryWithGammaAndPi
@@ -100,6 +128,11 @@ namespace RWProgram.Classes
                 str = str + $" from {Pi.ToString()}";
             str += $" cost {Cost}";
             return str;
+        }
+
+        public override string ToString(List<Action> program)
+        {
+            return ToString();
         }
     }
 
@@ -115,6 +148,11 @@ namespace RWProgram.Classes
             str += $" cost {Cost}";
             return str;
         }
+
+        public override string ToString(List<Action> program)
+        {
+            return ToString();
+        }
     }
 
     public class TypicallyAccesibleYFromPi : QueryWithGammaAndPi
@@ -127,6 +165,11 @@ namespace RWProgram.Classes
             if (!string.IsNullOrEmpty(Pi.ToString()))
                 str = str + $" from {Pi.ToString()}";
             return str;
+        }
+
+        public override string ToString(List<Action> program)
+        {
+            return ToString();
         }
     }
 }
