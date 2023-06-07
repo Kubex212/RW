@@ -125,7 +125,7 @@ namespace RWProgram
                     alphaState = new State();
                 else
                 {
-                    alphaExpression = Parser.Parse(AlphaTextBox.Text);
+                    alphaExpression = Parser.Parse(AlphaTextBox.Text.Trim());
                     alphaState = new State(alphaExpression, alphaString, Logic.Fluents);
                 }
 
@@ -134,7 +134,7 @@ namespace RWProgram
                     piState = new State();
                 else
                 {
-                    piExpression = Parser.Parse(PiTextBox1.Text);
+                    piExpression = Parser.Parse(PiTextBox1.Text.Trim());
                     piState = new State(piExpression, piString, Logic.Fluents);
                 }
 
@@ -361,7 +361,7 @@ namespace RWProgram
                     gammaState = new State();
                 else
                 {
-                    gammaExpression = Parser.Parse(GammaTextBox.Text);
+                    gammaExpression = Parser.Parse(GammaTextBox.Text.Trim());
                     gammaState = new State(gammaExpression, gammaString, Logic.Fluents);
                 }
 
@@ -370,7 +370,7 @@ namespace RWProgram
                     piState = new State();
                 else
                 {
-                    piExpression = Parser.Parse(PiTextBox2.Text);
+                    piExpression = Parser.Parse(PiTextBox2.Text.Trim());
                     piState = new State(piExpression, piString, Logic.Fluents);
                 }
             }
