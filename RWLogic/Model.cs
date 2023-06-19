@@ -498,7 +498,7 @@ namespace RWLogic
             }
             else
             {
-                initialStates = States.Where(s => s.SatisfiesCondition(query.initialCondition)).ToList();
+                initialStates = States.Where(s => s.SatisfiesCondition(query.initialCondition) && !s.forbidden).ToList();
             }
 
             var endStates = new List<State>();
