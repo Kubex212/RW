@@ -9,7 +9,7 @@ namespace RWProgram.Enums
     public enum QueriesEnum
     {
         AlwaysExecutable,
-        EverExecutable,
+        //EverExecutable,
         AlwaysAfter,
         EverAfter,
         AlwaysAccesibleYFromPi,

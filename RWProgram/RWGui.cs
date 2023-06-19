@@ -66,7 +66,7 @@ namespace RWProgram
             StatementsComboBox.Items.AddRange(Statements.ToArray());
             QueriesComboBox.Items.Clear();
             QueriesComboBox.Items.AddRange(Queries.ToArray());
-            Logic.Actions.Add(new Action() { Name = "Anything", Index = 1000 });
+            //Logic.Actions.Add(new Action() { Name = "Anything", Index = 1000 });
             ActionComboBox.Items.Clear();
             ActionComboBox.Items.AddRange(Logic.Actions.ToArray());
             ProgramActionComboBox.Items.Clear();
@@ -423,9 +423,9 @@ namespace RWProgram
                 case QueriesEnum.AlwaysExecutable:
                     Query = new AlwaysExecutable(piState, cost);
                     break;
-                case QueriesEnum.EverExecutable:
-                    Query = new EverExecutable(piState, cost);
-                    break;
+                //case QueriesEnum.EverExecutable:
+                //    Query = new EverExecutable(piState, cost);
+                //    break;
                 case QueriesEnum.AlwaysAccesibleYFromPi:
                     if (!string.IsNullOrEmpty(gammaString))
                     {
