@@ -37,7 +37,7 @@ namespace RWProgram
         public List<string> Queries = new List<string>()
         {
             "necessarily executable A1, ..., An from π cost k",
-            "possibly executable A1, ..., An from π cost k",
+            //"possibly executable A1, ..., An from π cost k",
             "necessarily γ after A1, ..., An from π",
             "possibly γ after A1, ..., An from π",
             "necessarily accessible γ from π cost k",
@@ -274,6 +274,36 @@ namespace RWProgram
         {
             ResetComboBoxes();
             SetStatementsText();
+            if(StatementsComboBox.SelectedIndex == 0 || StatementsComboBox.SelectedIndex == 6)
+            {
+                ActionComboBox.Enabled = costUpDown.Enabled = PiTextBox1.Enabled = FluentComboBox.Enabled = false;
+                AlphaTextBox.Enabled = true;
+            }
+            else if (StatementsComboBox.SelectedIndex == 1 || StatementsComboBox.SelectedIndex == 2)
+            {
+                costUpDown.Enabled = PiTextBox1.Enabled = FluentComboBox.Enabled = false;
+                ActionComboBox.Enabled = AlphaTextBox.Enabled = true;
+            }
+            else if(StatementsComboBox.SelectedIndex == 3)
+            {
+                FluentComboBox.Enabled = false;
+                ActionComboBox.Enabled = costUpDown.Enabled = PiTextBox1.Enabled = AlphaTextBox.Enabled = true;
+            }
+            else if (StatementsComboBox.SelectedIndex == 4)
+            {
+                AlphaTextBox.Enabled = false;
+                ActionComboBox.Enabled = costUpDown.Enabled = PiTextBox1.Enabled = FluentComboBox.Enabled = true;
+            }
+            else if (StatementsComboBox.SelectedIndex == 5)
+            {
+                AlphaTextBox.Enabled = costUpDown.Enabled = FluentComboBox.Enabled = false;
+                ActionComboBox.Enabled = PiTextBox1.Enabled = true;
+            }
+            else if (StatementsComboBox.SelectedIndex == 7)
+            {
+                AlphaTextBox.Enabled = costUpDown.Enabled = ActionComboBox.Enabled = PiTextBox1.Enabled = false;
+                FluentComboBox.Enabled = true;
+            }
         }
 
         private void ConfirmStatementButton_Click(object sender, EventArgs e)
@@ -457,75 +487,24 @@ namespace RWProgram
             Query = null;
             SetQueryTextBox();
             ResetComboBoxes2();
-            //var queryIndex = QueriesComboBox.SelectedIndex;
-            //var queryEnum = (QueriesEnum)queryIndex;
-            //SetQueryTextBox();
-            //ResetButtons();
-            //switch (queryEnum)
-            //{
-            //    case QueriesEnum.AlwaysAccesibleYFromPi:
-            //    case QueriesEnum.EverAccesibleYFromPi:
-            //        AddInitialStateButton.Visible = true;
-            //        AddCondition2Button.Visible = true;
-            //        AddInitialStateButton.Enabled = true;
-            //        AddCondition2Button.Enabled = true;
-            //        break;
-            //    default:
-            //        break;
-            //}
+            if(QueriesComboBox.SelectedIndex == 0)
+            {
+                GammaTextBox.Enabled = false;
+                PiTextBox2.Enabled = costUpDown3.Enabled = true;
+            }
+            else if (QueriesComboBox.SelectedIndex == 1 || QueriesComboBox.SelectedIndex == 2)
+            {
+                costUpDown3.Enabled = false;
+                PiTextBox2.Enabled = GammaTextBox.Enabled = true;
+            }
+            else 
+            {
+                PiTextBox2.Enabled = GammaTextBox.Enabled = costUpDown3.Enabled = true;
+            }
+            
         }
 
-        //private void AddInitialStateButton_Click(object sender, EventArgs e)
-        //{
-        //    var queryIndex = QueriesComboBox.SelectedIndex;
-        //    var queryEnum = (QueriesEnum)queryIndex;
-        //    switch (queryEnum)
-        //    {
-
-        //        case QueriesEnum.AlwaysAccesibleYFromPi:
-        //        case QueriesEnum.EverAccesibleYFromPi:
-        //            {
-        //                var query = Query as QueryWithGammaAndPi;
-        //                if (query != null)
-        //                {
-        //                    query.Pi.Add((Fluent)Pi2ComboBox.SelectedItem);
-        //                }
-        //                break;
-        //            }
-        //        default:
-        //            break;
-        //    }
-
-        //    SetQueryTextBox();
-        //}
-
-        //private void AddCondition2Button_Click(object sender, EventArgs e)
-        //{
-        //    var queryIndex = QueriesComboBox.SelectedIndex;
-        //    var queryEnum = (QueriesEnum)queryIndex;
-        //    switch (queryEnum)
-        //    {
-
-        //        case QueriesEnum.AlwaysAccesibleYFromPi:
-        //        case QueriesEnum.EverAccesibleYFromPi:
-        //            {
-        //                var query = Query as QueryWithGammaAndPi;
-        //                if (query != null)
-        //                {
-        //                    if (GammaComboBox.SelectedItem != null)
-        //                    {
-        //                        query.Gamma.Add((Fluent)GammaComboBox.SelectedItem);
-        //                    }
-
-        //                }
-        //                break;
-        //            }
-        //        default:
-        //            break;
-        //    }
-
-        //    SetQueryTextBox();
-        //}
+        
 
 
         private void SetTest1Domain(object sender, EventArgs e)

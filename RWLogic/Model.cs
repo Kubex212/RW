@@ -233,7 +233,7 @@ namespace RWLogic
             var initialStates = new List<State>();
             if (query.InitialCondition.EmptyRoot)
             {
-                initialStates = initial;
+                initialStates = initial.Where(s => !s.forbidden).ToList();
             }
             else
             {
@@ -272,7 +272,7 @@ namespace RWLogic
             var initialStates = new List<State>();
             if (query.InitialCondition.EmptyRoot)
             {
-                initialStates = initial;
+                initialStates = initial.Where(s => !s.forbidden).ToList();
             }
             else
             {
@@ -372,7 +372,7 @@ namespace RWLogic
             var initialStates = new List<State>();
             if (query.InitialCondition.EmptyRoot)
             {
-                initialStates = initial;
+                initialStates = initial.Where(s => !s.forbidden).ToList();
             }
             else
             {
@@ -393,10 +393,10 @@ namespace RWLogic
                     List<State> possibleNextStates = currentState.possibleEffects[query.program[step]];
                     List<int> possibleNextCosts = currentState.costs[query.program[step]];
 
-                    if (possibleNextStates is null ||
-                        possibleNextCosts.Count == 0 ||
-                        possibleNextStates.All(s => s.forbidden) ||
-                        possibleNextCosts.Any(x => x + cost > query.Cost))
+                    if (possibleNextStates is null || // tak dla bezpieczeñstwa ale nie powinno siê zdarzaæ
+                        possibleNextCosts.Count == 0 || // ta lista jest zerowana gdy s¹ "impossible A if Pi"
+                        possibleNextStates.All(s => s.forbidden) || // gdy prowadzi w stan sprzeczny z "always alfa"
+                        possibleNextCosts.Any(x => x + cost > query.Cost)) // przekroczony koszt
                         return false;
 
                     nextStates.AddRange(possibleNextStates.Where(s => !s.forbidden)
