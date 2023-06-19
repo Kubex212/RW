@@ -14,6 +14,8 @@ namespace RWLogic
         public State[] States { get; private set; } // tablica wszystkich mozliwych stanow
         public List<State> initial { get; private set; } // lista stanow poczatkowych
         public string[] action { get; } // akcje z nazwami
+        public List<Causes> causes { get; private set; }
+        public List<Releases> releases { get; private set; }
 
         // generujemy zbior wszystkich mozliwych stanow i takie tam
         public Model(List<string> fluent, List<string> action)
@@ -64,8 +66,10 @@ namespace RWLogic
             return;
         }
 
-        public void SetPossibleEffects(List<Causes> causes, List<Releases> releases)
+        public void SetPossibleEffects(List<Causes> causes, List<Releases> releases, List<Impossible> impossibles)
         {
+            this.releases = releases;
+            this.causes = causes;
             foreach(State s in States)
             {
                 if (!s.forbidden)
@@ -75,6 +79,14 @@ namespace RWLogic
                         s.possibleEffects[j] = res.Item1;
                         s.costs[j] = res.Item2;
                     }
+            }
+            foreach(var impossible in impossibles)
+            {
+                var states = States.Where(s => s.SatisfiesCondition(impossible.condition));
+                foreach(var state in states)
+                {
+                    state.possibleEffects[impossible.action].Clear();
+                }
             }
             return;
         }
@@ -216,6 +228,84 @@ namespace RWLogic
         }
         */
 
+        public bool AlwaysAfter2(Query_NecessaryAfter query)
+        {
+            var initialStates = new List<State>();
+            if (query.InitialCondition.EmptyRoot)
+            {
+                initialStates = initial;
+            }
+            else
+            {
+                initialStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition) && !s.forbidden).ToList();
+            }
+
+            var results = new List<bool>();
+            foreach(var initialState in initialStates)
+            {
+                // bierzemy po kolei mo¿liwe stany pocz¹tkowe i symulujemy na nich wykonanie programu
+                var currentStates = new List<State>() { initialState };
+                var nextStates = new List<State>();
+                foreach (var action in query.program)
+                {
+                    foreach (var state in currentStates)
+                    {
+                        if (state.forbidden) return false;
+                        List<State> possibleNextStates = state.possibleEffects[action];
+                        if (possibleNextStates.Count == 0) return false;
+                        nextStates.AddRange(possibleNextStates);
+                    }
+
+                    currentStates = nextStates;
+                    nextStates = new List<State>();
+                }
+                // sprawdzamy czy otrzymane stany po przejœciu programu zawieraj¹ tylko stany spe³niaj¹ce warunek koñcowy
+                results.Add(currentStates.Count > 0 && currentStates.All(s => s.SatisfiesCondition(query.FinalCondition)));
+            }
+            // gdyby results okaza³o siê puste (np. initialStates by³oby puste) to jaka jest odpowiedŸ kwerendy?
+            // chyba true bo "dla ka¿dego modelu..." a zbiór modeli by³by pusty
+            return results.All(r => r == true);
+        }
+
+        public bool PossiblyAfter2(Query_PossiblyAfter query)
+        {
+            var initialStates = new List<State>();
+            if (query.InitialCondition.EmptyRoot)
+            {
+                initialStates = initial;
+            }
+            else
+            {
+                initialStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition) && !s.forbidden).ToList();
+            }
+
+            var results = new List<bool>();
+            foreach (var initialState in initialStates)
+            {
+                // bierzemy po kolei mo¿liwe stany pocz¹tkowe i symulujemy na nich wykonanie programu
+                var currentStates = new List<State>() { initialState };
+                var nextStates = new List<State>();
+                foreach (var action in query.program)
+                {
+                    foreach (var state in currentStates)
+                    {
+                        if (state.forbidden) continue;
+                        List<State> possibleNextStates = state.possibleEffects[action];
+                        if (possibleNextStates.Count == 0) continue;
+                        nextStates.AddRange(possibleNextStates);
+                    }
+
+                    currentStates = nextStates;
+                    nextStates = new List<State>();
+                }
+                // sprawdzamy czy otrzymane stany po przejœciu programu zawieraj¹ przynajmniej 1 stan spe³niaj¹cy warunek koñcowy
+                results.Add(currentStates.Any(s => s.SatisfiesCondition(query.FinalCondition)));
+            }
+            // gdyby results okaza³o siê puste (np. initialStates by³oby puste) to jaka jest odpowiedŸ kwerendy?
+            // chyba true bo "dla ka¿dego modelu..." a zbiór modeli by³by pusty
+            return results.All(r => r == true);
+        }
+
         public bool AlwaysAfter(Query_NecessaryAfter query)
         {
             var currentStates = new List<State>();
@@ -288,17 +378,7 @@ namespace RWLogic
             {
                 initialStates = States.Where(s => s.SatisfiesCondition(query.InitialCondition) && !s.forbidden).ToList();
             }
-            //foreach(var state in initialStates)
-            //{
-            //    var currentCost = 0;
-            //    for(int i = 0; i < query.program.Count; i++)
-            //    {
-            //        if (state.forbidden) return false;
-            //        var possibleNextStates = state.possibleEffects[query.program[i]];
-            //        if (possibleNextStates.Count == 0 || possibleNextStates is null) return false;
-            //        //nextStates.AddRange(possibleNextStates);
-            //    }
-            //}
+
             List<(State state, int cost)> currentStates = initialStates.Select(x => (x, 0)).ToList();
             List<(State state, int cost)> nextStates = new List<(State state, int cost)>();
 
@@ -306,16 +386,21 @@ namespace RWLogic
             {
                 foreach (var tuple in currentStates)
                 {
-                    var state = tuple.state;
+                    var currentState = tuple.state;
                     var cost = tuple.cost;
-                    if (state.forbidden) return false;
+                    if (currentState.forbidden) return false;
 
-                    List<State> possibleNextStates = state.possibleEffects[query.program[step]];
-                    List<int> possibleNextCosts = state.costs[query.program[step]];
+                    List<State> possibleNextStates = currentState.possibleEffects[query.program[step]];
+                    List<int> possibleNextCosts = currentState.costs[query.program[step]];
 
-                    if (possibleNextStates is null || possibleNextStates.Count == 0 || possibleNextCosts.Any(x => x + cost > query.Cost)) return false;
+                    if (possibleNextStates is null ||
+                        possibleNextCosts.Count == 0 ||
+                        possibleNextStates.All(s => s.forbidden) ||
+                        possibleNextCosts.Any(x => x + cost > query.Cost))
+                        return false;
 
-                    nextStates.AddRange(possibleNextStates.Select((x, index) => (x, possibleNextCosts[index] + cost)));
+                    nextStates.AddRange(possibleNextStates.Where(s => !s.forbidden)
+                        .Select((x, index) => (x, possibleNextCosts[index] + cost)));
                 }
 
                 currentStates = nextStates;
@@ -378,7 +463,7 @@ namespace RWLogic
             var initialStates = new List<State>();
             if (query.initialCondition.EmptyRoot)
             {
-                initialStates = initial;
+                initialStates = initial.Where(s => !s.forbidden).ToList();
             }
             else
             {
@@ -395,7 +480,7 @@ namespace RWLogic
                 endStates = States.Where(s => s.SatisfiesCondition(query.endCondition) && !s.forbidden).ToList();
             }
 
-            return initialStates.All(s => DFS(s, endStates, query.cost));
+            return initialStates.All(s => DFS(s, endStates, query.cost, false));
         }
 
         public bool IsTypicallyAccessible(Query_AccessibleTypically query)
@@ -426,18 +511,18 @@ namespace RWLogic
                 endStates = States.Where(s => s.SatisfiesCondition(query.endCondition)).ToList();
             }
 
-            return initialStates.Any(s => DFS(s, endStates, query.cost));
+            return initialStates.All(s => DFS(s, endStates, query.cost, true));
         }
 
-        public bool DFS(State currentState, List<State> endStates, int maxCost)
+        public bool DFS(State currentState, List<State> endStates, int maxCost, bool possibly)
         {
             // Create an array to track visited states
             bool[] visited = new bool[States.Length];
 
-            return DFSHelper(currentState, endStates, maxCost, visited);
+            return DFSHelper(currentState, endStates, maxCost, visited, possibly);
         }
 
-        public bool DFSHelper(State currentState, List<State> endStates, int maxCost, bool[] visited)
+        public bool DFSHelper(State currentState, List<State> endStates, int maxCost, bool[] visited, bool possibly)
         {
             // Check if the current state is one of the end states
             if (endStates.Contains(currentState, new StateEqualityComparer()))
@@ -456,6 +541,7 @@ namespace RWLogic
             {
                 var nextStates = currentState.possibleEffects[i];
                 var costs = currentState.costs[i];
+                var canLeadToEndState = new bool[nextStates.Count];
                 for(int j = 0; j < nextStates.Count; j++)
                 {
                     var nextState = nextStates[j];
@@ -464,14 +550,24 @@ namespace RWLogic
                     if (!visited[nextStateIndex] && !nextState.forbidden && cost <= maxCost)
                     {
                         // Recursively call DFSHelper on the next state
-                        bool canReachEndState = DFSHelper(nextState, endStates, maxCost - cost, visited);
+                        bool canReachEndState = DFSHelper(nextState, endStates, maxCost - cost, visited, possibly);
 
                         // If any of the end states can be reached from the next state within the remaining cost, return true
                         if (canReachEndState)
                         {
-                            return true;
+                            canLeadToEndState[j] = true;
                         }
                     }
+                }
+                // w wersji possibly musi istnieæ wybór mappingu, który zaprowadzi do stanu koñcowego
+                if(possibly && canLeadToEndState.Any(canLead => canLead == true)) 
+                {
+                    return true;
+                }
+                // w wersji necessary ka¿dy wybór mappingu musi prowadziæ do stanu koncowego
+                if (!possibly && canLeadToEndState.Length > 0 && canLeadToEndState.All(canLead => canLead == true))
+                {
+                    return true;
                 }
             }
             // czy ta linijka moze doprowadzic do nieskonczonych pêtli?
@@ -523,8 +619,8 @@ namespace RWLogic
             {
                 if (!noninertial[i] && s.fluents[i] != res.fluents[i]) // warunek 1 dla inercjalnych
                     result[i] = true;
-                else // warunek 2 z releases
-                {
+                //else // warunek 2 z releases
+                //{
                     foreach(Releases statement in releases)
                     {
                         if(statement.action == action &&
@@ -535,7 +631,7 @@ namespace RWLogic
                             cost += statement.Cost;
                         }
                     }
-                }
+                //}
             }
             return (result, cost);
         }

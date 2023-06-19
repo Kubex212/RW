@@ -117,7 +117,7 @@ namespace RWProgram
                     Statements = new List<Statement> {
                         new InitiallyFluent(new State("not open", fluents)),
                         new ActionCausesAlphaIfFluents(new State("open", fluents), insertCard, new State(), 10),
-                        new ImpossibleActionIfFluents(insertCard, new State("hasCard", fluents), 10)
+                        new ImpossibleActionIfFluents(insertCard, new State("hasCard", fluents))
                     }
                 };
             }

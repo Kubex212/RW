@@ -31,6 +31,12 @@ namespace RWLogic
         Formula effect { get; } 
     }
 
+    public interface IImpossible
+    {
+        int action { get; } //id akcji
+        Formula condition { get; }
+    }
+
     public class Causes : CausesOrTypicallyCauses
     {
         public int action { get; } //id akcji
@@ -52,6 +58,24 @@ namespace RWLogic
             this.condition = new Formula();
             this.effect = effect;
             Cost = cost;
+        }
+    }
+
+    public class Impossible : IImpossible
+    {
+        public int action { get; } //id akcji
+        public Formula condition { get; }
+
+        public Impossible(int action, Formula condition)
+        {
+            this.action = action;
+            this.condition = condition;
+        }
+
+        public Impossible(int action)
+        {
+            this.action = action;
+            this.condition = new Formula();
         }
     }
 

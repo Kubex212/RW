@@ -20,13 +20,14 @@ namespace RWLogic
             List<Releases> releases,
             List<Initially> initially,
             List<After> after,
-            List<ObservableAfter> observableAfter)
+            List<ObservableAfter> observableAfter,
+            List<Impossible> impossibles)
         {
             model = new Model(fluents, actions);
             model.SetNoninertial(noninertial);
             model.SetAlways(always);
-            model.SetPossibleEffects(causes, releases);
-            model.SetAbnormalEffects();
+            model.SetPossibleEffects(causes, releases, impossibles);
+            //model.SetAbnormalEffects();
             model.SetInitialStates(initially, after, observableAfter);
         }
 
@@ -85,12 +86,12 @@ namespace RWLogic
         
         public bool Query(Query_NecessaryAfter query)
         {
-            return model.AlwaysAfter(query);
+            return model.AlwaysAfter2(query);
         }
 
         public bool Query(Query_PossiblyAfter query)
         {
-            return model.PossiblyAfter(query);
+            return model.PossiblyAfter2(query);
         }
 
         public bool Query(Query_ExecutableAlways query)

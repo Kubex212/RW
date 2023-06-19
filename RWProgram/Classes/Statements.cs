@@ -191,9 +191,15 @@ namespace RWProgram.Classes
         }
     }
 
-    public class ImpossibleActionIfFluents : ActionCausesAlphaIfFluents
+    public class ImpossibleActionIfFluents : Statement
     {
-        public ImpossibleActionIfFluents(Action Action, State Pi, int Cost) : base(new State(), Action, Pi, Cost) { }
+        public State Pi { get; set; }
+        public Action Action { get; set; }
+        public ImpossibleActionIfFluents(Action Action, State Pi)
+        {
+            this.Action = Action;
+            this.Pi = Pi;
+        }
 
         public override string ToString()
         {
@@ -203,7 +209,7 @@ namespace RWProgram.Classes
 
         public override object ToLogic()
         {
-            return new RWLogic.Causes(Action.Index, new Formula(), Pi.ToLogic(), Cost);
+            return new RWLogic.Impossible(Action.Index, Pi.ToLogic());
         }
     }
 

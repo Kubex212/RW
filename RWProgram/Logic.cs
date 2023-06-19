@@ -37,7 +37,8 @@ namespace RWProgram
                 releases: GetStatementsForConditionActionByActor<ActionReleasesFluent1IfFluents, RWLogic.Releases>().ToList(),
                 initially: GetStatements<InitiallyFluent, RWLogic.Initially>().ToList(),
                 after: GetStatements<FluentAfterActionbyActor, RWLogic.After>().ToList(),
-                observableAfter: GetStatements<ObservableFluentAfterAction, RWLogic.ObservableAfter>().ToList()
+                observableAfter: GetStatements<ObservableFluentAfterAction, RWLogic.ObservableAfter>().ToList(),
+                impossibles: GetStatements<ImpossibleActionIfFluents, RWLogic.Impossible>().ToList()
             );
 
             switch (query)

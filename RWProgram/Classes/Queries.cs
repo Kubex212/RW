@@ -26,7 +26,7 @@ namespace RWProgram.Classes
         {
             var programString = string.Join(", ", program.Select(a => a.Name)) != "" ?
                 string.Join(", ", program.Select(a => a.Name)) : "[empty program]";
-            return $"Always {Alpha} after {programString} from {Pi}";
+            return $"Always {Alpha} after {programString}" + (!string.IsNullOrEmpty(Pi?.ToString()) ? $" from {Pi}" : string.Empty);
         }
     }
 
@@ -45,7 +45,7 @@ namespace RWProgram.Classes
         {
             var programString = string.Join(", ", program.Select(a => a.Name)) != "" ?
                 string.Join(", ", program.Select(a => a.Name)) : "[empty program]";
-            return $"Possibly {Alpha} after {programString} from {Pi}";
+            return $"Possibly {Alpha} after {programString}" + (!string.IsNullOrEmpty(Pi?.ToString()) ? $" from {Pi}" : string.Empty);
         }
     }
 

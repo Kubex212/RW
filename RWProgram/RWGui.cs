@@ -208,8 +208,7 @@ namespace RWProgram
                     Logic.Statements.Add(new ImpossibleActionIfFluents
                     (
                         (Action)ActionComboBox.SelectedItem,
-                        piState,
-                        cost
+                        piState
                     ));
                     break;
                 case StatementEnum.NoninertialFluent:
@@ -331,8 +330,15 @@ namespace RWProgram
         {
             if (Query != null && Logic?.Program != null)
             {
-                var response = Logic.ExecuteQuery(Query);
-                ResponseTextBox.Text = response.ToString();
+                try
+                {
+                    var response = Logic.ExecuteQuery(Query);
+                    ResponseTextBox.Text = response.ToString();
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("Wystąpił błąd podczas tworzenia kwerendy. Wyczyść pola i spróbuj ponownie.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -412,18 +418,24 @@ namespace RWProgram
                 //    }
                 //    break;
                 case QueriesEnum.AlwaysAfter:
-                    Query = new AlwaysAfter()
+                    if (!string.IsNullOrEmpty(gammaString))
                     {
-                        Pi = piState,
-                        Alpha = gammaState
-                    };
+                        Query = new AlwaysAfter()
+                        {
+                            Pi = piState,
+                            Alpha = gammaState
+                        };
+                    }
                     break;
                 case QueriesEnum.EverAfter:
-                    Query = new PossiblyAfter()
+                    if (!string.IsNullOrEmpty(gammaString))
                     {
-                        Pi = piState,
-                        Alpha = gammaState
-                    };
+                        Query = new PossiblyAfter()
+                        {
+                            Pi = piState,
+                            Alpha = gammaState
+                        };
+                    }
                     break;
                 default:
                     break;
