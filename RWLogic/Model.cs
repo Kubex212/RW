@@ -494,7 +494,7 @@ namespace RWLogic
             var initialStates = new List<State>();
             if (query.initialCondition.EmptyRoot)
             {
-                initialStates = initial;
+                initialStates = initial.Where(s => !s.forbidden).ToList(); ;
             }
             else
             {
