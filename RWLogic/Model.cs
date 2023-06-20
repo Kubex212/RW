@@ -394,7 +394,7 @@ namespace RWLogic
                     List<int> possibleNextCosts = currentState.costs[query.program[step]];
 
                     if (possibleNextStates is null || // tak dla bezpieczeñstwa ale nie powinno siê zdarzaæ
-                        possibleNextCosts.Count == 0 || // ta lista jest zerowana gdy s¹ "impossible A if Pi"
+                        possibleNextStates.Count == 0 || // ta lista jest zerowana gdy s¹ "impossible A if Pi"
                         possibleNextStates.All(s => s.forbidden) || // gdy prowadzi w stan sprzeczny z "always alfa"
                         possibleNextCosts.Any(x => x + cost > query.Cost)) // przekroczony koszt
                         return false;
